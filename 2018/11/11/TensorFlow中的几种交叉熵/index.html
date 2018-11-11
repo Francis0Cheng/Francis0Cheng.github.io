@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
+<meta name="description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow中的几种交叉熵">
 <meta property="og:url" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/index.html">
 <meta property="og:site_name" content="Francis&#39;s Blog">
-<meta property="og:description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
+<meta property="og:description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
 <meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/2.gif">
-<meta property="og:updated_time" content="2018-11-11T15:07:29.401Z">
+<meta property="og:updated_time" content="2018-11-11T15:10:02.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow中的几种交叉熵">
-<meta name="twitter:description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
+<meta name="twitter:description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
 
 
@@ -365,7 +365,9 @@
       
 
       
-        <h1 id="TensorFlow中的几种交叉熵"><a href="#TensorFlow中的几种交叉熵" class="headerlink" title="[TensorFlow中的几种交叉熵]"></a>[TensorFlow中的几种交叉熵]</h1><h3 id="Logit函数"><a href="#Logit函数" class="headerlink" title="Logit函数"></a>Logit函数</h3><p>在线性回归中，<img src="1.gif" alt="1">，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。</p>
+        <pre><code>[TensorFlow中的几种交叉熵]
+</code></pre><p>=============================================================================================</p>
+<h3 id="Logit函数"><a href="#Logit函数" class="headerlink" title="Logit函数"></a>Logit函数</h3><p>在线性回归中，<img src="1.gif" alt="1">，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。</p>
 <p>在逻辑回归中：可以看作是用<img src="2.gif" alt="2">直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。</p>
 <p>logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&lt;0.5，函数值为负；p&gt;0.5，函数值为正。</p>
 <p>相对地，softmax和sigmoid则都是将[-inf,inf]映射到[0,1]的函数。</p>
@@ -562,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow中的几种交叉熵"><span class="nav-number">1.</span> <span class="nav-text">[TensorFlow中的几种交叉熵]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logit函数"><span class="nav-number">1.0.1.</span> <span class="nav-text">Logit函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立和互斥"><span class="nav-number">1.0.2.</span> <span class="nav-text">独立和互斥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、tf-nn-sigmoid-cross-entropy-with-logits"><span class="nav-number">1.1.</span> <span class="nav-text">1、tf.nn.sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、tf-nn-softmax-cross-entropy-with-logits"><span class="nav-number">1.2.</span> <span class="nav-text">2、tf.nn.softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits"><span class="nav-number">1.3.</span> <span class="nav-text">3、tf.nn.sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结："><span class="nav-number">1.4.</span> <span class="nav-text">4、总结：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logit函数"><span class="nav-number">1.</span> <span class="nav-text">Logit函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立和互斥"><span class="nav-number">2.</span> <span class="nav-text">独立和互斥</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1、tf-nn-sigmoid-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">1、tf.nn.sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、tf-nn-softmax-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">2、tf.nn.softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">3、tf.nn.sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结："><span class="nav-number"></span> <span class="nav-text">4、总结：</span></a></li></div>
             
 
           </div>
