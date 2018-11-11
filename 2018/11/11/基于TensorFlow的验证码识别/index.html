@@ -102,12 +102,12 @@
 <meta property="og:site_name" content="Francis&#39;s Blog">
 <meta property="og:description" content="这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别 验证码  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。1234567891011from captcha.image import">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/2018/11/11/基于TensorFlow的验证码识别/1.png">
-<meta property="og:updated_time" content="2018-11-11T08:29:27.559Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/1.png">
+<meta property="og:updated_time" content="2018-11-11T08:33:59.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于TensorFlow的验证码识别">
 <meta name="twitter:description" content="这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别 验证码  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。1234567891011from captcha.image import">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/2018/11/11/基于TensorFlow的验证码识别/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/1.png">
 
 
 
@@ -367,7 +367,7 @@
         <p>  这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别</p>
 <h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><p>  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> captcha.image <span class="keyword">import</span> ImageCaptcha</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot  <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">text = <span class="string">'1234'</span></span><br><span class="line">image = ImageCaptcha()</span><br><span class="line">captcha = image.generate(text)</span><br><span class="line">captcha_image = Image.open(captcha)</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.imshow(captcha_image)</span><br></pre></td></tr></table></figure></p>
 <p>运行代码，就可以看到这样的图片了：</p>
-<p><img src="2018/11/11/基于TensorFlow的验证码识别/1.png" alt="1"></p>
+<p><img src="1.png" alt="1"></p>
 <p>可以看到图片中的验证码内容就是我们所定义的text内容，这样我们就可以得到一张图片和其所对应的真是文本你，由此我们用它生成一批训练数据和测试数据</p>
 <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>我们先定义一个词表和其长度变量</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VOCAB = list(str(<span class="number">123456789</span>))</span><br><span class="line">CAPTCHA_LENGTH = <span class="number">4</span></span><br><span class="line">VOCAB_LENGTH = len(VOCAB)</span><br></pre></td></tr></table></figure>
