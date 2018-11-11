@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]上代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import tensorflow as tffrom tensorflow.examples.tutorials.mnist i">
+<meta name="description" content="这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别 验证码  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。1234567891011from captcha.image import">
 <meta name="keywords" content="Tensor_low">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/1基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器/index.html">
+<meta property="og:title" content="基于TensorFlow的验证码识别">
+<meta property="og:url" content="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/index.html">
 <meta property="og:site_name" content="Francis&#39;s Blog">
-<meta property="og:description" content="[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]上代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import tensorflow as tffrom tensorflow.examples.tutorials.mnist i">
+<meta property="og:description" content="这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别 验证码  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。1234567891011from captcha.image import">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-11T07:24:43.382Z">
+<meta property="og:updated_time" content="2018-11-11T07:24:45.099Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器">
-<meta name="twitter:description" content="[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]上代码：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import tensorflow as tffrom tensorflow.examples.tutorials.mnist i">
+<meta name="twitter:title" content="基于TensorFlow的验证码识别">
+<meta name="twitter:description" content="这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别 验证码  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。1234567891011from captcha.image import">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/28/1基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/">
 
 
 
 
 
-  <title>基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器 | Francis's Blog</title>
+  <title>基于TensorFlow的验证码识别 | Francis's Blog</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/28/1基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于tensorflow的CNN卷积神经网络对手写字MNIST数据集的分类器</h1>
+          <h1 class="post-title" itemprop="name headline">基于TensorFlow的验证码识别</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-28T13:03:44+08:00">
-                2017-02-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T15:08:56+08:00">
+                2018-11-11
               </time>
             
 
@@ -362,9 +362,8 @@
       
 
       
-        <h1 id="基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器"><a href="#基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器" class="headerlink" title="[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]"></a>[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]</h1><p>上代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span>  input_data</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST_data'</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment">#define conv layer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_layer</span><span class="params">(inputs, channels_in, channels_out)</span>:</span></span><br><span class="line">    w = tf.Variable(tf.truncated_normal([<span class="number">5</span>,<span class="number">5</span>,channels_in, channels_out], stddev=<span class="number">0.1</span>))</span><br><span class="line">    b = tf.Variable(tf.constant(<span class="number">0.1</span>, shape=[channels_out]))</span><br><span class="line">    conv = tf.nn.conv2d(inputs, w, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)  <span class="comment">#调用conv2d</span></span><br><span class="line">    act = tf.nn.relu(conv + b)    <span class="comment"># conv + bias</span></span><br><span class="line">    <span class="keyword">return</span> act</span><br><span class="line"><span class="comment">#define fully connection layer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fc_layer</span><span class="params">(inputs, channels_in, channels_out, activate_function=None)</span>:</span></span><br><span class="line">    w = tf.Variable(tf.truncated_normal([channels_in, channels_out]))</span><br><span class="line">    b = tf.Variable(tf.zeros([channels_out])+<span class="number">0.1</span>)</span><br><span class="line">    fc = tf.matmul(inputs, w) + b</span><br><span class="line">    <span class="keyword">if</span> activate_function <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        res = fc</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = activate_function(fc)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">10</span>])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])    </span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">conv1 = conv_layer(x_image, <span class="number">1</span>, <span class="number">32</span>)</span><br><span class="line">pool1 = tf.nn.max_pool(conv1, ksize=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)    <span class="comment"># 14*14*32</span></span><br><span class="line"></span><br><span class="line">conv2 = conv_layer(pool1, <span class="number">32</span>, <span class="number">64</span>)</span><br><span class="line">pool2 = tf.nn.max_pool(conv2, ksize=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)    </span><br><span class="line">flattended = tf.reshape(pool2, [<span class="number">-1</span>, <span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">fc1 = fc_layer(flattended, <span class="number">7</span> * <span class="number">7</span> * <span class="number">64</span>, <span class="number">1024</span>, tf.nn.relu)</span><br><span class="line">fc1 = tf.nn.dropout(fc1, keep_prob)</span><br><span class="line">logits =  fc_layer(fc1, <span class="number">1024</span>, <span class="number">10</span>)</span><br><span class="line">cross_entropy = tf.reduce_mean(</span><br><span class="line">                        tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=y)</span><br><span class="line">)</span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(logits, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000</span>):</span><br><span class="line">    <span class="comment">#batch = mnist.train.next_batch(100)</span></span><br><span class="line">    images, labels = mnist.train.next_batch(<span class="number">100</span>)</span><br><span class="line">    sess.run(train_step, feed_dict=&#123;x:images, y:labels,keep_prob:<span class="number">1</span>&#125;)</span><br><span class="line">    <span class="keyword">if</span> i%<span class="number">50</span>==<span class="number">0</span>:</span><br><span class="line">        print(sess.run(accuracy, feed_dict=&#123;x:mnist.test.images[:<span class="number">1000</span>], y:mnist.test.labels[:<span class="number">1000</span>], keep_prob:<span class="number">1</span>&#125;))</span><br><span class="line">        <span class="comment">#print(sess.run(accuracy, feed_dict=&#123;x:batch[0], y:batch[1]&#125;))</span></span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure></p>
-<p>1.手动封装了CNN的每一层</p>
-<p>2.还用到了droup out 防止过拟合</p>
+        <p> 这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别</p>
+<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><p>  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> captcha.image <span class="keyword">import</span> ImageCaptcha</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot  <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">text = <span class="string">'1234'</span></span><br><span class="line">image = ImageCaptcha()</span><br><span class="line">captcha = image.generate(text)</span><br><span class="line">captcha_image = Image.open(captcha)</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.imshow(captcha_image)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -395,15 +394,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/11/2TensorFlow中的几种交叉熵/" rel="next" title="2TensorFlow中的几种交叉熵">
+                <i class="fa fa-chevron-left"></i> 2TensorFlow中的几种交叉熵
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/10/leetcode_3/" rel="prev" title="leetcode_3">
-                leetcode_3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器"><span class="nav-number">1.</span> <span class="nav-text">[基于TensorFlow的CNN卷积神经网络对手写字MNIST数据集的分类器]</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证码"><span class="nav-number">1.</span> <span class="nav-text">验证码</span></a></li></ol></div>
             
 
           </div>
