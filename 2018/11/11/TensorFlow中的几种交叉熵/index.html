@@ -97,16 +97,16 @@
 <meta name="description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2TensorFlow中的几种交叉熵">
+<meta property="og:title" content="TensorFlow中的几种交叉熵">
 <meta property="og:url" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/index.html">
 <meta property="og:site_name" content="Francis&#39;s Blog">
 <meta property="og:description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
 <meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/2.gif">
-<meta property="og:updated_time" content="2018-11-11T15:02:24.230Z">
+<meta property="og:updated_time" content="2018-11-11T15:06:14.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2TensorFlow中的几种交叉熵">
+<meta name="twitter:title" content="TensorFlow中的几种交叉熵">
 <meta name="twitter:description" content="[TensorFlow中的几种交叉熵]Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。 logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&amp;lt;0.5，函数值为负；p&amp;">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
 
@@ -143,7 +143,7 @@
 
 
 
-  <title>2TensorFlow中的几种交叉熵 | Francis's Blog</title>
+  <title>TensorFlow中的几种交叉熵 | Francis's Blog</title>
   
 
 
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2TensorFlow中的几种交叉熵</h1>
+          <h1 class="post-title" itemprop="name headline">TensorFlow中的几种交叉熵</h1>
         
 
         <div class="post-meta">
@@ -373,7 +373,8 @@
 <h3 id="独立和互斥"><a href="#独立和互斥" class="headerlink" title="独立和互斥"></a>独立和互斥</h3><p>有事件A和B</p>
 <p>独立：P(AnB) = P(A) * P(B)</p>
 <p>互斥：P(AUB) = P(A) + P(B), P(AnB) = 0</p>
-<h3 id="cross-entropy-loss-softmax-sigmoid"><a href="#cross-entropy-loss-softmax-sigmoid" class="headerlink" title="cross entropy loss + softmax + sigmoid"></a>cross entropy loss + softmax + sigmoid</h3><h2 id="1、tf-nn-sigmoid-cross-entropy-with-logits"><a href="#1、tf-nn-sigmoid-cross-entropy-with-logits" class="headerlink" title="1、tf.nn.sigmoid_cross_entropy_with_logits"></a>1、tf.nn.sigmoid_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<h2 id="1、tf-nn-sigmoid-cross-entropy-with-logits"><a href="#1、tf-nn-sigmoid-cross-entropy-with-logits" class="headerlink" title="1、tf.nn.sigmoid_cross_entropy_with_logits"></a>1、tf.nn.sigmoid_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>计算网络输出logits和标签labels的sigmoid cross entropy loss，衡量独立不互斥离散分类任务的误差，说独立不互斥离散分类任务是因为，在这些任务中类与类之间是独立但是不互斥的，拿多分类任务中的多目标检测来举例子，一张图中可以有各种instance，比如有一只狗和一只猫。对于一个总共有五类的多目标检测任务，假如网络的输出层有5个节点，label的形式是[1,1,0,0,1]这种，1表示该图片有某种instance，0表示没有。那么，每个instance在这张图中有没有这显然是独立事件，但是多个instance可以存在一张图中，这就说明事件们并不是互斥的。所以我们可以直接将网络的输出用作该方法的logits输入，从而进行输出与label的cross entropy loss。</p>
 <p>更加直白的来说，这种网络的输入不需要进行one hot处理，网络输出即是函数logits参数的输入。</p>
 <p>剖开函数内部，因为labels和logits的形状都是[batch_size, num_classes]，那么如何计算他们的交叉熵呢，毕竟它们都不是有效的概率分布（一个batch内输出结果经过sigmoid后和不为1）。其实loss的计算是element-wise的，方法返回的loss的形状和labels是相同的，也是[batch_size, num_classes]，再调用reduce_mean方法计算batch内的平均loss。所以这里的cross entropy其实是一种class-wise的cross entropy，每一个class是否存在都是一个事件，对每一个事件都求cross entropy loss，再对所有的求平均，作为最终的loss。</p>
@@ -427,8 +428,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/11/2TensorFlow中的几种交叉熵/" rel="prev" title="TensorFlow中的几种交叉熵">
-                TensorFlow中的几种交叉熵 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/11/基于TensorFlow的验证码识别/" rel="prev" title="基于TensorFlow的验证码识别">
+                基于TensorFlow的验证码识别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,7 +505,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -561,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow中的几种交叉熵"><span class="nav-number">1.</span> <span class="nav-text">[TensorFlow中的几种交叉熵]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logit函数"><span class="nav-number">1.0.1.</span> <span class="nav-text">Logit函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立和互斥"><span class="nav-number">1.0.2.</span> <span class="nav-text">独立和互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy-loss-softmax-sigmoid"><span class="nav-number">1.0.3.</span> <span class="nav-text">cross entropy loss + softmax + sigmoid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、tf-nn-sigmoid-cross-entropy-with-logits"><span class="nav-number">1.1.</span> <span class="nav-text">1、tf.nn.sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、tf-nn-softmax-cross-entropy-with-logits"><span class="nav-number">1.2.</span> <span class="nav-text">2、tf.nn.softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits"><span class="nav-number">1.3.</span> <span class="nav-text">3、tf.nn.sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结："><span class="nav-number">1.4.</span> <span class="nav-text">4、总结：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow中的几种交叉熵"><span class="nav-number">1.</span> <span class="nav-text">[TensorFlow中的几种交叉熵]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logit函数"><span class="nav-number">1.0.1.</span> <span class="nav-text">Logit函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立和互斥"><span class="nav-number">1.0.2.</span> <span class="nav-text">独立和互斥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、tf-nn-sigmoid-cross-entropy-with-logits"><span class="nav-number">1.1.</span> <span class="nav-text">1、tf.nn.sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、tf-nn-softmax-cross-entropy-with-logits"><span class="nav-number">1.2.</span> <span class="nav-text">2、tf.nn.softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits"><span class="nav-number">1.3.</span> <span class="nav-text">3、tf.nn.sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结："><span class="nav-number">1.4.</span> <span class="nav-text">4、总结：</span></a></li></ol></div>
             
 
           </div>

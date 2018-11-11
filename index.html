@@ -468,147 +468,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/2TensorFlow中的几种交叉熵/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/2TensorFlow中的几种交叉熵/" itemprop="url">TensorFlow中的几种交叉熵</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T14:18:53+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="TensorFlow中的几种交叉熵"><a href="#TensorFlow中的几种交叉熵" class="headerlink" title="[TensorFlow中的几种交叉熵]"></a>[TensorFlow中的几种交叉熵]</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -628,7 +487,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/11/TensorFlow中的几种交叉熵/" itemprop="url">2TensorFlow中的几种交叉熵</a></h1>
+                <a class="post-title-link" href="/2018/11/11/TensorFlow中的几种交叉熵/" itemprop="url">TensorFlow中的几种交叉熵</a></h1>
         
 
         <div class="post-meta">
@@ -710,7 +569,8 @@
 <h3 id="独立和互斥"><a href="#独立和互斥" class="headerlink" title="独立和互斥"></a>独立和互斥</h3><p>有事件A和B</p>
 <p>独立：P(AnB) = P(A) * P(B)</p>
 <p>互斥：P(AUB) = P(A) + P(B), P(AnB) = 0</p>
-<h3 id="cross-entropy-loss-softmax-sigmoid"><a href="#cross-entropy-loss-softmax-sigmoid" class="headerlink" title="cross entropy loss + softmax + sigmoid"></a>cross entropy loss + softmax + sigmoid</h3><h2 id="1、tf-nn-sigmoid-cross-entropy-with-logits"><a href="#1、tf-nn-sigmoid-cross-entropy-with-logits" class="headerlink" title="1、tf.nn.sigmoid_cross_entropy_with_logits"></a>1、tf.nn.sigmoid_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<h2 id="1、tf-nn-sigmoid-cross-entropy-with-logits"><a href="#1、tf-nn-sigmoid-cross-entropy-with-logits" class="headerlink" title="1、tf.nn.sigmoid_cross_entropy_with_logits"></a>1、tf.nn.sigmoid_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>计算网络输出logits和标签labels的sigmoid cross entropy loss，衡量独立不互斥离散分类任务的误差，说独立不互斥离散分类任务是因为，在这些任务中类与类之间是独立但是不互斥的，拿多分类任务中的多目标检测来举例子，一张图中可以有各种instance，比如有一只狗和一只猫。对于一个总共有五类的多目标检测任务，假如网络的输出层有5个节点，label的形式是[1,1,0,0,1]这种，1表示该图片有某种instance，0表示没有。那么，每个instance在这张图中有没有这显然是独立事件，但是多个instance可以存在一张图中，这就说明事件们并不是互斥的。所以我们可以直接将网络的输出用作该方法的logits输入，从而进行输出与label的cross entropy loss。</p>
 <p>更加直白的来说，这种网络的输入不需要进行one hot处理，网络输出即是函数logits参数的输入。</p>
 <p>剖开函数内部，因为labels和logits的形状都是[batch_size, num_classes]，那么如何计算他们的交叉熵呢，毕竟它们都不是有效的概率分布（一个batch内输出结果经过sigmoid后和不为1）。其实loss的计算是element-wise的，方法返回的loss的形状和labels是相同的，也是[batch_size, num_classes]，再调用reduce_mean方法计算batch内的平均loss。所以这里的cross entropy其实是一种class-wise的cross entropy，每一个class是否存在都是一个事件，对每一个事件都求cross entropy loss，再对所有的求平均，作为最终的loss。</p>
@@ -1101,7 +961,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
