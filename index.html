@@ -351,19 +351,7 @@
       
         
           
-            <p>无序标签</p>
-<p>​    使用标签  <code>&lt;ul&gt;</code> +<code>&lt; li&gt;</code></p>
-<p>​    属性: disc, circle, square </p>
-<p>有序列表</p>
-<p>​    使用标签<code>&lt;ol&gt;</code> +<code>&lt;li&gt;</code></p>
-<p>​    属性: A, a, l, i, start</p>
-<p>嵌套列表</p>
-<p>​    使用标签<code>&lt;ul&gt;</code> ,<code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></p>
-<p>自定义列表</p>
-<p>​    使用标签<code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- black hot drink<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Milk<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- white cold drink<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Coffee</span><br><span class="line">- black hot drink</span><br><span class="line">Milk</span><br><span class="line">- white cold drink</span><br></pre></td></tr></table></figure>
-<h3 id="HTML-Attributes"><a href="#HTML-Attributes" class="headerlink" title="HTML Attributes"></a>HTML Attributes</h3><table>
+            <h3 id="HTML-Attributes"><a href="#HTML-Attributes" class="headerlink" title="HTML Attributes"></a>HTML Attributes</h3><table>
 <thead>
 <tr>
 <th>Attribute</th>
@@ -522,6 +510,71 @@
 </tr>
 </tbody>
 </table>
+<h2 id="The-HTML-lt-meta-gt-Element"><a href="#The-HTML-lt-meta-gt-Element" class="headerlink" title="The HTML &lt;meta&gt; Element"></a>The HTML <code>&lt;meta&gt;</code> Element</h2><p>The <code>&lt;meta&gt;</code> element is used to specify which character set is used, page description, keywords, author, and other metadata.</p>
+<p>Metadata is used by browsers (how to display content), by search engines (keywords), and other web services.</p>
+<p>Define the character set used:</p>
+<h2 id="The-HTML-lt-base-gt-Element"><a href="#The-HTML-lt-base-gt-Element" class="headerlink" title="The HTML &lt;base&gt; Element"></a>The HTML <code>&lt;base&gt;</code> Element</h2><p>The <code>&lt;base&gt;</code> element specifies the base URL and base target for all relative URLs in a page:</p>
+<h3 id="CSS-Floats"><a href="#CSS-Floats" class="headerlink" title="CSS Floats"></a>CSS Floats</h3><p>It is common to do entire web layouts using the CSS float property. Float is easy to learn - you just need to remember how the float and clear properties work.<strong>Disadvantages:</strong> Floating elements are tied to the document flow, which may harm the flexibility. Learn more about float in our <a href="https://www.w3schools.com/css/css_float.asp" target="_blank" rel="noopener">CSS Float and Clear</a> chapter.</p>
+<h3 id="CSS-Flexbox"><a href="#CSS-Flexbox" class="headerlink" title="CSS Flexbox"></a>CSS Flexbox</h3><p>Flexbox is a new layout mode in CSS3.</p>
+<p>Use of flexbox ensures that elements behave predictably when the page layout must accommodate different screen sizes and different display devices. <strong>Disadvantages:</strong>Does not work in IE10 and earlier.</p>
+<p>Learn more about flexbox in our <a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank" rel="noopener">CSS Flexbox</a> chapter.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accept-charset</td>
+<td>Specifies the charset used in the submitted form (default: the page charset).</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Specifies an address (url) where to submit the form (default: the submitting page).</td>
+</tr>
+<tr>
+<td>autocomplete</td>
+<td>Specifies if the browser should autocomplete the form (default: on).</td>
+</tr>
+<tr>
+<td>enctype</td>
+<td>Specifies the encoding of the submitted data (default: is url-encoded).</td>
+</tr>
+<tr>
+<td>method</td>
+<td>Specifies the HTTP method used when submitting the form (default: GET).</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Specifies a name used to identify the form (for DOM usage: document.forms.name).</td>
+</tr>
+<tr>
+<td>novalidate</td>
+<td>Specifies that the browser should not validate the form.</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Specifies the target of the address in the action attribute (default: _self).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="The-lt-select-gt-Element"><a href="#The-lt-select-gt-Element" class="headerlink" title="The &lt;select&gt; Element"></a>The <code>&lt;select&gt;</code> Element</h2><p>The <code>&lt;select&gt;</code> element defines a <strong>drop-down list</strong>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"cars"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"volvo"</span>&gt;</span>Volvo<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"saab"</span>&gt;</span>Saab<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"fiat"</span>&gt;</span>Fiat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"audi"</span>&gt;</span>Audi<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Allow-Multiple-Selections"><a href="#Allow-Multiple-Selections" class="headerlink" title="Allow Multiple Selections:"></a>Allow Multiple Selections:</h3><p>Use the <code>multiple</code> attribute to allow the user to select more than one value:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"cars"</span> <span class="attr">size</span>=<span class="string">"4"</span> <span class="attr">multiple</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"volvo"</span>&gt;</span>Volvo<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"saab"</span>&gt;</span>Saab<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"fiat"</span>&gt;</span>Fiat<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"audi"</span>&gt;</span>Audi<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="The-lt-textarea-gt-Element"><a href="#The-lt-textarea-gt-Element" class="headerlink" title="The &lt;textarea&gt; Element"></a>The <code>&lt;textarea&gt;</code> Element</h2><p>The <code>&lt;textarea&gt;</code> element defines a multi-line input field (<strong>a text area</strong>):</p>
+<h2 id="HTML5-lt-datalist-gt-Element"><a href="#HTML5-lt-datalist-gt-Element" class="headerlink" title="HTML5 &lt;datalist&gt;Element"></a>HTML5 <code>&lt;datalist&gt;</code>Element</h2><p>The <code>&lt;datalist&gt;</code> element specifies a list of pre-defined options for an <code>&lt;input&gt;</code> element.</p>
+<p>Users will see a drop-down list of the pre-defined options as they input data.</p>
+<p>The <code>list</code> attribute of the <code>&lt;input&gt;</code> element, must refer to the <code>id</code> attribute of the <code>&lt;datalist&gt;</code> element.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/action_page.php"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">list</span>=<span class="string">"browsers"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">"browsers"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Internet Explorer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Firefox"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Chrome"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Opera"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Safari"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">datalist</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="HTML5-lt-output-gt-Element"><a href="#HTML5-lt-output-gt-Element" class="headerlink" title="HTML5 &lt;output&gt;Element"></a>HTML5 <code>&lt;output&gt;</code>Element</h2><p>The <code>&lt;output&gt;</code> element represents the result of a calculation (like one performed by a script).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/action_page.php&quot;</span><br><span class="line">  oninput=&quot;x.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;</span><br><span class="line">  0</span><br><span class="line">  &lt;input type=&quot;range&quot;  id=&quot;a&quot; name=&quot;a&quot; value=&quot;50&quot;&gt;</span><br><span class="line">  100 +</span><br><span class="line">  &lt;input type=&quot;number&quot; id=&quot;b&quot; name=&quot;b&quot; value=&quot;50&quot;&gt;</span><br><span class="line">  =</span><br><span class="line">  &lt;output name=&quot;x&quot; for=&quot;a b&quot;&gt;&lt;/output&gt;</span><br><span class="line">  &lt;br&gt;&lt;br&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Input-Type-Password"><a href="#Input-Type-Password" class="headerlink" title="Input Type Password"></a>Input Type Password</h2><p><code>&lt;input type=&quot;password&quot;&gt;</code> defines a <strong>password field</strong>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  User name:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  User password:<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"psw"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Input-Type-Checkbox"><a href="#Input-Type-Checkbox" class="headerlink" title="Input Type Checkbox"></a>Input Type Checkbox</h2><p><code>&lt;input type=&quot;checkbox&quot;&gt;</code> defines a <strong>checkbox</strong>.</p>
+<p>Checkboxes let a user select ZERO or MORE options of a limited number of choices.</p>
 
           
         
