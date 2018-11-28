@@ -100,7 +100,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="TensorFlow,">
+  <meta name="keywords" content="TensorFlow中的函数,">
 
 
 
@@ -116,21 +116,18 @@
 
 
 
-<meta name="description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
-<meta name="keywords" content="TensorFlow">
+<meta name="description" content="tf.strided_slice其实就是TensorFlow中用来分片的函数。  1234567891011def strided_slice(input_,                  begin,                  end,                  strides=None,                  begin_mask=0,">
+<meta name="keywords" content="TensorFlow中的函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorFlow中的几种交叉熵">
-<meta property="og:url" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/index.html">
+<meta property="og:title" content="tf.strided_slice">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/tf-strided-slice/index.html">
 <meta property="og:site_name" content="Francis&#39;s Blog">
-<meta property="og:description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
+<meta property="og:description" content="tf.strided_slice其实就是TensorFlow中用来分片的函数。  1234567891011def strided_slice(input_,                  begin,                  end,                  strides=None,                  begin_mask=0,">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
-<meta property="og:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/2.gif">
-<meta property="og:updated_time" content="2018-11-11T15:10:02.288Z">
+<meta property="og:updated_time" content="2018-11-27T07:44:01.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow中的几种交叉熵">
-<meta name="twitter:description" content="[TensorFlow中的几种交叉熵] ============================================================================================= Logit函数在线性回归中，，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。 在逻辑回归中：可以看作是用直线去拟合Logit函数，通过极大似然估计出参数，使得在该参">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/1.gif">
+<meta name="twitter:title" content="tf.strided_slice">
+<meta name="twitter:description" content="tf.strided_slice其实就是TensorFlow中用来分片的函数。  1234567891011def strided_slice(input_,                  begin,                  end,                  strides=None,                  begin_mask=0,">
 
 
 
@@ -159,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/tf-strided-slice/">
 
 
 
 
 
-  <title>TensorFlow中的几种交叉熵 | Francis's Blog</title>
+  <title>tf.strided_slice | Francis's Blog</title>
   
 
 
@@ -308,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/tf-strided-slice/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -325,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TensorFlow中的几种交叉熵</h1>
+          <h1 class="post-title" itemprop="name headline">tf.strided_slice</h1>
         
 
         <div class="post-meta">
@@ -337,8 +334,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T14:18:53+08:00">
-                2018-11-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T15:35:21+08:00">
+                2018-11-27
               </time>
             
 
@@ -360,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
+                  <a href="/categories/TensorFlow中的函数/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow中的函数</span>
                   </a>
                 </span>
 
@@ -397,31 +394,27 @@
       
 
       
-        <pre><code>[TensorFlow中的几种交叉熵]
-</code></pre><p>=============================================================================================</p>
-<h3 id="Logit函数"><a href="#Logit函数" class="headerlink" title="Logit函数"></a>Logit函数</h3><p>在线性回归中，<img src="1.gif" alt="1">，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。</p>
-<p>在逻辑回归中：可以看作是用<img src="2.gif" alt="2">直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。</p>
-<p>logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&lt;0.5，函数值为负；p&gt;0.5，函数值为正。</p>
-<p>相对地，softmax和sigmoid则都是将[-inf,inf]映射到[0,1]的函数。</p>
-<p>在tensorflow里的”logits”指的其实是，该方法是在logit数值上使用softmax或者sigmoid来进行normalization的，也暗示用户不要将网络输出进行sigmoid或者softmax，这些过程可以在函数内部更高效地计算。</p>
-<h3 id="独立和互斥"><a href="#独立和互斥" class="headerlink" title="独立和互斥"></a>独立和互斥</h3><p>有事件A和B</p>
-<p>独立：P(AnB) = P(A) * P(B)</p>
-<p>互斥：P(AUB) = P(A) + P(B), P(AnB) = 0</p>
-<p>### </p>
-<h2 id="1、tf-nn-sigmoid-cross-entropy-with-logits"><a href="#1、tf-nn-sigmoid-cross-entropy-with-logits" class="headerlink" title="1、tf.nn.sigmoid_cross_entropy_with_logits"></a>1、tf.nn.sigmoid_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sigmoid_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>计算网络输出logits和标签labels的sigmoid cross entropy loss，衡量独立不互斥离散分类任务的误差，说独立不互斥离散分类任务是因为，在这些任务中类与类之间是独立但是不互斥的，拿多分类任务中的多目标检测来举例子，一张图中可以有各种instance，比如有一只狗和一只猫。对于一个总共有五类的多目标检测任务，假如网络的输出层有5个节点，label的形式是[1,1,0,0,1]这种，1表示该图片有某种instance，0表示没有。那么，每个instance在这张图中有没有这显然是独立事件，但是多个instance可以存在一张图中，这就说明事件们并不是互斥的。所以我们可以直接将网络的输出用作该方法的logits输入，从而进行输出与label的cross entropy loss。</p>
-<p>更加直白的来说，这种网络的输入不需要进行one hot处理，网络输出即是函数logits参数的输入。</p>
-<p>剖开函数内部，因为labels和logits的形状都是[batch_size, num_classes]，那么如何计算他们的交叉熵呢，毕竟它们都不是有效的概率分布（一个batch内输出结果经过sigmoid后和不为1）。其实loss的计算是element-wise的，方法返回的loss的形状和labels是相同的，也是[batch_size, num_classes]，再调用reduce_mean方法计算batch内的平均loss。所以这里的cross entropy其实是一种class-wise的cross entropy，每一个class是否存在都是一个事件，对每一个事件都求cross entropy loss，再对所有的求平均，作为最终的loss。</p>
-<h2 id="2、tf-nn-softmax-cross-entropy-with-logits"><a href="#2、tf-nn-softmax-cross-entropy-with-logits" class="headerlink" title="2、tf.nn.softmax_cross_entropy_with_logits"></a>2、tf.nn.softmax_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">softmax_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    dim=-1,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>计算网络输出logits和标签labels的softmax cross entropy loss，衡量独立互斥离散分类任务的误差，说独立互斥离散分类任务是因为，在这些任务中类与类之间是独立而且互斥的，比如VOC classification、Imagenet、CIFAR-10甚至MNIST，这些都是多分类任务，但是一张图就对应着一个类，class在图片中是否存在是独立的，并且一张图中只能有一个class，所以是独立且互斥事件。</p>
-<p>该函数要求每一个label都是一个有效的概率分布，对于Imagenet中的ILSVRC2012这种任务，那么label应该就对应一个one hot编码，ILSVRC2012提供的数据集中一共有1000个类，那么label就应该是一个1x1000的vector，形式为[0,0,…,1,0,….0]，1000个元素中有且只有一个元素是1，其余都是0。</p>
-<p>这样要求的原因很简单，因为网络的输出要进行softmax，得到的就是一个有效的概率分布，这里不同与sigmoid，因为sigmoid并没有保证网络所有的输出经过sigmoid后和为1，不是一个有效的概率分布。</p>
-<p>有了labels和softmax后的logits，就可以计算交叉熵损失了，最后得到的是形状为[batch_size, 1]的loss。</p>
-<h2 id="3、tf-nn-sparse-softmax-cross-entropy-with-logits"><a href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits" class="headerlink" title="3、tf.nn.sparse_softmax_cross_entropy_with_logits"></a>3、tf.nn.sparse_softmax_cross_entropy_with_logits</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sparse_softmax_cross_entropy_with_logits(</span><br><span class="line">    _sentinel=None,</span><br><span class="line">    labels=None,</span><br><span class="line">    logits=None,</span><br><span class="line">    name=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>这个版本是tf.nn.softmax_cross_entropy_with_logits的易用版本，这个版本的logits的形状依然是[batch_size, num_classes]，但是labels的形状是[batch_size, 1]，每个label的取值是从[0, num_classes)的离散值，这也更加符合我们的使用习惯，是哪一类就标哪个类对应的label。</p>
-<p>如果已经对label进行了one hot编码，则可以直接使用tf.nn.softmax_cross_entropy_with_logits。</p>
-<h2 id="4、总结："><a href="#4、总结：" class="headerlink" title="4、总结："></a>4、总结：</h2><p>到底是用sigmoid版本的cross entropy还是softmax版本的cross entropy主要取决于我们模型的目的，以及label的组织方式，这个需要大家在使用的时候去揣摩，到底使用哪一种loss比较合理。</p>
-<p>在我最近训练的segmentation模型中，使用的就是sparse softmax cross entropy，使用的思路就是将输出的结果从NHWC（这里C=1，表示该pixel所属的class），进行一次reshape，形状变为[N<em>H</em>W, 1]，label也是如此，传入函数中进行计算，从而产生loss。从模型训练的结果来看，这种使用方法没有错误。</p>
+        <p>tf.strided_slice其实就是TensorFlow中用来分片的函数。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strided_slice</span><span class="params">(input_,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end,</span></span></span><br><span class="line"><span class="function"><span class="params">                  strides=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  ellipsis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  new_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  shrink_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  var=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  name=None)</span>:</span></span><br></pre></td></tr></table></figure>
+<p>begin是分片开始， end是分片结束，strides是步长，注意这边的步长其实是从步长的最后一位开始的</p>
+<h3 id="Question："><a href="#Question：" class="headerlink" title="Question："></a>Question：</h3><p>I am wondering what <code>tf.strided_slice()</code> operator actually does.<br>The <a href="https://www.tensorflow.org/api_docs/python/array_ops/slicing_and_joining#strided_slice" target="_blank" rel="noopener">doc</a> says,</p>
+<blockquote>
+<p>To a first order, this operation extracts a slice of size end - begin from a tensor input starting at the location specified by begin. The slice continues by adding stride to the begin index until all dimensions are not less than end. Note that components of stride can be negative, which causes a reverse slice.</p>
+</blockquote>
+<p>And in the sample,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 'input' is [[[1, 1, 1], [2, 2, 2]],</span></span><br><span class="line"><span class="comment">#             [[3, 3, 3], [4, 4, 4]],</span></span><br><span class="line"><span class="comment">#             [[5, 5, 5], [6, 6, 6]]]</span></span><br><span class="line">tf.slice(input, [1, 0, 0], [2, 1, 3], [1, 1, 1]) ==&gt; [[[3, 3, 3]]]</span><br><span class="line">tf.slice(input, [1, 0, 0], [2, 2, 3], [1, 1, 1]) ==&gt; [[[3, 3, 3],</span><br><span class="line">                                                       [<span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>]]]</span><br><span class="line">tf.slice(input, [1, 1, 0], [2, -1, 3], [1, -1, 1]) ==&gt;[[[4, 4, 4],</span><br><span class="line">                                                        [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]]]</span><br></pre></td></tr></table></figure>
+<p>So in my understanding of the doc, the first sample (<code>tf.slice(input, begin=[1, 0, 0], end=[2, 1, 3], strides=[1, 1, 1])</code>),</p>
+<ul>
+<li>resulting size is <code>end - begin = [1, 1, 3]</code>. The sample result shows <code>[[[3, 3, 3,]]]</code>, that shape is <code>[1, 1, 3]</code>, it seems OK.</li>
+<li>the first element of the result is at <code>begin = [1, 0, 0]</code>. The first element of the sample result is <code>3</code>, which is <code>input[1,0,0]</code>, it seems OK.</li>
+<li>the slice continues by adding stride to the begin index. So the second element of the result should be <code>input[begin + strides] = input[2, 1, 1] = 6</code>, but the sample shows the second element is <code>3</code>.</li>
+</ul>
+<p>What <code>strided_slice()</code> does?</p>
+<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><p>The mistake in your argument is the fact that you are directly adding the lists <code>strides</code> and <code>begin</code>element by element. This will make the function a lot less useful. Instead, it increments the <code>begin</code>list one dimension at a time, starting from the last dimension.</p>
+<p>Let’s solve the first example part by part. <code>begin = [1, 0, 0]</code> and <code>end = [2, 1, 3]</code>. Also, all the <code>strides</code> are <code>1</code>. Work your way backwards, from the last dimension.</p>
+<p>Start with element <code>[1,0,0]</code>. Now <strong>increase the last dimension only by its stride amount</strong>, giving you <code>[1,0,1]</code>. Keep doing this until you reach the limit. Something like <code>[1,0,2]</code>, <code>[1,0,3]</code> (end of the loop). Now in your next iteration, start by incrementing the second to last dimension and resetting the last dimension, <code>[1,1,0]</code>. Here the second to last dimension is equal to <code>end[1]</code>, so move to the first dimension (third to last) and reset the rest, giving you <code>[2,0,0]</code>. Again you are at the first dimension’s limit, so quit the loop.</p>
+<p>The following code is a recursive implementation of what I described above,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assume global `begin`, `end` and `stride`</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iterate</span><span class="params">(active, dim)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> dim == len(begin):</span><br><span class="line">        <span class="comment"># last dimension incremented, work on the new matrix</span></span><br><span class="line">        <span class="comment"># Note that `active` and `begin` are lists</span></span><br><span class="line">        new_matrix[active - begin] = old_matrix[active]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(begin[dim], end[dim], stride[dim]):</span><br><span class="line">            new_active = copy(active)</span><br><span class="line">            new_active[dim] = i</span><br><span class="line">            iterate(new_active, dim + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iterate(begin, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -439,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+            <a href="/tags/TensorFlow中的函数/" rel="tag"># TensorFlow中的函数</a>
           
         </div>
       
@@ -452,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/10/leetcode_3/" rel="next" title="leetcode_3">
-                <i class="fa fa-chevron-left"></i> leetcode_3
+              <a href="/2018/11/22/html5/" rel="next" title="HTML5">
+                <i class="fa fa-chevron-left"></i> HTML5
               </a>
             
           </div>
@@ -461,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/12/python妹子爬虫/" rel="prev" title="python妹子爬虫">
-                python妹子爬虫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logit函数"><span class="nav-number">1.</span> <span class="nav-text">Logit函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#独立和互斥"><span class="nav-number">2.</span> <span class="nav-text">独立和互斥</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1、tf-nn-sigmoid-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">1、tf.nn.sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、tf-nn-softmax-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">2、tf.nn.softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tf-nn-sparse-softmax-cross-entropy-with-logits"><span class="nav-number"></span> <span class="nav-text">3、tf.nn.sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结："><span class="nav-number"></span> <span class="nav-text">4、总结：</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question："><span class="nav-number">1.</span> <span class="nav-text">Question：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Answer"><span class="nav-number">2.</span> <span class="nav-text">Answer</span></a></li></ol></div>
             
 
           </div>

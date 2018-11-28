@@ -7,6 +7,28 @@
 
 <html class="theme-next muse use-motion" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
+	  
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e9bf4c3313038d6ec4da6e3db746814d";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+  </script>
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129335859-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129335859-1');
+  </script>
+
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -266,6 +288,168 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/tf-strided-slice/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/tf-strided-slice/" itemprop="url">tf.strided_slice</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T15:35:21+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow中的函数/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow中的函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>tf.strided_slice其实就是TensorFlow中用来分片的函数。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strided_slice</span><span class="params">(input_,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end,</span></span></span><br><span class="line"><span class="function"><span class="params">                  strides=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  ellipsis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  new_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  shrink_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  var=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  name=None)</span>:</span></span><br></pre></td></tr></table></figure>
+<p>begin是分片开始， end是分片结束，strides是步长，注意这边的步长其实是从步长的最后一位开始的</p>
+<h3 id="Question："><a href="#Question：" class="headerlink" title="Question："></a>Question：</h3><p>I am wondering what <code>tf.strided_slice()</code> operator actually does.<br>The <a href="https://www.tensorflow.org/api_docs/python/array_ops/slicing_and_joining#strided_slice" target="_blank" rel="noopener">doc</a> says,</p>
+<blockquote>
+<p>To a first order, this operation extracts a slice of size end - begin from a tensor input starting at the location specified by begin. The slice continues by adding stride to the begin index until all dimensions are not less than end. Note that components of stride can be negative, which causes a reverse slice.</p>
+</blockquote>
+<p>And in the sample,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 'input' is [[[1, 1, 1], [2, 2, 2]],</span></span><br><span class="line"><span class="comment">#             [[3, 3, 3], [4, 4, 4]],</span></span><br><span class="line"><span class="comment">#             [[5, 5, 5], [6, 6, 6]]]</span></span><br><span class="line">tf.slice(input, [1, 0, 0], [2, 1, 3], [1, 1, 1]) ==&gt; [[[3, 3, 3]]]</span><br><span class="line">tf.slice(input, [1, 0, 0], [2, 2, 3], [1, 1, 1]) ==&gt; [[[3, 3, 3],</span><br><span class="line">                                                       [<span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>]]]</span><br><span class="line">tf.slice(input, [1, 1, 0], [2, -1, 3], [1, -1, 1]) ==&gt;[[[4, 4, 4],</span><br><span class="line">                                                        [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]]]</span><br></pre></td></tr></table></figure>
+<p>So in my understanding of the doc, the first sample (<code>tf.slice(input, begin=[1, 0, 0], end=[2, 1, 3], strides=[1, 1, 1])</code>),</p>
+<ul>
+<li>resulting size is <code>end - begin = [1, 1, 3]</code>. The sample result shows <code>[[[3, 3, 3,]]]</code>, that shape is <code>[1, 1, 3]</code>, it seems OK.</li>
+<li>the first element of the result is at <code>begin = [1, 0, 0]</code>. The first element of the sample result is <code>3</code>, which is <code>input[1,0,0]</code>, it seems OK.</li>
+<li>the slice continues by adding stride to the begin index. So the second element of the result should be <code>input[begin + strides] = input[2, 1, 1] = 6</code>, but the sample shows the second element is <code>3</code>.</li>
+</ul>
+<p>What <code>strided_slice()</code> does?</p>
+<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><p>The mistake in your argument is the fact that you are directly adding the lists <code>strides</code> and <code>begin</code>element by element. This will make the function a lot less useful. Instead, it increments the <code>begin</code>list one dimension at a time, starting from the last dimension.</p>
+<p>Let’s solve the first example part by part. <code>begin = [1, 0, 0]</code> and <code>end = [2, 1, 3]</code>. Also, all the <code>strides</code> are <code>1</code>. Work your way backwards, from the last dimension.</p>
+<p>Start with element <code>[1,0,0]</code>. Now <strong>increase the last dimension only by its stride amount</strong>, giving you <code>[1,0,1]</code>. Keep doing this until you reach the limit. Something like <code>[1,0,2]</code>, <code>[1,0,3]</code> (end of the loop). Now in your next iteration, start by incrementing the second to last dimension and resetting the last dimension, <code>[1,1,0]</code>. Here the second to last dimension is equal to <code>end[1]</code>, so move to the first dimension (third to last) and reset the rest, giving you <code>[2,0,0]</code>. Again you are at the first dimension’s limit, so quit the loop.</p>
+<p>The following code is a recursive implementation of what I described above,</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assume global `begin`, `end` and `stride`</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iterate</span><span class="params">(active, dim)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> dim == len(begin):</span><br><span class="line">        <span class="comment"># last dimension incremented, work on the new matrix</span></span><br><span class="line">        <span class="comment"># Note that `active` and `begin` are lists</span></span><br><span class="line">        new_matrix[active - begin] = old_matrix[active]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(begin[dim], end[dim], stride[dim]):</span><br><span class="line">            new_active = copy(active)</span><br><span class="line">            new_active[dim] = i</span><br><span class="line">            iterate(new_active, dim + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iterate(begin, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1542,7 +1726,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1553,7 +1737,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1564,7 +1748,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1761,27 +1945,6 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
 
   <script type="text/javascript" src="/js/src/love.js"></script>
 
-  
-  <script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?e9bf4c3313038d6ec4da6e3db746814d";
-	  var s = document.getElementsByTagName("script")[0];
-	  s.parentNode.insertBefore(hm, s);
-	})();
-  </script>
-
-  
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129335859-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-129335859-1');
-  </script>
 
 
 </body>
