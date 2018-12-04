@@ -302,6 +302,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Django流程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/Django流程/" itemprop="url">Django流程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T16:24:58+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Django-admin startproject mysite</span><br></pre></td></tr></table></figure>
+<p><strong>注意：路径中不要带有中文</strong></p>
+<p>层级目录说明</p>
+<p><img src="1.png" alt="1"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>manage.py</td>
+<td>一个命令行工具，可以让我们用多种方式对Django项目进行交互</td>
+</tr>
+<tr>
+<td>__init__.py</td>
+<td>一个空文件，它告诉Python这个目录应该被看做一个包</td>
+</tr>
+<tr>
+<td>settings.py</td>
+<td>项目的配置文件（主要处理文件）</td>
+</tr>
+<tr>
+<td>urls.py</td>
+<td>项目的url声明 （主要处理文件）</td>
+</tr>
+<tr>
+<td>wsgi.py</td>
+<td>项目与WSGI兼容的Web服务器入口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="配置数据库-mysql"><a href="#配置数据库-mysql" class="headerlink" title="配置数据库(mysql)"></a>配置数据库(mysql)</h3><p>  在Django中，默认使用 SQLite数据库，在settings.py文件中通过DATABASES选项进行数据库配置。</p>
+<h4 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h4><p>  1.在mysite/__init__.py中写入两行代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mysql</span><br><span class="line">mysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+<p>  2.在settings.py中对DATABASES进行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    &apos;default&apos;: &#123;</span><br><span class="line">    &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,</span><br><span class="line">    &apos;NAME&apos;: &quot;sunck&quot;,</span><br><span class="line">    &apos;USER&apos;: &quot;root&quot;,</span><br><span class="line">    &apos;PASSWORD&apos;: &quot;admin123&quot;,</span><br><span class="line">    &apos;HOST&apos;: &quot;localhost&quot;,</span><br><span class="line">    &apos;PORT&apos;: &quot;3306&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>  创建应用–在一个项目中可以创建多个应用，每个应用进行一种业务处理在manage.py所在文件夹下打开cmd，输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp myapp</span><br></pre></td></tr></table></figure>
+<p>  层级目录说明</p>
+<p><img src="2.png" alt="2"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin.py</td>
+<td>进行站点配置，用于注册模型等</td>
+</tr>
+<tr>
+<td>models.py</td>
+<td>创建模型</td>
+</tr>
+<tr>
+<td>views.py</td>
+<td>创建视图</td>
+</tr>
+<tr>
+<td>test,py</td>
+<td>网站测试</td>
+</tr>
+<tr>
+<td>migration文件夹</td>
+<td>于数据迁移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h3><p>  在settings.py中，将myapo应用加入到INSTALLED.APPS选项中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">INSTALLED_APPS = [</span><br><span class="line">    &apos;django.contrib.admin&apos;,</span><br><span class="line">    &apos;django.contrib.auth&apos;,</span><br><span class="line">    &apos;django.contrib.contenttypes&apos;,</span><br><span class="line">    &apos;django.contrib.sessions&apos;,</span><br><span class="line">    &apos;django.contrib.messages&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;myapp&apos;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h3><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>  概述，有一个数据表就对应有一个模型。在models.py中定义模型。模型类要继承models.Model类。所以要import models这个类</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Grades</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    gname = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    gdate = models.DateTimeField()</span><br><span class="line">    ggirlnum = models.IntegerField()</span><br><span class="line">    gboynum = models.IntegerField()</span><br><span class="line">    isDelete = models.BooleanField(default=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Students</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    sname = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    sgender = models.BooleanField(default=<span class="keyword">True</span>)</span><br><span class="line">    sage = models.IntegerField()</span><br><span class="line">    scontend = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    isDelete = models.BooleanField(default=<span class="keyword">False</span>)</span><br><span class="line">    sgrade = models.ForeignKey(<span class="string">"Grades"</span>, on_delete=models.CASCADE,)</span><br></pre></td></tr></table></figure>
+<p><strong>说明：不需要定义主键，在生成时自动添加，并且值为自动增加</strong></p>
+<h4 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h4><p>  1.生成迁移文件，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br></pre></td></tr></table></figure>
+<p>  2.执行迁移，执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/tf-strided-slice/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1726,7 +1950,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1737,7 +1961,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1748,7 +1972,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
