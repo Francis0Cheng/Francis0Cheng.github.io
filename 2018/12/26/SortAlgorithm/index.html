@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+<embed src="/js/src/1.mp3" hidden="true" loop="true">
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+	  
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e9bf4c3313038d6ec4da6e3db746814d";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+  </script>
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129335859-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129335859-1');
+  </script>
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="排序算法是《数据结构与算法》中最基本的算法之一 排序算法可以分为内部排序和外部排序。 内部排序是数据记录在内存中进行排序。 而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。 常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。 用一张图概括：  关于时间复杂度： 平方阶(O(n_2)) 排序 各类简单排序：直接插">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十大经典排序算法动画与解析">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/SortAlgorithm/index.html">
+<meta property="og:site_name" content="Francis&#39;Blog">
+<meta property="og:description" content="排序算法是《数据结构与算法》中最基本的算法之一 排序算法可以分为内部排序和外部排序。 内部排序是数据记录在内存中进行排序。 而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。 常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。 用一张图概括：  关于时间复杂度： 平方阶(O(n_2)) 排序 各类简单排序：直接插">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/2.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/3.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/4.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/5.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/6.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/7.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/8.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/9.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/10.gif">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/11.gif">
+<meta property="og:updated_time" content="2018-12-26T04:04:53.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十大经典排序算法动画与解析">
+<meta name="twitter:description" content="排序算法是《数据结构与算法》中最基本的算法之一 排序算法可以分为内部排序和外部排序。 内部排序是数据记录在内存中进行排序。 而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。 常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。 用一张图概括：  关于时间复杂度： 平方阶(O(n_2)) 排序 各类简单排序：直接插">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/26/SortAlgorithm/SortAlgorithm/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":10,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/26/SortAlgorithm/">
+
+
+
+
+
+  <title>十大经典排序算法动画与解析 | Francis'Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Francis'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is Brilliant</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/SortAlgorithm/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">十大经典排序算法动画与解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-26T12:32:43+08:00">
+                2018-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>排序算法是《数据结构与算法》中最基本的算法之一</p>
+<p>排序算法可以分为<strong>内部排序</strong>和<strong>外部排序</strong>。</p>
+<p>内部排序是数据记录在内存中进行排序。</p>
+<p>而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。</p>
+<p>常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。</p>
+<p>用一张图概括：</p>
+<p><img src="SortAlgorithm\1.png" alt="640"></p>
+<h4 id="关于时间复杂度："><a href="#关于时间复杂度：" class="headerlink" title="关于时间复杂度："></a><strong>关于时间复杂度：</strong></h4><ol>
+<li>平方阶<code>(O(n_2))</code> 排序 各类简单排序：直接插入、直接选择和冒泡排序。</li>
+<li>线性对数阶 (O(nlog2n)) 排序 快速排序、堆排序和归并排序；</li>
+<li>O(n1+§)) 排序，§ 是介于 0 和 1 之间的常数。 希尔排序</li>
+<li>线性阶 (O(n)) 排序 基数排序，此外还有桶、箱排序。</li>
+</ol>
+<h4 id="关于稳定性："><a href="#关于稳定性：" class="headerlink" title="关于稳定性："></a><strong>关于稳定性：</strong></h4><ol>
+<li>稳定的排序算法：冒泡排序、插入排序、归并排序和基数排序。</li>
+<li>不是稳定的排序算法：选择排序、快速排序、希尔排序、堆排序。</li>
+</ol>
+<h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h2><h4 id="1-1-算法步骤"><a href="#1-1-算法步骤" class="headerlink" title="1.1 算法步骤"></a><strong>1.1 算法步骤</strong></h4><ul>
+<li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个。</li>
+<li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</li>
+</ul>
+<h4 id="1-2-动画演示"><a href="#1-2-动画演示" class="headerlink" title="1.2 动画演示"></a>1.2 动画演示</h4><p><img src="SortAlgorithm\2.gif" alt="2"></p>
+<h4 id="1-3-参考代码"><a href="#1-3-参考代码" class="headerlink" title="1.3 参考代码"></a><strong>1.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort1</span><span class="params">(<span class="keyword">int</span> *arr,<span class="keyword">int</span> sz)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sz<span class="number">-1</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;sz-i<span class="number">-1</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = arr[j];</span><br><span class="line">                arr[j] = arr[j+<span class="number">1</span>];</span><br><span class="line">                arr[j+<span class="number">1</span>] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2. 选择排序"></a>2. 选择排序</h2><h4 id="2-1-算法步骤"><a href="#2-1-算法步骤" class="headerlink" title="2.1 算法步骤"></a><strong>2.1 算法步骤</strong></h4><ul>
+<li>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</li>
+<li>重复第二步，直到所有元素均排序完毕。</li>
+</ul>
+<h4 id="2-2-动画演示"><a href="#2-2-动画演示" class="headerlink" title="2.2 动画演示"></a><strong>2.2 动画演示</strong></h4><p><img src="SortAlgorithm\3.gif" alt="3"></p>
+<h4 id="2-3-参考代码"><a href="#2-3-参考代码" class="headerlink" title="2.3 参考代码"></a><strong>2.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="3-插入排序"><a href="#3-插入排序" class="headerlink" title="3. 插入排序"></a>3. 插入排序</h2><h4 id="3-1-算法步骤"><a href="#3-1-算法步骤" class="headerlink" title="3.1 算法步骤"></a><strong>3.1 算法步骤</strong></h4><ul>
+<li>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</li>
+<li>从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）</li>
+</ul>
+<h4 id="3-2-动画演示"><a href="#3-2-动画演示" class="headerlink" title="3.2 动画演示"></a><strong>3.2 动画演示</strong></h4><p><img src="SortAlgorithm\4.gif" alt="4"></p>
+<h4 id="3-3-参考代码"><a href="#3-3-参考代码" class="headerlink" title="3.3 参考代码"></a><strong>3.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="4-希尔排序"><a href="#4-希尔排序" class="headerlink" title="4. 希尔排序"></a>4. 希尔排序</h2><h4 id="4-1-算法步骤"><a href="#4-1-算法步骤" class="headerlink" title="4.1 算法步骤"></a><strong>4.1 算法步骤</strong></h4><ul>
+<li>选择一个增量序列 t1，t2，……，tk，其中 ti &gt; tj, tk = 1；</li>
+<li>按增量序列个数 k，对序列进行 k 趟排序；</li>
+<li>每趟排序，根据对应的增量 ti，将待排序列分割成若干长度为 m 的子序列，分别对各子表进行直接插入排序。仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li>
+</ul>
+<h4 id="4-2-动画演示"><a href="#4-2-动画演示" class="headerlink" title="4.2 动画演示"></a><strong>4.2 动画演示</strong></h4><p><img src="SortAlgorithm\5.gif" alt="5"></p>
+<h4 id="4-3-参考代码"><a href="#4-3-参考代码" class="headerlink" title="4.3 参考代码"></a><strong>4.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-归并排序"><a href="#5-归并排序" class="headerlink" title="5. 归并排序"></a>5. 归并排序</h2><h4 id="5-1-算法步骤"><a href="#5-1-算法步骤" class="headerlink" title="5.1 算法步骤"></a><strong>5.1 算法步骤</strong></h4><ul>
+<li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列；</li>
+<li>设定两个指针，最初位置分别为两个已经排序序列的起始位置；</li>
+<li>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置；</li>
+<li>重复步骤 3 直到某一指针达到序列尾；</li>
+<li>将另一序列剩下的所有元素直接复制到合并序列尾。</li>
+</ul>
+<h4 id="5-2-动画演示"><a href="#5-2-动画演示" class="headerlink" title="5.2 动画演示"></a><strong>5.2 动画演示</strong></h4><p><img src="SortAlgorithm\6.gif" alt="6"></p>
+<h4 id="5-3-参考代码"><a href="#5-3-参考代码" class="headerlink" title="5.3 参考代码"></a><strong>5.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="6-快速排序"><a href="#6-快速排序" class="headerlink" title="6. 快速排序"></a>6. 快速排序</h2><h4 id="6-1-算法步骤"><a href="#6-1-算法步骤" class="headerlink" title="6.1 算法步骤"></a><strong>6.1 算法步骤</strong></h4><ul>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）;</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序；</li>
+</ul>
+<h4 id="6-2-动画演示"><a href="#6-2-动画演示" class="headerlink" title="6.2 动画演示"></a><strong>6.2 动画演示</strong></h4><p><img src="SortAlgorithm\7.gif" alt="7"></p>
+<h4 id="6-3-参考代码"><a href="#6-3-参考代码" class="headerlink" title="6.3 参考代码"></a><strong>6.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="7-堆排序"><a href="#7-堆排序" class="headerlink" title="7. 堆排序"></a>7. 堆排序</h2><h4 id="7-1-算法步骤"><a href="#7-1-算法步骤" class="headerlink" title="7.1 算法步骤"></a><strong>7.1 算法步骤</strong></h4><ul>
+<li>创建一个堆 H[0……n-1]；</li>
+<li>把堆首（最大值）和堆尾互换；</li>
+<li>把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；</li>
+<li>重复步骤 2，直到堆的尺寸为 1。</li>
+</ul>
+<h4 id="7-2-动画演示"><a href="#7-2-动画演示" class="headerlink" title="7.2 动画演示"></a><strong>7.2 动画演示</strong></h4><p><img src="SortAlgorithm\8.gif" alt="8"></p>
+<h4 id="7-3-参考代码"><a href="#7-3-参考代码" class="headerlink" title="7.3 参考代码"></a><strong>7.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-计数排序"><a href="#8-计数排序" class="headerlink" title="8. 计数排序"></a>8. 计数排序</h2><h4 id="8-1-算法步骤"><a href="#8-1-算法步骤" class="headerlink" title="8.1 算法步骤"></a><strong>8.1 算法步骤</strong></h4><ul>
+<li>花O(n)的时间扫描一下整个序列 A，获取最小值 min 和最大值 max</li>
+<li>开辟一块新的空间创建新的数组 B，长度为 ( max - min + 1)</li>
+<li>数组 B 中 index 的元素记录的值是 A 中某元素出现的次数</li>
+<li>最后输出目标整数序列，具体的逻辑是遍历数组 B，输出相应元素以及对应的个数</li>
+</ul>
+<h4 id="8-2-动画演示"><a href="#8-2-动画演示" class="headerlink" title="8.2 动画演示"></a><strong>8.2 动画演示</strong></h4><p><img src="SortAlgorithm\9.gif" alt="**8.3 参考代码**9"></p>
+<h4 id="8-3-参考代码"><a href="#8-3-参考代码" class="headerlink" title="8.3 参考代码"></a><strong>8.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="9-桶排序"><a href="#9-桶排序" class="headerlink" title="9. 桶排序"></a>9. 桶排序</h2><h4 id="9-1-算法步骤"><a href="#9-1-算法步骤" class="headerlink" title="9.1 算法步骤"></a><strong>9.1 算法步骤</strong></h4><ul>
+<li>设置固定数量的空桶。</li>
+<li>把数据放到对应的桶中。</li>
+<li>对每个不为空的桶中数据进行排序。</li>
+<li>拼接不为空的桶中数据，得到结果</li>
+</ul>
+<h4 id="9-2-动画演示"><a href="#9-2-动画演示" class="headerlink" title="9.2 动画演示"></a><strong>9.2 动画演示</strong></h4><p><img src="SortAlgorithm\10.gif" alt="10"></p>
+<h4 id="9-3-参考代码"><a href="#9-3-参考代码" class="headerlink" title="9.3 参考代码"></a><strong>9.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="10-基数排序"><a href="#10-基数排序" class="headerlink" title="10. 基数排序"></a>10. 基数排序</h2><h4 id="10-1-算法步骤"><a href="#10-1-算法步骤" class="headerlink" title="10.1 算法步骤"></a><strong>10.1 算法步骤</strong></h4><ul>
+<li>将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零</li>
+<li>从最低位开始，依次进行一次排序</li>
+<li>从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列</li>
+</ul>
+<h4 id="10-2-动画演示"><a href="#10-2-动画演示" class="headerlink" title="10.2 动画演示"></a><strong>10.2 动画演示</strong></h4><p><img src="SortAlgorithm\11.gif" alt="11"></p>
+<h4 id="10-3-参考代码"><a href="#10-3-参考代码" class="headerlink" title="10.3 参考代码"></a><strong>10.3 参考代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/13/TensorFlowExamples/" rel="next" title="TensorFlowExamples">
+                <i class="fa fa-chevron-left"></i> TensorFlowExamples
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Francis Cheng">
+          <p class="site-author-name" itemprop="name">Francis Cheng</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于时间复杂度："><span class="nav-number">1.</span> <span class="nav-text">关于时间复杂度：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于稳定性："><span class="nav-number">2.</span> <span class="nav-text">关于稳定性：</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1-冒泡排序"><span class="nav-number"></span> <span class="nav-text">1. 冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">1.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">1.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">1.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-选择排序"><span class="nav-number"></span> <span class="nav-text">2. 选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">2.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">2.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">2.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-插入排序"><span class="nav-number"></span> <span class="nav-text">3. 插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">3.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">3.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">3.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-希尔排序"><span class="nav-number"></span> <span class="nav-text">4. 希尔排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">4.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">4.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">4.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-归并排序"><span class="nav-number"></span> <span class="nav-text">5. 归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">5.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">5.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">5.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-快速排序"><span class="nav-number"></span> <span class="nav-text">6. 快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">6.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">6.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">6.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-堆排序"><span class="nav-number"></span> <span class="nav-text">7. 堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">7.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">7.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">7.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-计数排序"><span class="nav-number"></span> <span class="nav-text">8. 计数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">8.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">8.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">8.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-桶排序"><span class="nav-number"></span> <span class="nav-text">9. 桶排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">9.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">9.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">9.3 参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-基数排序"><span class="nav-number"></span> <span class="nav-text">10. 基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-算法步骤"><span class="nav-number">1.</span> <span class="nav-text">10.1 算法步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-2-动画演示"><span class="nav-number">2.</span> <span class="nav-text">10.2 动画演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-3-参考代码"><span class="nav-number">3.</span> <span class="nav-text">10.3 参考代码</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Francis Cheng</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+</body>
+</html>
