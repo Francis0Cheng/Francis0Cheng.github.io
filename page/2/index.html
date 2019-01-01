@@ -302,6 +302,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/基于TensorFlow的验证码识别/" itemprop="url">基于TensorFlow的验证码识别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T15:08:56+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>  这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别</p>
+<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><p>  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> captcha.image <span class="keyword">import</span> ImageCaptcha</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot  <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">text = <span class="string">'1234'</span></span><br><span class="line">image = ImageCaptcha()</span><br><span class="line">captcha = image.generate(text)</span><br><span class="line">captcha_image = Image.open(captcha)</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.imshow(captcha_image)</span><br></pre></td></tr></table></figure></p>
+<p>运行代码，就可以看到这样的图片了：</p>
+<p><img src="1.png" alt="1"></p>
+<p>可以看到图片中的验证码内容就是我们所定义的text内容，这样我们就可以得到一张图片和其所对应的真是文本你，由此我们用它生成一批训练数据和测试数据</p>
+<h3 id="生成数据"><a href="#生成数据" class="headerlink" title="生成数据"></a>生成数据</h3><p>我们先定义一个词表和其长度变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VOCAB = list(str(<span class="number">123456789</span>))</span><br><span class="line">CAPTCHA_LENGTH = <span class="number">4</span></span><br><span class="line">VOCAB_LENGTH = len(VOCAB)</span><br></pre></td></tr></table></figure>
+<p>  这里 VOCAB 就是词表的内容，即 0 到 9 这 10 个数字，验证码的字符个数即 CAPTCHA_LENGTH 是 4，词表长度是 VOCAB 的长度，即 10。</p>
+<p>  接下来我们定义一个生成验证码数据的方法，流程类似上文，只不过这里我们利用np.asarray()方法将返回的数据转为了 Numpy 形式的数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_captcha</span><span class="params">(captcha_text)</span>:</span></span><br><span class="line">    image = ImageCaptcha()</span><br><span class="line">    captcha  = image.generate(captcha_text)</span><br><span class="line">    captcha_image = Image.open(captcha)</span><br><span class="line">    captcha_array = np.asarray(captcha_image)</span><br><span class="line">    <span class="keyword">return</span> captcha_array</span><br></pre></td></tr></table></figure>
+<p>  我们看一下生成的验证码的矩阵shape是(60, 160, 3),是 60 x 160 像素的验证码，每个像素都有 RGB 值，所以最后一维即为像素的 RGB 值。</p>
+<p>  接下来我们需要定义 label，由于我们需要使用深度学习模型进行训练，所以这里我们的 label 数据最好使用 One-Hot 编码，即如果验证码文本是 1234，那么应该词表索引位置置 1，总共的长度是 40，我们用程序实现一下 One-Hot 编码和文本的互相转换。即如果验证码文本是 1234，那么应该词表索引位置置 1，总共的长度是 40</p>
+<p>one-hot编码将离散特征的取值扩展到了欧式空间，离散特征的某个取值就对应欧式空间的某个点。one-hot多应用于分类器中。</p>
+<blockquote>
+<p>  将离散型特征使用one-hot编码，确实会让特征之间的距离计算更加合理。比如，有一个离散型特征，代表工作类型，该离散型特征，共有三个取值，不使用one-hot编码，其表示分别是x_1 = (1), x_2 = (2), x_3 = (3)。两个工作之间的距离是，(x_1, x_2) = 1, d(x_2, x_3) = 1, d(x_1, x_3) = 2。那么x_1和x_3工作之间就越不相似吗？显然这样的表示，计算出来的特征的距离是不合理。那如果使用one-hot编码，则得到x_1 = (1, 0, 0), x_2 = (0, 1, 0), x_3 = (0, 0, 1)，那么两个工作之间的距离就都是sqrt(2).即每两个工作之间的距离是一样的，显得更合理。</p>
+</blockquote>
+<p>我们用程序实现一下one-hot编码和文本的互相转化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text2vec</span><span class="params">(text)</span>:</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> len(text) &gt; CAPTCHA_LENGTH:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    vector = np.zeros(CAPTCHA_LENGTH * VOCAB_LENGTH)</span><br><span class="line">    <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(text):</span><br><span class="line">        index = i * VOCAB_LENGTH + VOCAB.index(c)</span><br><span class="line">        vector[index] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> vector</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vec2text</span><span class="params">(vector)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(vector, np.ndarray):</span><br><span class="line">        vector = np.asarray(vector)</span><br><span class="line">    vector = np.reshape(vector, [CAPTCHA_LENGTH, <span class="number">-1</span>])   <span class="comment">#这边的reshape的-1是将会被自动填入np的总长度除以CAPTCHA_LENGTH</span></span><br><span class="line">    text = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> vector:</span><br><span class="line">        text += VOCAB[np.argmax(item)]</span><br><span class="line">    <span class="keyword">return</span> text</span><br></pre></td></tr></table></figure>
+<p>接下来我们构造出一批数据， x数据就是验证码的Numpy数组，y数据就是验证码文本的on-hot编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> join, exists</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> makedirs</span><br><span class="line"></span><br><span class="line">DATA_LENGTH = <span class="number">10000</span></span><br><span class="line">DATA_PATH = <span class="string">'data'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_text</span><span class="params">()</span>:</span></span><br><span class="line">    text = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(CAPTCHA_LENGTH):</span><br><span class="line">        text += random.choice(VOCAB)</span><br><span class="line">    <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_data</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'Generating Data...'</span>)</span><br><span class="line">    data_x, data_y = [], []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># generate data x and y</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(DATA_LENGTH):</span><br><span class="line">        text = get_random_text()</span><br><span class="line">        <span class="comment"># get captcha array</span></span><br><span class="line">        captcha_array = generate_captcha(text)</span><br><span class="line">        <span class="comment"># get vector</span></span><br><span class="line">        vector = text2vec(text)</span><br><span class="line">        data_x.append(captcha_array)</span><br><span class="line">        data_y.append(vector)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># write data to pickle</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> exists(DATA_PATH):</span><br><span class="line">        makedirs(DATA_PATH)</span><br><span class="line"></span><br><span class="line">    x = np.asarray(data_x, np.float32)</span><br><span class="line">    y = np.asarray(data_y, np.float32)</span><br><span class="line">    <span class="keyword">with</span> open(join(DATA_PATH, <span class="string">'data.pkl'</span>), <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        pickle.dump(x, f)</span><br><span class="line">        pickle.dump(y, f)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> join, exists</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> makedirs</span><br><span class="line"> </span><br><span class="line">DATA_LENGTH = <span class="number">10000</span></span><br><span class="line">DATA_PATH = <span class="string">'data'</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_text</span><span class="params">()</span>:</span></span><br><span class="line">    text = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(CAPTCHA_LENGTH):</span><br><span class="line">        text += random.choice(VOCAB)</span><br><span class="line">    <span class="keyword">return</span> text</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_data</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'Generating Data...'</span>)</span><br><span class="line">    data_x, data_y = [], []</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># generate data x and y</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(DATA_LENGTH):</span><br><span class="line">        text = get_random_text()</span><br><span class="line">        <span class="comment"># get captcha array</span></span><br><span class="line">        captcha_array = generate_captcha(text)</span><br><span class="line">        <span class="comment"># get vector</span></span><br><span class="line">        vector = text2vec(text)</span><br><span class="line">        data_x.append(captcha_array)</span><br><span class="line">        data_y.append(vector)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># write data to pickle</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> exists(DATA_PATH):</span><br><span class="line">        makedirs(DATA_PATH)</span><br><span class="line"> </span><br><span class="line">    x = np.asarray(data_x, np.float32)</span><br><span class="line">    y = np.asarray(data_y, np.float32)</span><br><span class="line">    <span class="keyword">with</span> open(join(DATA_PATH, <span class="string">'data.pkl'</span>), <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        pickle.dump(x, f)</span><br><span class="line">        pickle.dump(y, f)</span><br></pre></td></tr></table></figure>
+<p>  定义一个get_random_text()函数，  用于随机生成验证码文本， 然后用pickle写进硬盘。完成了生成数据的工作。</p>
+<h3 id="构建模型"><a href="#构建模型" class="headerlink" title="构建模型"></a>构建模型</h3><p>  我们用pickle.loads导入数据  ，从sklearn.model_selection 导入 train_test_split方法将模型分为三部分，训练集开发集，验证集，(比例为6：2：2):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'data.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data_x = pickle.load(f)</span><br><span class="line">    data_y = pickle.load(f)</span><br><span class="line">    <span class="keyword">return</span> standardize(data_x), data_y</span><br><span class="line"></span><br><span class="line">train_x, test_x, train_y, test_y = train_test_split(data_x, data_y, test_size=<span class="number">0.4</span>, random_state=<span class="number">40</span>)</span><br><span class="line">dev_x, test_x, dev_y, test_y, = train_test_split(test_x, test_y, test_size=<span class="number">0.5</span>, random_state=<span class="number">40</span>)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'data.pkl'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data_x = pickle.load(f)</span><br><span class="line">    data_y = pickle.load(f)</span><br><span class="line">    <span class="keyword">return</span> standardize(data_x), data_y</span><br><span class="line"> </span><br><span class="line">train_x, test_x, train_y, test_y = train_test_split(data_x, data_y, test_size=<span class="number">0.4</span>, random_state=<span class="number">40</span>)</span><br><span class="line">dev_x, test_x, dev_y, test_y, = train_test_split(test_x, test_y, test_size=<span class="number">0.5</span>, random_state=<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+<p>接下来我们使用者三个数据集构建三个 Dataset 对象, 关于Tensorflow中的数据导入，可以参考<a href="https://www.tensorflow.org/programmers_guide/datasets?hl=zh-cn" target="_blank" rel="noopener">Google官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train and dev dataset</span></span><br><span class="line">train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y)).shuffle(<span class="number">10000</span>)</span><br><span class="line">train_dataset = train_dataset.batch(FLAGS.train_batch_size)</span><br><span class="line"> </span><br><span class="line">dev_dataset = tf.data.Dataset.from_tensor_slices((dev_x, dev_y))</span><br><span class="line">dev_dataset = dev_dataset.batch(FLAGS.dev_batch_size)</span><br><span class="line"> </span><br><span class="line">test_dataset = tf.data.Dataset.from_tensor_slices((test_x, test_y))</span><br><span class="line">test_dataset = test_dataset.batch(FLAGS.test_batch_size)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset?hl=zh-cn" target="_blank" rel="noopener"><code>tf.data.Dataset</code></a> 表示一系列元素，其中每个元素包含一个或多个 <code>Tensor</code> 对象。例如，在图片管道中，元素可能是单个训练样本，具有一对表示图片数据和标签的张量。可以通过两种不同的方式来创建数据集：</p>
+<ul>
+<li>创建<strong>来源</strong>（例如 <code>Dataset.from_tensor_slices()</code>），以通过一个或多个 <a href="https://www.tensorflow.org/api_docs/python/tf/Tensor?hl=zh-cn" target="_blank" rel="noopener"><code>tf.Tensor</code></a> 对象构建数据集。</li>
+<li>应用<strong>转换</strong>（例如 <code>Dataset.batch()</code>），以通过一个或多个 <a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset?hl=zh-cn" target="_blank" rel="noopener"><code>tf.data.Dataset</code></a> 对象构建数据集。</li>
+</ul>
+</blockquote>
+<p>然后我们初始化一个迭代器，并绑定到这个数据集上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># a reinitializable iterator</span></span><br><span class="line">iterator = tf.data.Iterator.from_structure(train_dataset.output_types, train_dataset.output_shapes)</span><br><span class="line">train_initializer = iterator.make_initializer(train_dataset)</span><br><span class="line">dev_initializer = iterator.make_initializer(dev_dataset)</span><br><span class="line">test_initializer = iterator.make_initializer(test_dataset)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://www.tensorflow.org/api_docs/python/tf/data/Iterator?hl=zh-cn" target="_blank" rel="noopener"><code>tf.data.Iterator</code></a> 提供了从数据集中提取元素的主要方法。<code>Iterator.get_next()</code> 返回的操作会在执行时生成 <code>Dataset</code> 的下一个元素，并且此操作通常充当输入管道代码和模型之间的接口。最简单的迭代器是“单次迭代器”，它与特定的 <code>Dataset</code> 相关联，并对其进行一次迭代。要实现更复杂的用途，您可以通过 <code>Iterator.initializer</code>操作使用不同的数据集重新初始化和参数化迭代器，这样一来，您就可以在同一个程序中对训练和验证数据进行多次迭代（举例而言）。</p>
+</blockquote>
+<p>接下来是模型部分了。为了简化写法，直接采用了TensorFlow中的layers模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># input Layer</span></span><br><span class="line"><span class="comment"># x.shape = [-1, 60, 160, 3]</span></span><br><span class="line">x, y_label = iterator.get_next()</span><br><span class="line">keep_prob = tf.placeholder(tf.float32, [])</span><br><span class="line">y = tf.cast(x, tf.float32)</span><br><span class="line"><span class="comment"># 3 CNN layers</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    y = tf.layers.conv2d(y, filters=<span class="number">32</span>, kernel_size=<span class="number">3</span>, padding=<span class="string">'same'</span>, activation=tf.nn.relu)</span><br><span class="line">    y = tf.layers.max_pooling2d(y, pool_size=<span class="number">1</span>, strides=<span class="number">2</span>, padding=<span class="string">'same'</span>)</span><br><span class="line">    <span class="comment"># y = tf.layers.dropout(y, rate=keep_prob)</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 2 dense layers</span></span><br><span class="line">y = tf.layers.flatten(y)</span><br><span class="line">y = tf.layers.dense(y, <span class="number">1024</span>, activation=tf.nn.relu)</span><br><span class="line">y = tf.layers.dropout(y, rate=keep_prob)</span><br><span class="line">y = tf.layers.dense(y, VOCAB_LENGTH)</span><br></pre></td></tr></table></figure>
+<p>  这里我们的卷积核（patch）为3，padding模式为SAME，激活函数为relu。max_pooling的size为1，strides为2. 通过这样的卷积和池化层，数据的尺寸将会变成[sample_number, 32] 32是我们在tf.layers.cov2d中设置的输出channels数量(filter)。</p>
+<p>   经过全连接网络变换之后，y 的 shape 就变成了 [batch_size, n_classes]，我们的 label 是 CAPTCHA_LENGTH 个 One-Hot 向量拼合而成的，在这里我们想使用交叉熵来计算，但是交叉熵计算的时候，label 参数向量最后一维各个元素之和必须为 1，不然计算梯度的时候会出现问题。<strong>对于这个例子来说，我们现在未经处理label和logits的shape都是是[sameple_number, 1, 40]，我们想把它变成[sample_number, 4, 10]</strong>详情参见 TensorFlow 的官方文档：<a href="https://www.tensorflow.org/api_docs/python/tf/nn/softmax_cross_entropy_with_logits：" target="_blank" rel="noopener"></a></p>
+<blockquote>
+<p>NOTE: While the classes are mutually exclusive, their probabilities need not be. All that is required is that each row of labels is a valid probability distribution. If they are not, the computation of the gradient will be incorrect.</p>
+</blockquote>
+<p>reshape代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y_reshape = tf.reshape(y, [<span class="number">-1</span>, VOCAB_LENGTH])</span><br><span class="line">y_label_reshape = tf.reshape(y_label, [<span class="number">-1</span>, VOCAB_LENGTH])</span><br></pre></td></tr></table></figure>
+<p>接下来计算Loss和Accuracy，<a href="https://francis0cheng.github.io/2018/11/11/2TensorFlow%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E4%BA%A4%E5%8F%89%E7%86%B5/" target="_blank" rel="noopener">这里的计算交叉熵公式可以参考我另外一篇博客</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># loss</span></span><br><span class="line">cross_entropy = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits(logits=y_reshape, labels=y_label_reshape))</span><br><span class="line"><span class="comment"># accuracy</span></span><br><span class="line">max_index_predict = tf.argmax(y_reshape, axis=<span class="number">-1</span>)</span><br><span class="line">max_index_label = tf.argmax(y_label_reshape, axis=<span class="number">-1</span>)</span><br><span class="line">correct_predict = tf.equal(max_index_predict, max_index_label)</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_predict, tf.float32))</span><br></pre></td></tr></table></figure>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># train</span></span><br><span class="line">train_op = tf.train.RMSPropOptimizer(FLAGS.learning_rate).minimize(cross_entropy, global_step=global_step)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(FLAGS.epoch_num):</span><br><span class="line">    tf.train.global_step(sess, global_step_tensor=global_step)</span><br><span class="line">    <span class="comment"># train</span></span><br><span class="line">    sess.run(train_initializer)</span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(int(train_steps)):</span><br><span class="line">        loss, acc, gstep, _ = sess.run([cross_entropy, accuracy, global_step, train_op],feed_dict=&#123;keep_prob: FLAGS.keep_prob&#125;)</span><br><span class="line">        <span class="comment"># print log</span></span><br><span class="line">        <span class="keyword">if</span> step % FLAGS.steps_per_print == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'Global Step'</span>, gstep, <span class="string">'Step'</span>, step, <span class="string">'Train Loss'</span>, loss, <span class="string">'Accuracy'</span>, acc)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> epoch % FLAGS.epochs_per_dev == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># dev</span></span><br><span class="line">        sess.run(dev_initializer)</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> range(int(dev_steps)):</span><br><span class="line">            <span class="keyword">if</span> step % FLAGS.steps_per_print == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">'Dev Accuracy'</span>, sess.run(accuracy, feed_dict=&#123;keep_prob: <span class="number">1</span>&#125;), <span class="string">'Step'</span>, step)</span><br></pre></td></tr></table></figure>
+<p>在这里我们首先初始化 train_initializer，将 iterator 绑定到 Train Dataset 上，然后执行 train_op，获得 loss、acc、gstep 等结果并输出。</p>
+<h3 id="训练结果"><a href="#训练结果" class="headerlink" title="训练结果"></a>训练结果</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Dev Accuracy <span class="number">0.9580078</span> Step <span class="number">0</span></span><br><span class="line">Dev Accuracy <span class="number">0.9472656</span> Step <span class="number">2</span></span><br><span class="line">Dev Accuracy <span class="number">0.9501953</span> Step <span class="number">4</span></span><br><span class="line">Dev Accuracy <span class="number">0.9658203</span> Step <span class="number">6</span></span><br><span class="line">Global Step <span class="number">3243</span> Step <span class="number">0</span> Train Loss <span class="number">1.1920928e-06</span> Accuracy <span class="number">1.0</span></span><br><span class="line">Global Step <span class="number">3245</span> Step <span class="number">2</span> Train Loss <span class="number">1.5497207e-06</span> Accuracy <span class="number">1.0</span></span><br><span class="line">Global Step <span class="number">3247</span> Step <span class="number">4</span> Train Loss <span class="number">1.1920928e-06</span> Accuracy <span class="number">1.0</span></span><br><span class="line">Global Step <span class="number">3249</span> Step <span class="number">6</span> Train Loss <span class="number">1.7881392e-06</span> Accuracy <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<p>  验证集准确率 95% 以上。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>训练过程我们还可以每隔几个 Epoch 保存一下模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># save model</span></span><br><span class="line"><span class="keyword">if</span> epoch % FLAGS.epochs_per_save == <span class="number">0</span>:</span><br><span class="line">    saver.save(sess, FLAGS.checkpoint_dir, global_step=gstep)</span><br></pre></td></tr></table></figure>
+<p>验证模型的时候Reload模型，然后进行验证：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load model</span></span><br><span class="line">ckpt = tf.train.get_checkpoint_state(<span class="string">'ckpt'</span>)</span><br><span class="line"><span class="keyword">if</span> ckpt:</span><br><span class="line">    saver.restore(sess, ckpt.model_checkpoint_path)</span><br><span class="line">    print(<span class="string">'Restore from'</span>, ckpt.model_checkpoint_path)</span><br><span class="line">    sess.run(test_initializer)</span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(int(test_steps)):</span><br><span class="line">        <span class="keyword">if</span> step % FLAGS.steps_per_print == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'Test Accuracy'</span>, sess.run(accuracy, feed_dict=&#123;keep_prob: <span class="number">1</span>&#125;), <span class="string">'Step'</span>, step)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'No Model Found'</span>)</span><br></pre></td></tr></table></figure>
+<p>验证之后其准确率基本是差不多的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -657,7 +855,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -668,7 +866,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -679,7 +877,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -721,7 +919,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
         <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
