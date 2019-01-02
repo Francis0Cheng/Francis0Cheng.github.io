@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+<embed src="/js/src/1.mp3" hidden="true" loop="true">
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+	  
+  <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e9bf4c3313038d6ec4da6e3db746814d";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();	
+  </script>
+
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129335859-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129335859-1');
+  </script>
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Django,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="单词   English Chinese     front-end 前端   back-end 后端   pagination 分页   tweaking 拧（这里应该是修改的意思）   queries 查询   Decimal 十进制   querysets 查询集    Building a Modern Web Application with Django REST Framework">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django-vuejs-api-views">
+<meta property="og:url" content="http://yoursite.com/2019/01/02/django-vuejs-api-views/index.html">
+<meta property="og:site_name" content="Francis&#39;Blog">
+<meta property="og:description" content="单词   English Chinese     front-end 前端   back-end 后端   pagination 分页   tweaking 拧（这里应该是修改的意思）   queries 查询   Decimal 十进制   querysets 查询集    Building a Modern Web Application with Django REST Framework">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-02T14:18:08.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="django-vuejs-api-views">
+<meta name="twitter:description" content="单词   English Chinese     front-end 前端   back-end 后端   pagination 分页   tweaking 拧（这里应该是修改的意思）   queries 查询   Decimal 十进制   querysets 查询集    Building a Modern Web Application with Django REST Framework">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":10,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/02/django-vuejs-api-views/">
+
+
+
+
+
+  <title>django-vuejs-api-views | Francis'Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Francis'Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is Brilliant</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/django-vuejs-api-views/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">django-vuejs-api-views</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T20:41:10+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">English</th>
+<th style="text-align:right">Chinese</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">front-end</td>
+<td style="text-align:right">前端</td>
+</tr>
+<tr>
+<td style="text-align:left">back-end</td>
+<td style="text-align:right">后端</td>
+</tr>
+<tr>
+<td style="text-align:left">pagination</td>
+<td style="text-align:right">分页</td>
+</tr>
+<tr>
+<td style="text-align:left">tweaking</td>
+<td style="text-align:right">拧（这里应该是修改的意思）</td>
+</tr>
+<tr>
+<td style="text-align:left">queries</td>
+<td style="text-align:right">查询</td>
+</tr>
+<tr>
+<td style="text-align:left">Decimal</td>
+<td style="text-align:right">十进制</td>
+</tr>
+<tr>
+<td style="text-align:left">querysets</td>
+<td style="text-align:right">查询集</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Building-a-Modern-Web-Application-with-Django-REST-Framework-and-Vue-Building-Views-and-REST-API"><a href="#Building-a-Modern-Web-Application-with-Django-REST-Framework-and-Vue-Building-Views-and-REST-API" class="headerlink" title="Building a Modern Web Application with Django REST Framework and Vue: Building Views and REST API"></a>Building a Modern Web Application with Django REST Framework and Vue: Building Views and REST API</h2><p>Throughout this part of these tutorial series you will continue developing a CRUD (Create, Read, Update and Delete) application with a restful API  <u>back-end</u> and a Vue  <u>front-end</u> using Django, Django REST framework and Vue (with Axios as an HTTP client). In this part you’ll specifically build the REST API and the front-end views to consume and display data from the API endpoints. You will also see how to integrate your Vue application with your Django back-end in production. As always you can find the source code of the demo project in this <a href="https://github.com/techiediaries/django-auth0-vue" target="_blank" rel="noopener">Github repository</a>.</p>
+<p>You can check the second article from this <a href="https://www.techiediaries.com/django-vuejs-auth0" target="_blank" rel="noopener">link</a></p>
+<ul>
+<li>Building the REST API: You will create a simple REST API around one model (<em>Product</em>) with DRF(Django REST Framework) and learn how to add <u>pagination</u> to your APIs.</li>
+<li>Creating the Service to Consume the API: You will create the class that interfaces with your API using Axios.</li>
+<li>Creating the Front End Views: You will create different views and routes for the Vue application and see how you can protect some routes from non authenticated users.</li>
+<li>Getting Ready for Production: Finally you’ll prepare your app for production by tweaking some settings in Vue and Django parts.</li>
+</ul>
+<h3 id="Building-the-REST-API"><a href="#Building-the-REST-API" class="headerlink" title="Building the REST API"></a>Building the REST API</h3><p>Django REST framework is a powerful and easy to use package for building Web APIs.</p>
+<p>Let’s get started by building a simple REST API using Django REST framework.</p>
+<h3 id="Adding-the-Product-Model"><a href="#Adding-the-Product-Model" class="headerlink" title="Adding the Product Model"></a>Adding the Product Model</h3><p>Django has a powerful ORM (Object Relational Mapper) that allows you to work with multiple database management systems without actually writing any SQL. All you need to do is to define models in Python classes and Django will take care of mapping Python classes to SQL <u>queries</u>.</p>
+<p>The API is built around a simple product model so continuing with the project you’ve built in the previous part open the <code>catalog/models.py</code> file then add the following model</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></span><br><span class="line"></span><br><span class="line">    sku = models.CharField(max_length=<span class="number">13</span>,help_text=<span class="string">"Enter Stock Keeping Unit"</span>)    </span><br><span class="line">    name = models.CharField(max_length=<span class="number">200</span>, help_text=<span class="string">"Enter product name"</span>)</span><br><span class="line">    description = models.TextField(help_text=<span class="string">"Enter product description"</span>)</span><br><span class="line"></span><br><span class="line">    buyPrice = models.DecimalField(decimal_places=<span class="number">2</span>, max_digits=<span class="number">20</span>,help_text=<span class="string">"Enter product price per unit"</span>)</span><br><span class="line">    sellPrice = models.DecimalField(decimal_places=<span class="number">2</span>, max_digits=<span class="number">20</span>,help_text=<span class="string">"Enter product price per unit"</span>)</span><br><span class="line"></span><br><span class="line">    unit = models.CharField(max_length=<span class="number">10</span>,help_text=<span class="string">"Enter product unit"</span>)</span><br><span class="line"></span><br><span class="line">    quantity = models.DecimalField(decimal_places=<span class="number">1</span>, max_digits=<span class="number">20</span>,help_text=<span class="string">"Enter quantity"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">         <span class="string">"""</span></span><br><span class="line"><span class="string">         Returns the url to access a particular instance of Product.</span></span><br><span class="line"><span class="string">         """</span></span><br><span class="line">         <span class="keyword">return</span> reverse(<span class="string">'product-detail-view'</span>, args=[str(self.id)])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.sku</span><br></pre></td></tr></table></figure>
+<p>This is a Python class that extends the special Django class <em>Model</em> which is imported from the <code>django.db.models</code> built-in package. Every Django model needs to extends the <em>Model</em>class. You then specify the model fields using classes like <em>CharField</em>, <em>TextField</em> and <em>DecimalField</em> etc.</p>
+<p>Now you need to migrate your database to add the new changes</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<p>Next let’s add some seed data using a data migration</p>
+<p>So first make an empty migration by running the following command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations catalog --empty</span><br></pre></td></tr></table></figure>
+<p>Next open your migration file in your app migrations folder (<code>catalog/migrations</code>) then create a function that will executed by the <code>RunPython()</code> method when you apply your migration</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> migrations</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">(apps, schema_editor)</span>:</span></span><br><span class="line">    Product = apps.get_model(<span class="string">'catalog'</span>, <span class="string">'Product'</span>)</span><br><span class="line">    Product(sku=<span class="string">'sku1'</span>,name=<span class="string">'Product 1'</span>, description=<span class="string">'Product 1'</span>, buyPrice=<span class="number">100</span> , sellPrice=<span class="number">100</span>,unit=<span class="string">'kilogram'</span>, quantity=<span class="number">100</span>).save()</span><br><span class="line">    <span class="comment">##...</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Migration</span><span class="params">(migrations.Migration)</span>:</span></span><br><span class="line">    dependencies = [</span><br><span class="line">        (<span class="string">'catalog'</span>, <span class="string">'0001_initial'</span>),</span><br><span class="line">    ]</span><br><span class="line">    operations = [</span><br><span class="line">        migrations.RunPython(create_data),</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<p>You can then migrate your database to create the initial data</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<h3 id="Adding-the-Serializer-Class"><a href="#Adding-the-Serializer-Class" class="headerlink" title="Adding the Serializer Class"></a>Adding the Serializer Class</h3><p>From <a href="http://www.django-rest-framework.org/api-guide/serializers/" target="_blank" rel="noopener">Django REST framework docs</a> here is the definition of a serializer</p>
+<blockquote>
+<p><em>Serializers allow complex data such as querysets and model instances to be converted to native Python datatypes that can then be easily rendered into JSON, XML or other content types. Serializers also provide deserialization, allowing parsed data to be converted back into complex types, after first validating the incoming data.</em></p>
+</blockquote>
+<blockquote>
+<p>Serializers允许将复杂数据（如查询集和模型实例）转换为Python数据类型，然后可以轻松地将其呈现为JSON，XML或其他内容类型。 序列化程序还提供反序列化，允许在首次验证传入数据后将解析后的数据转换回复杂类型。</p>
+</blockquote>
+<p>Create a <code>serializers.py</code> file inside your the <em>catalog</em> app folder then add the following code to create a serializer class for the product model</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Product</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductSerializer</span><span class="params">(serializers.ModelSerializer)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = Product </span><br><span class="line">        fields = (<span class="string">'pk'</span>,<span class="string">'sku'</span>, <span class="string">'name'</span>, <span class="string">'description'</span>, <span class="string">'buyPrice'</span>,<span class="string">'sellPrice'</span>,<span class="string">'unit'</span>,<span class="string">'quantity'</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django/" rel="tag"># Django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/正则化方法小结/" rel="next" title="正则化方法小结">
+                <i class="fa fa-chevron-left"></i> 正则化方法小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Francis Cheng">
+          <p class="site-author-name" itemprop="name">Francis Cheng</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#单词"><span class="nav-number">1.</span> <span class="nav-text">单词</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-Modern-Web-Application-with-Django-REST-Framework-and-Vue-Building-Views-and-REST-API"><span class="nav-number"></span> <span class="nav-text">Building a Modern Web Application with Django REST Framework and Vue: Building Views and REST API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-the-REST-API"><span class="nav-number">1.</span> <span class="nav-text">Building the REST API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-the-Product-Model"><span class="nav-number">2.</span> <span class="nav-text">Adding the Product Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-the-Serializer-Class"><span class="nav-number">3.</span> <span class="nav-text">Adding the Serializer Class</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Francis Cheng</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+</body>
+</html>

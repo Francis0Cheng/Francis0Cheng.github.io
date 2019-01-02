@@ -302,6 +302,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/python妹子爬虫(1)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/python妹子爬虫(1)/" itemprop="url">python妹子爬虫（1）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T16:20:06+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这篇博客写一个python妹子爬虫(嘿嘿嘿)</p>
+<p>我们要爬取的网站是<a href="http://www.doyo.cn/tu" target="_blank" rel="noopener">http://www.doyo.cn/tu</a> ，网页是这样的：</p>
+<p><img src="1.png" alt="1"></p>
+<p>可以看到，好多美女的。</p>
+<p>  我们点开其中一个连接，进入其页面，是哇小姐姐真漂亮^^，同时我们发现链接地址地址为<a href="http://www.doyo.cn/picture/7399" target="_blank" rel="noopener">http://www.doyo.cn/picture/7399</a> ，也就是说我们只要知道/picure/后面的数字就可以找到这个小姐姐了！~</p>
+<p><img src="2.png" alt="2"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p> 大体的思路很简单，就是先爬取每一个小姐姐的连接，然后由每个分类爬取这个小姐姐的所有图片。</p>
+<h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> requests.exceptions <span class="keyword">import</span> RequestException</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+<h3 id="爬取分类的连接"><a href="#爬取分类的连接" class="headerlink" title="爬取分类的连接"></a>爬取分类的连接</h3><p> 第一步就是获得分类连接，我们在首页打开Chrome的审查，点开Network选项， 发现在Ajax请求返回了一个Json格式的数据，其中包括了每个小姐姐的信息，其中就有这个小姐姐的网页连接</p>
+<p><img src="3.png" alt="3"></p>
+<p>注意到这第七项的7276就是这个小姐姐的连接的后缀了。</p>
+<p>这个Ajax的连接是<a href="http://www.doyo.cn/tu/getdata?cate=all&amp;tag=all&amp;sort=updatetime&amp;start=50&amp;count=25" target="_blank" rel="noopener">http://www.doyo.cn/tu/getdata?cate=all&amp;tag=all&amp;sort=updatetime&amp;start=50&amp;count=25</a> ，也就是说我们只要设置其中的start参数就可以无限的得到这些包含小姐姐信息的Json文件连接了。</p>
+<p>由此引出第一个函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">data_url = <span class="string">'http://www.doyo.cn/tu/getdata'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_one_page</span><span class="params">(start)</span>:</span></span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">"cate"</span>: <span class="string">"all"</span>,</span><br><span class="line">        <span class="string">"tag"</span>: <span class="string">"all"</span>,</span><br><span class="line">        <span class="string">"sort"</span>: <span class="string">"updatetime"</span>,</span><br><span class="line">        <span class="string">"start"</span>: start,</span><br><span class="line">        <span class="string">"count"</span>: <span class="number">25</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url=data_url, params=params)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> response.text</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        print(<span class="string">"NetWork Error"</span>)</span><br></pre></td></tr></table></figure>
+<p>其中我们传入的参数是start，这里的data_url就是Ajax亲贵根网页。构造一个params字典作为参数然后用requests.get请求网页，我们通过我们传入的params，requests将会自动给我们构建出url连接，如果请求失败，我们设置except，自动抛出”Network Error”</p>
+<h3 id="解析Ajax请求返回的Json文本"><a href="#解析Ajax请求返回的Json文本" class="headerlink" title="解析Ajax请求返回的Json文本"></a>解析Ajax请求返回的Json文本</h3><p>  由上一个函数返回值是一个文本，大概是这个样子的</p>
+<p><img src="4.png" alt="4"></p>
+<p>它的本质是一个Json格式的字典，就是前面图片</p>
+<p><img src="5.png" alt="5"></p>
+<p>我们定义一个函数，用json解析文档，其中的number是指小姐姐地址的后缀，count是指小姐姐有几张图片，等下我们会用这两个来构建图片的网址：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_one_data</span><span class="params">(html)</span>:</span></span><br><span class="line">    data = json.loads(html)</span><br><span class="line">    <span class="keyword">if</span> data <span class="keyword">and</span> <span class="string">'info'</span> <span class="keyword">in</span> data.keys():</span><br><span class="line">        <span class="keyword">for</span> info <span class="keyword">in</span> data.get(<span class="string">'info'</span>):</span><br><span class="line">            <span class="keyword">yield</span> &#123;</span><br><span class="line">                <span class="string">'title'</span>: info[<span class="number">0</span>],</span><br><span class="line">                <span class="string">'count'</span>: info[<span class="number">1</span>],</span><br><span class="line">                <span class="string">'pic'</span>: info[<span class="number">6</span>],</span><br><span class="line">                <span class="string">'number'</span>: info[<span class="number">7</span>]</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>如果data字典中不是None并且字典中有‘info’我们对info中的值进行操作。这个键值我们yield返回一个生成器，生成器每次都会迭代出一个json格式的文本</p>
+<h3 id="解析每个json文本，得到链接列表"><a href="#解析每个json文本，得到链接列表" class="headerlink" title="解析每个json文本，得到链接列表"></a>解析每个json文本，得到链接列表</h3><p>  上一个函数中返回的是一个生成器，每次迭代都会返回json文本，接下来我们就需要根据每每个json文本得到图片的地址了每张小姐姐图片的地址是<a href="http://www.doyo.cn/picture/{number}/{index}/viewhttp://www.doyo.cn/picture/{number}/{index}/view" target="_blank" rel="noopener">http://www.doyo.cn/picture/{number}/{index}/viewhttp://www.doyo.cn/picture/{number}/{index}/view</a> ，其中number是小姐姐的编号，index就是某个小姐姐的所有图片中的某一张的编号了我们用一个for语句来得到每张图片。然后yield出所有的地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root_url = <span class="string">'http://www.doyo.cn/picture/&#123;number&#125;/&#123;index&#125;/view'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img_urllist</span><span class="params">(res)</span>:</span></span><br><span class="line">    <span class="comment"># root_url = 'http://www.doyo.cn/picture/&#123;number&#125;/&#123;index&#125;/view'</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">1</span>, int(res.get(<span class="string">'count'</span>)) + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">yield</span> root_url.format(number=res.get(<span class="string">'number'</span>), index=index)</span><br></pre></td></tr></table></figure>
+<h3 id="解析每个链接，得到每一张图片链接"><a href="#解析每个链接，得到每一张图片链接" class="headerlink" title="解析每个链接，得到每一张图片链接"></a>解析每个链接，得到每一张图片链接</h3><p> 经过上一步得到的图片列表，其中每一个连接的页面将会是这样：</p>
+<p><img src="6.png" alt="6"></p>
+<p>用正则表达式匹配图片的链接，先写正则表达式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(<span class="string">'&lt;img src="(.*?)" id="big_picture" /&gt;'</span>, re.S)</span><br></pre></td></tr></table></figure>
+<p>然后进行匹配：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img_url</span><span class="params">(imag_url)</span>:</span></span><br><span class="line">    print(<span class="string">'image_url'</span> , imag_url)</span><br><span class="line">    html = get_html(imag_url)</span><br><span class="line">    res = re.search(pattern=pattern, string=html)</span><br><span class="line">    <span class="keyword">if</span> res:</span><br><span class="line">        <span class="keyword">return</span> res.group(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_html</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.get(url, headers=headers)</span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">return</span> response.text</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">except</span> RequestException:</span><br><span class="line">        print(<span class="string">"connection error"</span>)</span><br></pre></td></tr></table></figure>
+<p>返回链接。</p>
+<h3 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_img</span><span class="params">(res)</span>:</span></span><br><span class="line">    os.chdir(parent_path)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        os.mkdir(res.get(<span class="string">'title'</span>))</span><br><span class="line">        os.chdir(res.get(<span class="string">'title'</span>))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    url_list = get_img_urllist(res)</span><br><span class="line">    <span class="keyword">for</span> imag_url <span class="keyword">in</span> url_list:</span><br><span class="line">        url = get_img_url(imag_url)</span><br><span class="line">        print(imag_url)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            filename = str(random.random())</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            response = requests.get(url, headers=headers)</span><br><span class="line">            <span class="keyword">with</span> open(filename + <span class="string">'.jpg'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(response.content)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>这里我们保存图片时，每个小姐姐都新建一个文件夹存入</p>
+<h3 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(start)</span>:</span></span><br><span class="line">    html = get_one_page(start)</span><br><span class="line">    res = get_one_data(html)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> res:</span><br><span class="line">        print(each)</span><br><span class="line">        write_to_file(each)</span><br><span class="line">        save_img(each)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start = [n * <span class="number">25</span> <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> start:</span><br><span class="line">        main(i)</span><br><span class="line">    j.close()</span><br></pre></td></tr></table></figure>
+<h3 id="开始爬取"><a href="#开始爬取" class="headerlink" title="开始爬取"></a>开始爬取</h3><p><img src="7.png" alt="7"></p>
+<p><img src="8.png" alt="8"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -855,7 +1033,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
