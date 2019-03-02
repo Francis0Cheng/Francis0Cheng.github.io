@@ -8,7 +8,7 @@
 
 
 
-<html class="theme-next mist use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
 	  
   <script>
@@ -127,7 +127,7 @@
 <meta property="og:site_name" content="Francis&#39;Blog">
 <meta property="og:description" content="tf.strided_slice其实就是TensorFlow中用来分片的函数。  1234567891011def strided_slice(input_,                  begin,                  end,                  strides=None,                  begin_mask=0,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-27T07:44:01.414Z">
+<meta property="og:updated_time" content="2019-03-02T04:16:17.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tf.strided_slice">
 <meta name="twitter:description" content="tf.strided_slice其实就是TensorFlow中用来分片的函数。  1234567891011def strided_slice(input_,                  begin,                  end,                  strides=None,                  begin_mask=0,">
@@ -138,7 +138,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     sidebar: {"position":"left","display":"post","offset":10,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -400,6 +400,7 @@
         <p>tf.strided_slice其实就是TensorFlow中用来分片的函数。 </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strided_slice</span><span class="params">(input_,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end,</span></span></span><br><span class="line"><span class="function"><span class="params">                  strides=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  ellipsis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  new_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  shrink_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  var=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  name=None)</span>:</span></span><br></pre></td></tr></table></figure>
 <p>begin是分片开始， end是分片结束，strides是步长，注意这边的步长其实是从步长的最后一位开始的</p>
+<a id="more"></a>
 <h3 id="Question："><a href="#Question：" class="headerlink" title="Question："></a>Question：</h3><p>I am wondering what <code>tf.strided_slice()</code> operator actually does.<br>The <a href="https://www.tensorflow.org/api_docs/python/array_ops/slicing_and_joining#strided_slice" target="_blank" rel="noopener">doc</a> says,</p>
 <blockquote>
 <p>To a first order, this operation extracts a slice of size end - begin from a tensor input starting at the location specified by begin. The slice continues by adding stride to the begin index until all dimensions are not less than end. Note that components of stride can be negative, which causes a reverse slice.</p>
@@ -635,7 +636,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Gemini
   </a>
 </div>
 
@@ -714,6 +715,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
