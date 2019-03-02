@@ -376,7 +376,7 @@
       
         
           
-            <table>
+            <h2 id="常见匹配模式"><a href="#常见匹配模式" class="headerlink" title="常见匹配模式"></a>常见匹配模式</h2><table>
 <thead>
 <tr>
 <th>模式</th>
@@ -473,8 +473,8 @@
 <td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
 </tr>
 <tr>
-<td>a\</td>
-<td>b</td>
+<td>`a</td>
+<td>b`</td>
 <td>匹配a或b</td>
 </tr>
 <tr>
@@ -483,6 +483,18 @@
 </tr>
 </tbody>
 </table>
+<h2 id="re-match"><a href="#re-match" class="headerlink" title="re.match"></a>re.match</h2><p>  re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, string, flags=0)</span><br></pre></td></tr></table></figure>
+<h3 id="最常规的匹配"><a href="#最常规的匹配" class="headerlink" title="最常规的匹配"></a>最常规的匹配</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">   content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">   print(len(content))</span><br><span class="line">   result = re.match(<span class="string">'^Hello\s\d\d\d\s\d&#123;4&#125;\s\w&#123;10&#125;.*Demo$'</span>, content)</span><br><span class="line">   print(result)</span><br><span class="line">   print(result.group(<span class="number">0</span>))</span><br><span class="line">   print(result.span())</span><br></pre></td></tr></table></figure>
+<p>RESULT:</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;_sre.SRE_Match object; span=(0, 41), match=&apos;Hello 123 4567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; Hello 123 4567 World_This is a Regex Demo</span><br><span class="line">&gt; (0, 41)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="匹配目标"><a href="#匹配目标" class="headerlink" title="匹配目标"></a>匹配目标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^Hello\s(\d+)\sWorld.*Demo$'</span>, content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br><span class="line">print(result.span())</span><br></pre></td></tr></table></figure>
+<p>RESULT:</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;re.Match object; span=(0, 40), match=&apos;Hello 1234567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; 1234567</span><br><span class="line">&gt; (0, 40)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
 
           
         
