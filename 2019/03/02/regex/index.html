@@ -128,7 +128,7 @@
 <meta property="og:description" content="常见匹配模式   模式 描述     \w 匹配字母数字及下划线   \W 匹配非字母数字下划线   \s 匹配任意空白字符，等价于 [\t\n\r\f].   \S 匹配任意非空字符   \d 匹配任意数字，等价于 [0-9]   \D 匹配任意非数字   \A 匹配字符串开始   \Z 匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串   \z 匹配字符串结束   \G 匹配最后匹配">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/02/regex/difference.png">
-<meta property="og:updated_time" content="2019-03-02T14:17:52.363Z">
+<meta property="og:updated_time" content="2019-03-02T14:29:17.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="常见匹配模式   模式 描述     \w 匹配字母数字及下划线   \W 匹配非字母数字下划线   \s 匹配任意空白字符，等价于 [\t\n\r\f].   \S 匹配任意非空字符   \d 匹配任意数字，等价于 [0-9]   \D 匹配任意非数字   \A 匹配字符串开始   \Z 匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串   \z 匹配字符串结束   \G 匹配最后匹配">
@@ -490,6 +490,7 @@
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;_sre.SRE_Match object; span=(0, 41), match=&apos;Hello 123 4567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; Hello 123 4567 World_This is a Regex Demo</span><br><span class="line">&gt; (0, 41)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<a id="more"></a>
 <h3 id="匹配目标"><a href="#匹配目标" class="headerlink" title="匹配目标"></a>匹配目标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^Hello\s(\d+)\sWorld.*Demo$'</span>, content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br><span class="line">print(result.span())</span><br></pre></td></tr></table></figure>
 <p>RESULT:</p>
 <blockquote>
