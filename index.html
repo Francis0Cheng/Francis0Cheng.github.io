@@ -506,7 +506,7 @@
 <blockquote>
 <p>None</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">content = <span class="string">'Extra stings Hello 1234567 World_This is a Regex Demo Extra stings'</span></span><br><span class="line">result = re.search(<span class="string">'Hello.*?(\d+).*?Demo'</span>, content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <p>RESULT:</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;_sre.SRE_Match object; span=(13, 53), match=&apos;Hello 1234567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; 1234567</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
