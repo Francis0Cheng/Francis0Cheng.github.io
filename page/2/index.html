@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/Django流程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/04/Django流程/" itemprop="url">Django流程</a></h1>
+                <a class="post-title-link" href="/2019/03/05/scrapy2/" itemprop="url">Scrapy学习（二）命令行</a></h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T16:24:58+08:00">
-                2018-12-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T21:44:12+08:00">
+                2019-03-05
               </time>
             
 
@@ -346,28 +346,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Django/" itemprop="url" rel="index">
-                    <span itemprop="name">Django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -397,52 +375,237 @@
 
       
         
-          <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Django-admin startproject mysite</span><br></pre></td></tr></table></figure>
-<p><strong>注意：路径中不要带有中文</strong></p>
-<p>层级目录说明</p>
+          
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Scrapy是通过Scrapy命令行工具进行控制的，包括创建新的项目，爬虫的启动，相关的设置，Scrapy提供了两种内置的命令，分别是全局命令和项目命令，顾名思义，全局命令就是在任意位置都可以执行的命令，而项目命令只有在你新创建了项目之后，在项目目录中才可以执行的命令。在这里，简单的介绍一些常用的命令。</p>
+<h3 id="全局命令"><a href="#全局命令" class="headerlink" title="全局命令"></a>全局命令</h3><ul>
+<li><h4 id="startproject"><a href="#startproject" class="headerlink" title="startproject"></a>startproject</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject &lt;project_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  这个命令是scrapy最为常用的命令之一，它将会在当前目录下创建一个名为</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;project_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  的项目。</p>
+<ul>
+<li><h4 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy settings [options]</span><br></pre></td></tr></table></figure>
+<p>  该命令将会输出Scrapy默认设定，当然如果你在项目中运行这个命令将会输出项目的设定值。</p>
+<ul>
+<li><h4 id="runspider"><a href="#runspider" class="headerlink" title="runspider"></a>runspider</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy runspider &lt;spider_file.py&gt;</span><br></pre></td></tr></table></figure>
+<p>  在未创建项目的情况下，运行一个编写在Python文件中的spider。</p>
+<ul>
+<li><h4 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell [url]</span><br></pre></td></tr></table></figure>
+<p>  以给定的URL(如果给出)或者空(没有给出URL)启动Scrapy shell。</p>
+<p>  例如，</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell http://www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>  将会打开百度URL，</p>
+<p>  并且启动交互式命令行，可以用来做一些测试。</p>
+<ul>
+<li><h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy fetch &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p>  使用Scrapy下载器(downloader)下载给定的URL，并将获取到的内容送到标准输出。简单的来说，就是打印url的html代码。</p>
+<ul>
+<li><h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy view &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p>  在你的默认浏览器中打开给定的URL，并以Scrapy spider获取到的形式展现。 有些时候spider获取到的页面和普通用户看到的并不相同，一些动态加载的内容是看不到的， 因此该命令可以用来检查spider所获取到的页面。</p>
+<ul>
+<li><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy version [-v]</span><br></pre></td></tr></table></figure>
+<p>  输出Scrapy版本。配合 -v 运行时，该命令同时输出Python, Twisted以及平台的信息。</p>
+<h3 id="项目命令"><a href="#项目命令" class="headerlink" title="项目命令"></a>项目命令</h3><ul>
+<li><h3 id="crawl"><a href="#crawl" class="headerlink" title="crawl"></a>crawl</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl &lt;spider_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  使用你项目中的spider进行爬取，即启动你的项目。这个命令将会经常用到，我们会在后面的内容中经常使用。</p>
+<ul>
+<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crapy check [-l] &lt;spider&gt;</span><br></pre></td></tr></table></figure>
+<p>  运行contract检查，检查你项目中的错误之处。</p>
+<ul>
+<li><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy list</span><br></pre></td></tr></table></figure>
+<p>  列出当前项目中所有可用的spider。每行输出一个spider。</p>
+<ul>
+<li><h3 id="genspider"><a href="#genspider" class="headerlink" title="genspider"></a>genspider</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider [-t template] &lt;name&gt; &lt;domain&gt;</span><br></pre></td></tr></table></figure>
+<p>  在当前项目中创建spider。该方法可以使用提前定义好的模板来生成spider。您也可以自己创建spider的源码文件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/scrapy1/" itemprop="url">Scrapy学习（一）框架简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T20:50:53+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><strong><code>Scrapy</code></strong>是一个<a href="https://zh.wikipedia.org/wiki/Python" target="_blank" rel="noopener">Python</a>编写的<a href="https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90" target="_blank" rel="noopener">开源</a><a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB" target="_blank" rel="noopener">网络爬虫</a><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%A1%86%E6%9E%B6" target="_blank" rel="noopener">框架</a>。它是一个被设计用于爬取网络数据、提取结构性数据的程序框架。<a href="https://zh.wikipedia.org/wiki/Scrapy#cite_note-3" target="_blank" rel="noopener">[3]</a>该框架主要由<a href="https://zh.wikipedia.org/w/index.php?title=Scrapinghub_%E5%85%AC%E5%8F%B8&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Scrapinghub 公司</a>进行维护。<code>scrapy</code>官网给出的最新的架构图示。</p>
 <p><img src="1.png" alt="1"></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>manage.py</td>
-<td>一个命令行工具，可以让我们用多种方式对Django项目进行交互</td>
-</tr>
-<tr>
-<td>__init__.py</td>
-<td>一个空文件，它告诉Python这个目录应该被看做一个包</td>
-</tr>
-<tr>
-<td>settings.py</td>
-<td>项目的配置文件（主要处理文件）</td>
-</tr>
-<tr>
-<td>urls.py</td>
-<td>项目的url声明 （主要处理文件）</td>
-</tr>
-<tr>
-<td>wsgi.py</td>
-<td>项目与WSGI兼容的Web服务器入口</td>
-</tr>
-</tbody>
-</table>
-<h3 id="配置数据库-mysql"><a href="#配置数据库-mysql" class="headerlink" title="配置数据库(mysql)"></a>配置数据库(mysql)</h3><p>  在Django中，默认使用 SQLite数据库，在settings.py文件中通过DATABASES选项进行数据库配置。</p>
-<h4 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h4><p>  1.在mysite/__init__.py中写入两行代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mysql</span><br><span class="line">mysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
-<p>  2.在settings.py中对DATABASES进行配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    &apos;default&apos;: &#123;</span><br><span class="line">    &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,</span><br><span class="line">    &apos;NAME&apos;: &quot;my_site&quot;,</span><br><span class="line">    &apos;USER&apos;: &quot;root&quot;,</span><br><span class="line">    &apos;PASSWORD&apos;: &quot;m&quot;,</span><br><span class="line">    &apos;HOST&apos;: &quot;localhost&quot;,</span><br><span class="line">    &apos;PORT&apos;: &quot;3306&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/04/Django流程/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h2 id="基本组件"><a href="#基本组件" class="headerlink" title="基本组件"></a>基本组件</h2><ul>
+<li><p>引擎（Engine）</p>
+<p>引擎负责控制数据流在系统中所有组件中流动，并在相应动作发生时触发事件。 详细内容查看下面的数据流(Data Flow)部分。</p>
+</li>
+<li><p>调度器（Scheduler）</p>
+<p>调度器从引擎接受request并将他们入队，以便之后引擎请求他们时提供给引擎。</p>
+</li>
+<li><p>下载器(Downloader)</p>
+<p>下载器负责获取页面数据并提供给引擎，而后提供给spider。</p>
+</li>
+<li><p>爬虫（Spiders）</p>
+<p>Spider是Scrapy用户编写用于分析response并提取item(即获取到的item)或额外跟进的URL的类。 每个spider负责处理一个特定(或一些)网站。</p>
+</li>
+<li><p>管道（Item Pipeline）</p>
+<p>Item Pipeline负责处理被spider提取出来的item。典型的处理有清理、验证及持久化(例如存取到数据库中)。</p>
+</li>
+<li><p>下载器中间件（Downloader middlewares）</p>
+<p>下载器中间件是在引擎及下载器之间的特定钩子(specific hook)，处理Downloader传递给引擎的response。 其提供了一个简便的机制，通过插入自定义代码来扩展Scrapy功能。</p>
+</li>
+<li><p>Spider中间件（Spider middlewares）</p>
+<p>Spider中间件是在引擎及Spider之间的特定钩子(specific hook)，处理spider的输入(response)和输出(items及requests)。 其提供了一个简便的机制，通过插入自定义代码来扩展Scrapy功能。</p>
+</li>
+</ul>
+<h2 id="数据流向"><a href="#数据流向" class="headerlink" title="数据流向"></a>数据流向</h2><p>Scrapy的数据流由执行引擎（Engine）控制，其基本过程如下：</p>
+<pre><code>1. 引擎从Spider中获取到初始Requests。
+2. 引擎将该Requests放入调度器，并请求下一个要爬取的Requests。
+3. 调度器返回下一个要爬取的Requests给引擎
+4. 引擎将Requests通过下载器中间件转发给下载器(Downloader)。
+5. 一旦页面下载完毕，下载器生成一个该页面的Response，并将其通过下载中间件(返回(response)方向)发送给引擎。
+6. 引擎从下载器中接收到Response并通过Spider中间件(输入方向)发送给Spider处理。
+7. Spider处理Response并返回爬取到的Item及(跟进的)新的Request给引擎。
+8. 引擎将(Spider返回的)爬取到的Item交给ItemPipeline处理，将(Spider返回的)Request交给调度器，并请求下一个Requests（如果存在的话）。
+9. (从第一步)重复直到调度器中没有更多地Request。
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  Scrapy的各个组件相互配合执行，有的组件负责任务的调度，有的组件负责任务的下载，有的组件负责数据的清洗保存，各组件分工明确。在组件之间存在middleware的中间件，其作用就是功能的拓展，当然还可以根据自身的需求自定义这些拓展功能，比如我们可以在Downloader middlewares里面实现User-Agent的切换，Proxy的切换等等。这些功能我们会在后续的学习中逐渐拓展。这里只需要大致的了解即可。</p>
+
+          
         
       
     </div>
@@ -489,7 +652,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/tf-strided-slice/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/selenium/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -508,7 +671,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/27/tf-strided-slice/" itemprop="url">tf.strided_slice</a></h1>
+                <a class="post-title-link" href="/2019/03/03/selenium/" itemprop="url">selenium详解</a></h1>
         
 
         <div class="post-meta">
@@ -520,156 +683,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T15:35:21+08:00">
-                2018-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow中的函数/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow中的函数</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>tf.strided_slice其实就是TensorFlow中用来分片的函数。 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strided_slice</span><span class="params">(input_,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end,</span></span></span><br><span class="line"><span class="function"><span class="params">                  strides=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  ellipsis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  new_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  shrink_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  var=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  name=None)</span>:</span></span><br></pre></td></tr></table></figure>
-<p>begin是分片开始， end是分片结束，strides是步长，注意这边的步长其实是从步长的最后一位开始的</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/27/tf-strided-slice/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/html5/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/html5/" itemprop="url">HTML5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T20:04:48+08:00">
-                2018-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T11:06:42+08:00">
+                2019-03-03
               </time>
             
 
@@ -707,969 +722,95 @@
 
       
         
-          <h3 id="HTML-Attributes"><a href="#HTML-Attributes" class="headerlink" title="HTML Attributes"></a>HTML Attributes</h3><table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alt</td>
-<td>Specifies an alternative text for an image, when the image cannot be displayed                 图片无法显示时候提示是怎么样的图片</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td>Specifies that an input element should be disabled</td>
-</tr>
-<tr>
-<td>href</td>
-<td>Specifies the URL (web address) for a link</td>
-</tr>
-<tr>
-<td>id</td>
-<td>Specifies a unique id for an element</td>
-</tr>
-<tr>
-<td>src</td>
-<td>Specifies the URL (web address) for an image  也就是图片的source</td>
-</tr>
-<tr>
-<td>style</td>
-<td>Specifies an inline CSS style for an element</td>
-</tr>
-<tr>
-<td>title</td>
-<td>Specifies extra information about an element (displayed as a tool tip)                                   鼠标停留时显示的字样</td>
-</tr>
-<tr>
-<td>width, height</td>
-<td>图片的宽和高</td>
-</tr>
-</tbody>
-</table>
-<h2 id="HTML-Horizontal-Rules-标签水平"><a href="#HTML-Horizontal-Rules-标签水平" class="headerlink" title="HTML Horizontal Rules 标签水平"></a>HTML Horizontal Rules 标签水平</h2><p>The <code>&lt;hr&gt;</code> tag defines a thematic break in an HTML page, and is most often displayed as a horizontal rule.</p>
-<p>The <code>&lt;hr&gt;</code> element is used to separate content (or define a change) in an HTML page:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is heading 1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some text.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>This is heading 2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some other text.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/22/html5/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/leetcode_5/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/leetcode_5/" itemprop="url">leetcode_5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T22:28:11+08:00">
-                2018-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
+          
+            <h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 用chrome发出get请求</span></span><br><span class="line">    browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">    <span class="comment"># 找到id为kw的元素</span></span><br><span class="line">    input = browser.find_element_by_id(<span class="string">'kw'</span>)</span><br><span class="line">    <span class="comment"># 输入Python</span></span><br><span class="line">    input.send_keys(<span class="string">'Python'</span>)</span><br><span class="line">    <span class="comment"># 调用ENTER</span></span><br><span class="line">    input.send_keys(Keys.ENTER)</span><br><span class="line">    <span class="comment"># 等待</span></span><br><span class="line">    wait = WebDriverWait(browser, <span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 直到ID为 content_left 元素出现</span></span><br><span class="line">    wait.until(EC.presence_of_element_located((By.ID, <span class="string">'content_left'</span>)))</span><br><span class="line">    <span class="comment"># URL地址</span></span><br><span class="line">    print(browser.current_url)</span><br><span class="line">    <span class="comment"># COOKIES	</span></span><br><span class="line">    print(browser.get_cookies())</span><br><span class="line">    <span class="comment"># 源代码</span></span><br><span class="line">    print(browser.page_source)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="comment"># 关闭此浏览器</span></span><br><span class="line">    browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="声明浏览器对象"><a href="#声明浏览器对象" class="headerlink" title="声明浏览器对象"></a>声明浏览器对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser = webdriver.Firefox()</span><br><span class="line">browser = webdriver.Edge()</span><br><span class="line">browser = webdriver.PhantomJS()</span><br><span class="line">browser = webdriver.Safari()</span><br></pre></td></tr></table></figure>
+<h2 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">print(browser.page_source)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h2><h3 id="单个元素"><a href="#单个元素" class="headerlink" title="单个元素"></a>单个元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input_first = browser.find_element_by_id(<span class="string">'q'</span>)</span><br><span class="line">input_second = browser.find_element_by_css_selector(<span class="string">'#q'</span>)</span><br><span class="line">input_third = browser.find_element_by_xpath(<span class="string">'//*[@id="q"]'</span>)</span><br><span class="line">print(input_first, input_second, input_third)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>find_element_by_name</li>
+<li>find_element_by_xpath</li>
+<li>find_element_by_link_text</li>
+<li>find_element_by_partial_link_text</li>
+<li>find_element_by_tag_name</li>
+<li>find_element_by_class_name</li>
+<li>find_element_by_css_selector</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input_first = browser.find_element(By.ID, <span class="string">'q'</span>)</span><br><span class="line">print(input_first)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>browser.find_element</code>加上<code>from selenium.webdriver.common.by import By</code></li>
+</ul>
+<h2 id="多个元素"><a href="#多个元素" class="headerlink" title="多个元素"></a>多个元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">lis = browser.find_elements_by_css_selector(<span class="string">'.service-bd li'</span>)</span><br><span class="line">print(lis)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<p>把element加上复数形式</p>
+<ul>
+<li>find_elements_by_name</li>
+<li>find_elements_by_xpath</li>
+<li>find_elements_by_link_text</li>
+<li>find_elements_by_partial_link_text</li>
+<li>find_elements_by_tag_name</li>
+<li>find_elements_by_class_name</li>
+<li>find_elements_by_css_selector</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">lis = browser.find_elements(By.CSS_SELECTOR, <span class="string">'.service-bd li'</span>)</span><br><span class="line">print(lis)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="元素交互操作"><a href="#元素交互操作" class="headerlink" title="元素交互操作"></a>元素交互操作</h2><p>对获取的元素调用交互方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input = browser.find_element_by_id(<span class="string">'q'</span>)</span><br><span class="line">input.send_keys(<span class="string">'iPhone'</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">input.clear()</span><br><span class="line">input.send_keys(<span class="string">'iPad'</span>)</span><br><span class="line">button = browser.find_element_by_class_name(<span class="string">'btn-search'</span>)</span><br><span class="line">button.click()</span><br></pre></td></tr></table></figure>
+<p>更多操作: <a href="http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement" target="_blank" rel="noopener">http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement</a></p>
+<h2 id="交互动作"><a href="#交互动作" class="headerlink" title="交互动作"></a>交互动作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">browser.switch_to.frame(<span class="string">'iframeResult'</span>)</span><br><span class="line">source = browser.find_element_by_css_selector(<span class="string">'#draggable'</span>)</span><br><span class="line">target = browser.find_element_by_css_selector(<span class="string">'#droppable'</span>)</span><br><span class="line">actions = ActionChains(browser)</span><br><span class="line">actions.drag_and_drop(source, target)</span><br><span class="line">actions.perform()</span><br></pre></td></tr></table></figure>
+<p>更多操作: <a href="http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains" target="_blank" rel="noopener">http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains</a>&gt;</p>
+<h2 id="执行JavaScript"><a href="#执行JavaScript" class="headerlink" title="执行JavaScript"></a>执行JavaScript</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'window.scrollTo(0, document.body.scrollHeight)'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'alert("To Bottom")'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取元素信息"><a href="#获取元素信息" class="headerlink" title="获取元素信息"></a>获取元素信息</h2><h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">logo = browser.find_element_by_id(<span class="string">'zh-top-link-logo'</span>)</span><br><span class="line">print(logo)</span><br><span class="line">print(logo.get_attribute(<span class="string">'class'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="获取文本值"><a href="#获取文本值" class="headerlink" title="获取文本值"></a>获取文本值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input.text)</span><br></pre></td></tr></table></figure>
+<h3 id="获取ID、位置、标签名、大小"><a href="#获取ID、位置、标签名、大小" class="headerlink" title="获取ID、位置、标签名、大小"></a>获取ID、位置、标签名、大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input.id)</span><br><span class="line">print(input.location)</span><br><span class="line">print(input.tag_name)</span><br><span class="line">print(input.size)</span><br></pre></td></tr></table></figure>
+<h2 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h2><p>Frame相当于一个网页，父Frame必须进入子Frame然后才能查找子Frame中的元素，子Frame中也不能获取父Frame中的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> NoSuchElementException</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">browser.switch_to.frame(<span class="string">'iframeResult'</span>)</span><br><span class="line"><span class="comment"># swith_to.frame()传入frame的id</span></span><br><span class="line">source = browser.find_element_by_css_selector(<span class="string">'#draggable'</span>)</span><br><span class="line">print(source)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    logo = browser.find_element_by_class_name(<span class="string">'logo'</span>)</span><br><span class="line"><span class="keyword">except</span> NoSuchElementException:</span><br><span class="line">    print(<span class="string">'NO LOGO'</span>)</span><br><span class="line">browser.switch_to.parent_frame()</span><br><span class="line"><span class="comment">#swith_to.parent_frame()切换到父Frame</span></span><br><span class="line">logo = browser.find_element_by_class_name(<span class="string">'logo'</span>)</span><br><span class="line">print(logo)</span><br><span class="line">print(logo.text)</span><br></pre></td></tr></table></figure>
+<h2 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h2><h3 id="隐式等待"><a href="#隐式等待" class="headerlink" title="隐式等待"></a>隐式等待</h3><p>当使用了隐式等待执行测试的时候，如果 WebDriver没有在 DOM中找到元素，将继续等待，超出设定时间后则抛出找不到元素的异常, 换句话说，当查找元素或元素并没有立即出现的时候，隐式等待将等待一段时间再查找 DOM，默认的时间是0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.implicitly_wait(<span class="number">10</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input)</span><br></pre></td></tr></table></figure>
+<h3 id="显式等待"><a href="#显式等待" class="headerlink" title="显式等待"></a>显式等待</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com/'</span>)</span><br><span class="line">wait = WebDriverWait(browser, <span class="number">10</span>)</span><br><span class="line">input = wait.until(EC.presence_of_element_located((By.ID, <span class="string">'q'</span>)))</span><br><span class="line">button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'.btn-search'</span>)))</span><br><span class="line">print(input, button)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>title_is         标题是某内容</p>
+</li>
+<li><p>title_contains         标题包含某内容</p>
+</li>
+<li><p>presence_of_element_located         元素加载出，传入定位元组，如(By.ID, ‘p’)</p>
+</li>
+<li><p>visibility_of_element_located         元素可见，传入定位元组</p>
+</li>
+<li><p>visibility_of         可见，传入元素对象</p>
+</li>
+<li><p>presence_of_all_elements_located         所有元素加载出</p>
+</li>
+<li><p>text_to_be_present_in_element         某个元素文本包含某文字</p>
+</li>
+<li><p>text_to_be_present_in_element_value         某个元素值包含某文字</p>
+</li>
+<li><p>frame_to_be_available_and_switch_to_it frame        加载并切换</p>
+</li>
+<li><p>invisibility_of_element_located         元素不可见</p>
+</li>
+<li><p>element_to_be_clickable         元素可点击</p>
+</li>
+<li><p>staleness_of         判断一个元素是否仍在DOM，可判断页面是否已经刷新</p>
+</li>
+<li><p>element_to_be_selected         元素可选择，传元素对象</p>
+</li>
+<li><p>element_located_to_be_selected         元素可选择，传入定位元组</p>
+</li>
+<li><p>element_selection_state_to_be         传入元素对象以及状态，相等返回True，否则返回False</p>
+</li>
+<li><p>element_located_selection_state_to_be         传入定位元组以及状态，相等返回True，否则返回False</p>
+</li>
+<li><p>alert_is_present         是否出现Alert</p>
+</li>
+</ul>
+<h2 id="前进后退"><a href="#前进后退" class="headerlink" title="前进后退"></a>前进后退</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com/'</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com/'</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.python.org/'</span>)</span><br><span class="line">browser.back()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">browser.forward()</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>设置登陆状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">print(browser.get_cookies())</span><br><span class="line">browser.add_cookie(&#123;<span class="string">'name'</span>: <span class="string">'name'</span>, <span class="string">'domain'</span>: <span class="string">'www.zhihu.com'</span>, <span class="string">'value'</span>: <span class="string">'germey'</span>&#125;)</span><br><span class="line">print(browser.get_cookies())</span><br><span class="line">browser.delete_all_cookies()</span><br><span class="line">print(browser.get_cookies())</span><br></pre></td></tr></table></figure>
+<h2 id="选项卡管理"><a href="#选项卡管理" class="headerlink" title="选项卡管理"></a>选项卡管理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'window.open()'</span>)</span><br><span class="line">print(browser.window_handles)</span><br><span class="line">browser.switch_to_window(browser.window_handles[<span class="number">1</span>])</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">browser.switch_to_window(browser.window_handles[<span class="number">0</span>])</span><br><span class="line">browser.get(<span class="string">'https://python.org'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="comment">#异常处理</span></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">browser.find_element_by_id(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+<p>加入异常处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> TimeoutException, NoSuchElementException</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line"><span class="keyword">except</span> TimeoutException:</span><br><span class="line">    print(<span class="string">'Time Out'</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    browser.find_element_by_id(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">except</span> NoSuchElementException:</span><br><span class="line">    print(<span class="string">'No Element'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    browser.close()</span><br></pre></td></tr></table></figure>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="LeetCode-No-5"><a href="#LeetCode-No-5" class="headerlink" title="[LeetCode: No.5]"></a>[LeetCode: No.5]</h1><blockquote>
-<p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-</blockquote>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-<p>  <strong>最长回文子串的中间子串也是回文串，换言之，回文串是否最长，可以看回文串两边的字符是否相同。例如“dabcba”的最长回文子串是“abcba”，</strong>其可看出回文子串“bcb”的拓展，判断“bab”两边的字符是否相同决定是否进行回文子串拓展（可以利用切片的索引左右移动实现）</p>
-<p>  由这个想法下， 写出第一个代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(s) &lt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        self.res = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            left = right = i</span><br><span class="line">            <span class="keyword">while</span> left&gt;=<span class="number">0</span> <span class="keyword">and</span> right &lt; len(s) <span class="keyword">and</span> s[left] == s[right]:</span><br><span class="line">                left -= <span class="number">1</span></span><br><span class="line">                right += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> right -left <span class="number">-1</span> &gt; len(self.res):</span><br><span class="line">                self.res = s[left+<span class="number">1</span>:right]</span><br><span class="line">        <span class="keyword">return</span> self.res</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/15/leetcode_5/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/leetcode_4/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/leetcode_4/" itemprop="url">leetcode_4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T22:28:11+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="LeetCode-No-4"><a href="#LeetCode-No-4" class="headerlink" title="[LeetCode: No.4]"></a>[LeetCode: No.4]</h1><blockquote>
-<p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
-</blockquote>
-<p>仔细分析题目，nums1和nums2都已经是排好序了的，这就大大的降低了难度，让找到两个列表的中间值，其实我们可以拓展为找到两个列表的第k个值。当然这个是拓展部分了，对于这个题目，有不同的思路，最简单粗暴的就是将两个列表合并，之后进行排序，拍好序后进行寻找中间值就简单了。但是用传统的先合并再排序，效率想必会很低~</p>
-<p>我们发现对于两个已经有序的列表（从小到大），其实有一个更优的排序方式：<strong>从小到大，依次进行列表元素的比较，较小值放到一个新列表中，比如A中该位置的值较小，将其放到新的列表C中，同时将A列表下一个值继续与B中当前位置元素进行比较，以此类推。</strong>这样的比较次数就比先合并在排序小很多啦！代码如下：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/13/leetcode_4/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/12/python妹子爬虫(1)/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/12/python妹子爬虫(1)/" itemprop="url">python妹子爬虫（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T16:20:06+08:00">
-                2018-11-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇博客写一个python妹子爬虫(嘿嘿嘿)</p>
-<p>我们要爬取的网站是<a href="http://www.doyo.cn/tu" target="_blank" rel="noopener">http://www.doyo.cn/tu</a> ，网页是这样的：</p>
-<p><img src="1.png" alt="1"></p>
-<p>可以看到，好多美女的。</p>
-<p>  我们点开其中一个连接，进入其页面，是哇小姐姐真漂亮^^，同时我们发现链接地址地址为<a href="http://www.doyo.cn/picture/7399" target="_blank" rel="noopener">http://www.doyo.cn/picture/7399</a> ，也就是说我们只要知道/picure/后面的数字就可以找到这个小姐姐了！~</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/12/python妹子爬虫(1)/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/基于TensorFlow的验证码识别/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/基于TensorFlow的验证码识别/" itemprop="url">基于TensorFlow的验证码识别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T15:08:56+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  这篇博客我们来用TensorFlow来实现一个验证码识别的深度学习模型，我们的。我们会先用标注好的数据来训练第一个模型，然后再用模型来实现验证码识别</p>
-<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><p>  我们先看下验证码是怎么样的， 我们使用Python的captcha库来生成验证码，再用pip安装好captcha之后，就可以用代码来生成一个简单的图形验证码了。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> captcha.image <span class="keyword">import</span> ImageCaptcha</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot  <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">text = <span class="string">'1234'</span></span><br><span class="line">image = ImageCaptcha()</span><br><span class="line">captcha = image.generate(text)</span><br><span class="line">captcha_image = Image.open(captcha)</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.imshow(captcha_image)</span><br></pre></td></tr></table></figure></p>
-<p>运行代码，就可以看到这样的图片了：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/11/基于TensorFlow的验证码识别/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/11/TensorFlow中的几种交叉熵/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/TensorFlow中的几种交叉熵/" itemprop="url">TensorFlow中的几种交叉熵</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T14:18:53+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="TensorFlow中的几种交叉熵"><a href="#TensorFlow中的几种交叉熵" class="headerlink" title="TensorFlow中的几种交叉熵"></a>TensorFlow中的几种交叉熵</h1><h3 id="Logit函数"><a href="#Logit函数" class="headerlink" title="Logit函数"></a>Logit函数</h3><p>在线性回归中，<img src="1.gif" alt="1">，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。</p>
-<p>在逻辑回归中：可以看作是用<img src="2.gif" alt="2">直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。</p>
-<p>logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&lt;0.5，函数值为负；p&gt;0.5，函数值为正。</p>
-<p>相对地，softmax和sigmoid则都是将[-inf,inf]映射到[0,1]的函数。</p>
-<p>在tensorflow里的”logits”指的其实是，该方法是在logit数值上使用softmax或者sigmoid来进行normalization的，也暗示用户不要将网络输出进行sigmoid或者softmax，这些过程可以在函数内部更高效地计算。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/11/TensorFlow中的几种交叉熵/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/leetcode_3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/leetcode_3/" itemprop="url">leetcode_3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T22:17:41+08:00">
-                2018-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="LeetCode-No-3"><a href="#LeetCode-No-3" class="headerlink" title="[LeetCode: No.3]"></a>[LeetCode: No.3]</h1><blockquote>
-<p>Given a string, find the length of the longest substring without repeating characters.</p>
-</blockquote>
-<p><strong>题目大意</strong>：给出一个字符串，找到最长的没有重复字符的子字符串，并返回该子字符串的长度。</p>
-<p>Examples：</p>
-<pre><code>Given &quot;abcabcbb&quot;, the answer is &quot;abc&quot;, which the length is 3.
-Given &quot;bbbbb&quot;, the answer is &quot;b&quot;, with the length of 1.
-Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
-</code></pre><h5 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h5><p>粗暴的想法是利用循环嵌套对所有情况进行遍历。大体的思路是：第一层循环从字符串的最左侧到左右侧第二个，然后第二层循环从第一层紧跟着的一个到最后的字符串，之后比较长度得到最大长度的子字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        max_len = <span class="number">0</span> <span class="comment">#用这个值记录我们要返回的最长子字符串长度</span></span><br><span class="line">        <span class="comment">#当原字符串长度为0或1的特殊情况</span></span><br><span class="line">        <span class="keyword">if</span> (len(s) == <span class="number">1</span> <span class="keyword">or</span> len(s) == <span class="number">0</span>):</span><br><span class="line">            max_len = len(s)</span><br><span class="line">        <span class="comment">#开始遍历每一个子字符串，并进行长度比较，得到最长的那个</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(s)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(s)):</span><br><span class="line">                <span class="keyword">if</span> s[j] <span class="keyword">in</span> s[i:j]:</span><br><span class="line">                    <span class="keyword">if</span> j-i &gt; max_len:</span><br><span class="line">                        max_len = j - i</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">elif</span> j == len(s) - <span class="number">1</span>:  	</span><br><span class="line">				<span class="comment">#当j是最后一个字符时，需要加上一个单位</span></span><br><span class="line">                    <span class="keyword">if</span> max_len &lt; j - i + <span class="number">1</span>:</span><br><span class="line">                        max_len = j - i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max_len</span><br></pre></td></tr></table></figure>
-<p>这种解法虽然可以通过，但是效率很低，时间会很长</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/10/leetcode_3/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1707,7 +848,7 @@ Given &quot;pwwkew&quot;, the answer is &quot;wke&quot;, with the length of 3. N
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
