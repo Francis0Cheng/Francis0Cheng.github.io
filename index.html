@@ -305,6 +305,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/vim/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/vim/" itemprop="url">vim</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-17T14:11:02+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="VIM学习"><a href="#VIM学习" class="headerlink" title="VIM学习"></a>VIM学习</h1><h3 id="清空一行内容而不是删除一行"><a href="#清空一行内容而不是删除一行" class="headerlink" title="清空一行内容而不是删除一行"></a>清空一行内容而不是删除一行</h3><p><code>0D</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/trickyproblems/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -453,7 +595,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/TensorFlow中的几种交叉熵/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/jdspider/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -472,7 +614,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/07/TensorFlow中的几种交叉熵/" itemprop="url">TensorFlow中的几种交叉熵</a></h1>
+                <a class="post-title-link" href="/2019/03/07/jdspider/" itemprop="url">jdspider</a></h1>
         
 
         <div class="post-meta">
@@ -484,7 +626,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-07T14:18:53+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-07T18:39:06+08:00">
                 2019-03-07
               </time>
             
@@ -507,8 +649,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
+                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python爬虫</span>
                   </a>
                 </span>
 
@@ -545,208 +687,8 @@
 
       
         
-          <h1 id="TensorFlow中的几种交叉熵"><a href="#TensorFlow中的几种交叉熵" class="headerlink" title="TensorFlow中的几种交叉熵"></a>TensorFlow中的几种交叉熵</h1><h3 id="Logit函数"><a href="#Logit函数" class="headerlink" title="Logit函数"></a>Logit函数</h3><p>在线性回归中，<img src="1.gif" alt="1">，是用直线去拟合数据，实现最小二乘意义下的最小预测误差。</p>
-<p>在逻辑回归中：可以看作是用<img src="2.gif" alt="2">直线去拟合Logit函数，通过极大似然估计出参数，使得在该参数下，能以最大概率生成当前的样本。</p>
-<p>logits函数是一种将取值范围在[0,1]内的概率映射到实数域[-inf,inf]的函数，如果p=0.5，函数值为0；p&lt;0.5，函数值为负；p&gt;0.5，函数值为正。</p>
-<p>相对地，softmax和sigmoid则都是将[-inf,inf]映射到[0,1]的函数。</p>
-<p>在tensorflow里的”logits”指的其实是，该方法是在logit数值上使用softmax或者sigmoid来进行normalization的，也暗示用户不要将网络输出进行sigmoid或者softmax，这些过程可以在函数内部更高效地计算。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/07/TensorFlow中的几种交叉熵/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/scrapy2/" itemprop="url">Scrapy学习（二）命令行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T21:44:12+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Scrapy是通过Scrapy命令行工具进行控制的，包括创建新的项目，爬虫的启动，相关的设置，Scrapy提供了两种内置的命令，分别是全局命令和项目命令，顾名思义，全局命令就是在任意位置都可以执行的命令，而项目命令只有在你新创建了项目之后，在项目目录中才可以执行的命令。在这里，简单的介绍一些常用的命令。</p>
-<h3 id="全局命令"><a href="#全局命令" class="headerlink" title="全局命令"></a>全局命令</h3><ul>
-<li><h4 id="startproject"><a href="#startproject" class="headerlink" title="startproject"></a>startproject</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject &lt;project_name&gt;</span><br></pre></td></tr></table></figure>
-<p>  这个命令是scrapy最为常用的命令之一，它将会在当前目录下创建一个名为</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;project_name&gt;</span><br></pre></td></tr></table></figure>
-<p>  的项目。</p>
-<ul>
-<li><h4 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy settings [options]</span><br></pre></td></tr></table></figure>
-<p>  该命令将会输出Scrapy默认设定，当然如果你在项目中运行这个命令将会输出项目的设定值。</p>
-<ul>
-<li><h4 id="runspider"><a href="#runspider" class="headerlink" title="runspider"></a>runspider</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy runspider &lt;spider_file.py&gt;</span><br></pre></td></tr></table></figure>
-<p>  在未创建项目的情况下，运行一个编写在Python文件中的spider。</p>
-<ul>
-<li><h4 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell [url]</span><br></pre></td></tr></table></figure>
-<p>  以给定的URL(如果给出)或者空(没有给出URL)启动Scrapy shell。</p>
-<p>  例如，</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell http://www.baidu.com</span><br></pre></td></tr></table></figure>
-<p>  将会打开百度URL，</p>
-<p>  并且启动交互式命令行，可以用来做一些测试。</p>
-<ul>
-<li><h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy fetch &lt;url&gt;</span><br></pre></td></tr></table></figure>
-<p>  使用Scrapy下载器(downloader)下载给定的URL，并将获取到的内容送到标准输出。简单的来说，就是打印url的html代码。</p>
-<ul>
-<li><h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy view &lt;url&gt;</span><br></pre></td></tr></table></figure>
-<p>  在你的默认浏览器中打开给定的URL，并以Scrapy spider获取到的形式展现。 有些时候spider获取到的页面和普通用户看到的并不相同，一些动态加载的内容是看不到的， 因此该命令可以用来检查spider所获取到的页面。</p>
-<ul>
-<li><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy version [-v]</span><br></pre></td></tr></table></figure>
-<p>  输出Scrapy版本。配合 -v 运行时，该命令同时输出Python, Twisted以及平台的信息。</p>
-<h3 id="项目命令"><a href="#项目命令" class="headerlink" title="项目命令"></a>项目命令</h3><ul>
-<li><h3 id="crawl"><a href="#crawl" class="headerlink" title="crawl"></a>crawl</h3><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl &lt;spider_name&gt;</span><br></pre></td></tr></table></figure>
-<p>  使用你项目中的spider进行爬取，即启动你的项目。这个命令将会经常用到，我们会在后面的内容中经常使用。</p>
-<ul>
-<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crapy check [-l] &lt;spider&gt;</span><br></pre></td></tr></table></figure>
-<p>  运行contract检查，检查你项目中的错误之处。</p>
-<ul>
-<li><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy list</span><br></pre></td></tr></table></figure>
-<p>  列出当前项目中所有可用的spider。每行输出一个spider。</p>
-<ul>
-<li><h3 id="genspider"><a href="#genspider" class="headerlink" title="genspider"></a>genspider</h3><p>语法:</p>
-</li>
-</ul>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider [-t template] &lt;name&gt; &lt;domain&gt;</span><br></pre></td></tr></table></figure>
-<p>  在当前项目中创建spider。该方法可以使用提前定义好的模板来生成spider。您也可以自己创建spider的源码文件。</p>
+            <h1 id="先占个位置"><a href="#先占个位置" class="headerlink" title="先占个位置"></a>先占个位置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(goods)</span>:</span></span><br><span class="line">    url = <span class="string">'https://search.jd.com/Search?keyword='</span>+ goods+ <span class="string">'&amp;enc=utf-8'</span></span><br><span class="line">    head=&#123;<span class="string">'authority'</span>: <span class="string">'search.jd.com'</span>,</span><br><span class="line">          <span class="string">'method'</span>: <span class="string">'GET'</span>,</span><br><span class="line">          <span class="string">'path'</span>: <span class="string">'/s_new.php?keyword=%E6%89%8B%E6%9C%BA&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E6%89%8B%E6%9C%BA&amp;cid2=653&amp;cid3=655&amp;page=4&amp;s=84&amp;scrolling=y&amp;log_id=1529828108.22071&amp;tpl=3_M&amp;show_items=7651927,7367120,7056868,7419252,6001239,5934182,4554969,3893501,7421462,6577495,26480543553,7345757,4483120,6176077,6932795,7336429,5963066,5283387,25722468892,7425622,4768461'</span>,</span><br><span class="line">          <span class="string">'scheme'</span>: <span class="string">'https'</span>,</span><br><span class="line">          <span class="string">'referer'</span>: <span class="string">'https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E6%89%8B%E6%9C%BA&amp;cid2=653&amp;cid3=655&amp;page=3&amp;s=58&amp;click=0'</span>,</span><br><span class="line">          <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'</span>,</span><br><span class="line">          <span class="string">'x-requested-with'</span>: <span class="string">'XMLHttpRequest'</span>,</span><br><span class="line">          <span class="string">'Cookie'</span>:<span class="string">'qrsc=3; pinId=RAGa4xMoVrs; xtest=1210.cf6b6759; ipLocation=%u5E7F%u4E1C; _jrda=5; TrackID=1aUdbc9HHS2MdEzabuYEyED1iDJaLWwBAfGBfyIHJZCLWKfWaB_KHKIMX9Vj9_2wUakxuSLAO9AFtB2U0SsAD-mXIh5rIfuDiSHSNhZcsJvg; shshshfpa=17943c91-d534-104f-a035-6e1719740bb6-1525571955; shshshfpb=2f200f7c5265e4af999b95b20d90e6618559f7251020a80ea1aee61500; cn=0; 3AB9D23F7A4B3C9B=QFOFIDQSIC7TZDQ7U4RPNYNFQN7S26SFCQQGTC3YU5UZQJZUBNPEXMX7O3R7SIRBTTJ72AXC4S3IJ46ESBLTNHD37U; ipLoc-djd=19-1607-3638-3638.608841570; __jdu=930036140; user-key=31a7628c-a9b2-44b0-8147-f10a9e597d6f; areaId=19; __jdv=122270672|direct|-|none|-|1529893590075; PCSYCityID=25; mt_xid=V2_52007VwsQU1xaVVoaSClUA2YLEAdbWk5YSk9MQAA0BBZOVQ0ADwNLGlUAZwQXVQpaAlkvShhcDHsCFU5eXENaGkIZWg5nAyJQbVhiWR9BGlUNZwoWYl1dVF0%3D; __jdc=122270672; shshshfp=72ec41b59960ea9a26956307465948f6; rkv=V0700; __jda=122270672.930036140.-.1529979524.1529984840.85; __jdb=122270672.1.930036140|85.1529984840; shshshsID=f797fbad20f4e576e9c30d1c381ecbb1_1_1529984840145'</span></span><br><span class="line">          &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r =requests.get(url,headers = head ,timeout = <span class="number">30</span>)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchGoods</span><span class="params">(brand)</span>:</span></span><br><span class="line">    soup = BeautifulSoup(brand,<span class="string">'html.parser'</span>)</span><br><span class="line">    data1 = soup.find(<span class="string">'ul'</span>,&#123;<span class="string">"class"</span>:<span class="string">"J_valueList v-fixed"</span>&#125;)</span><br><span class="line">    datali =data1.find_all(<span class="string">'li'</span>)</span><br><span class="line">    Goods_href=[]</span><br><span class="line">    Goods_name=[]</span><br><span class="line">    <span class="keyword">for</span> li <span class="keyword">in</span> datali:</span><br><span class="line">        Goods_name.append(li.a.attrs[<span class="string">'title'</span>])</span><br><span class="line">        print(li.a.attrs[<span class="string">'title'</span>])</span><br><span class="line">        Goods_href.append(li.a.attrs[<span class="string">'href'</span>])</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(Goods_href)):</span><br><span class="line">        print(<span class="string">"&lt;&lt;&lt;&#123;&#125;."</span>.format(count+<span class="number">1</span>),<span class="string">"品牌    :"</span>+Goods_name[j])</span><br><span class="line">        count = count+<span class="number">1</span></span><br><span class="line">    judge = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(judge):</span><br><span class="line">        Goods_num = input(<span class="string">"请输入品牌对应序号:"</span>)</span><br><span class="line">        <span class="keyword">if</span> Goods_num.isdigit():</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"您的输入有误，请输入数字："</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        a = int(Goods_num)</span><br><span class="line">        <span class="keyword">if</span> a&gt;count:</span><br><span class="line">            print(<span class="string">"输入序号过大，请重新输入："</span>)</span><br><span class="line">            judge = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a&lt;<span class="number">1</span>:</span><br><span class="line">            print(<span class="string">"输入序号过小，请重新输入："</span>)</span><br><span class="line">            judge = <span class="number">1</span></span><br><span class="line">    print(<span class="string">"选择的品牌是： "</span>+Goods_name[int(Goods_num)<span class="number">-1</span>])</span><br><span class="line">    brand_url = <span class="string">"https://search.jd.com/"</span>+Goods_href[int(Goods_num)<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> brand_url</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">orderBy</span><span class="params">(brand_url)</span>:</span></span><br><span class="line">    judge = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(judge):</span><br><span class="line">        kind = input(<span class="string">"按照：综合 / 销量 / 评论数 / 新品 / 价格 进行排序（默认综合）"</span>)</span><br><span class="line">        strinfo =re.compile(<span class="string">'uc=0#J_searchWrap'</span>)<span class="comment">#在对网页的url进行分析的时候发现</span></span><br><span class="line">        uc=<span class="number">0</span><span class="comment">#J_searchWrap可以删减，如果点击不同的话对应的知识psort的值不同</span></span><br><span class="line">        <span class="keyword">if</span> kind == <span class="string">'综合'</span>:</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> kind == <span class="string">'销量'</span>:</span><br><span class="line">            b = strinfo.sub(<span class="string">'psort=3'</span>,brand_url)</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> kind ==<span class="string">'评论数'</span>:</span><br><span class="line">            b = strinfo.sub(<span class="string">'psort=4'</span>,brand_url)</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> kind ==<span class="string">'新品'</span>:</span><br><span class="line">            b = strinfo.sub(<span class="string">'psort=5'</span>,brand_url)</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> kind ==<span class="string">'价格'</span>:</span><br><span class="line">            b = strinfo.sub(<span class="string">'psort=2'</span>,brand_url)</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            print(<span class="string">"输入有误，请重新输入："</span>)</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">focus_good</span><span class="params">(new_brand_url)</span>:</span></span><br><span class="line">    head=&#123;<span class="string">'authority'</span>: <span class="string">'search.jd.com'</span>,</span><br><span class="line">          <span class="string">'method'</span>: <span class="string">'GET'</span>,</span><br><span class="line">          <span class="string">'path'</span>: <span class="string">'/s_new.php?keyword=%E6%89%8B%E6%9C%BA&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E6%89%8B%E6%9C%BA&amp;cid2=653&amp;cid3=655&amp;page=4&amp;s=84&amp;scrolling=y&amp;log_id=1529828108.22071&amp;tpl=3_M&amp;show_items=7651927,7367120,7056868,7419252,6001239,5934182,4554969,3893501,7421462,6577495,26480543553,7345757,4483120,6176077,6932795,7336429,5963066,5283387,25722468892,7425622,4768461'</span>,</span><br><span class="line">          <span class="string">'scheme'</span>: <span class="string">'https'</span>,</span><br><span class="line">          <span class="string">'referer'</span>: <span class="string">'https://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E6%89%8B%E6%9C%BA&amp;cid2=653&amp;cid3=655&amp;page=3&amp;s=58&amp;click=0'</span>,</span><br><span class="line">          <span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'</span>,</span><br><span class="line">          <span class="string">'x-requested-with'</span>: <span class="string">'XMLHttpRequest'</span>,</span><br><span class="line">          <span class="string">'Cookie'</span>:<span class="string">'qrsc=3; pinId=RAGa4xMoVrs; xtest=1210.cf6b6759; ipLocation=%u5E7F%u4E1C; _jrda=5; TrackID=1aUdbc9HHS2MdEzabuYEyED1iDJaLWwBAfGBfyIHJZCLWKfWaB_KHKIMX9Vj9_2wUakxuSLAO9AFtB2U0SsAD-mXIh5rIfuDiSHSNhZcsJvg; shshshfpa=17943c91-d534-104f-a035-6e1719740bb6-1525571955; shshshfpb=2f200f7c5265e4af999b95b20d90e6618559f7251020a80ea1aee61500; cn=0; 3AB9D23F7A4B3C9B=QFOFIDQSIC7TZDQ7U4RPNYNFQN7S26SFCQQGTC3YU5UZQJZUBNPEXMX7O3R7SIRBTTJ72AXC4S3IJ46ESBLTNHD37U; ipLoc-djd=19-1607-3638-3638.608841570; __jdu=930036140; user-key=31a7628c-a9b2-44b0-8147-f10a9e597d6f; areaId=19; __jdv=122270672|direct|-|none|-|1529893590075; PCSYCityID=25; mt_xid=V2_52007VwsQU1xaVVoaSClUA2YLEAdbWk5YSk9MQAA0BBZOVQ0ADwNLGlUAZwQXVQpaAlkvShhcDHsCFU5eXENaGkIZWg5nAyJQbVhiWR9BGlUNZwoWYl1dVF0%3D; __jdc=122270672; shshshfp=72ec41b59960ea9a26956307465948f6; rkv=V0700; __jda=122270672.930036140.-.1529979524.1529984840.85; __jdb=122270672.1.930036140|85.1529984840; shshshsID=f797fbad20f4e576e9c30d1c381ecbb1_1_1529984840145'</span></span><br><span class="line">          &#125;</span><br><span class="line">    r = requests.get(new_brand_url,headers = head)</span><br><span class="line">    r.encoding = <span class="string">'utf-8'</span></span><br><span class="line">    html1 = etree.HTML(r.text)</span><br><span class="line">    datas = html1.xpath(<span class="string">'//li[contains(@class,"gl-item")]'</span>)</span><br><span class="line">    count = <span class="number">1</span></span><br><span class="line">    goods_href =[]</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> datas:</span><br><span class="line">        p_price = data.xpath(<span class="string">'div/div[@class="p-price"]/strong/i/text()'</span>)</span><br><span class="line">        <span class="comment"># p_comment = data.xpath('div/div[5]/strong/a/text()')</span></span><br><span class="line">        p_name = data.xpath(<span class="string">'div/div[@class="p-name p-name-type-2"]/a/em'</span>)</span><br><span class="line">        p_href = data.xpath(<span class="string">'div/div[@class="p-name p-name-type-2"]/a/@href'</span>)</span><br><span class="line">        print(count,[p_name[<span class="number">0</span>].xpath(<span class="string">'string(.)'</span>),p_price[<span class="number">0</span>]])</span><br><span class="line">        goods_href.append(p_href)</span><br><span class="line">        count = count+<span class="number">1</span></span><br><span class="line">    judge = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(judge):</span><br><span class="line">        focus_num = input(<span class="string">"您关注的商品序号是:"</span>)</span><br><span class="line">        <span class="keyword">if</span> focus_num.isdigit():</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"您的输入有误，请输入数字："</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        a = int(focus_num)</span><br><span class="line">        <span class="keyword">if</span> a&gt;count<span class="number">-1</span>:</span><br><span class="line">            print(<span class="string">"输入序号过大，请重新输入："</span>)</span><br><span class="line">            judge = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> a&lt;<span class="number">1</span>:</span><br><span class="line">            print(<span class="string">"输入序号过小，请重新输入："</span>)</span><br><span class="line">            judge = <span class="number">1</span></span><br><span class="line">    focus_good_url = goods_href[int(focus_num)<span class="number">-1</span>]</span><br><span class="line">    <span class="comment"># print(focus_good_url)</span></span><br><span class="line">    <span class="keyword">return</span> focus_good_url</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_Firefox</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="comment">#location = 'D:/firefox-48.0b9.win64.sdk/firefox-sdk/bin/firefox.exe'</span></span><br><span class="line">    driver = webdriver.Chrome()</span><br><span class="line">    driver.get(num)</span><br><span class="line">    focus_url = driver.current_url</span><br><span class="line">    focus_title = driver.title[:<span class="number">-16</span>]</span><br><span class="line">    YesorNo3 = input(<span class="string">"是否将此商品加入关注列表？(yes or no)"</span>)</span><br><span class="line">    <span class="keyword">if</span> YesorNo3 == <span class="string">'yes'</span>:</span><br><span class="line">        print(<span class="string">"商品已成功加入关注列表"</span>)</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'JD_goods.csv'</span>, <span class="string">'a'</span>, newline=<span class="string">""</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            write1 = csv.writer(f)</span><br><span class="line">            write1.writerow([focus_title])</span><br><span class="line">            write1.writerow([focus_url])</span><br><span class="line">            write1.writerow([<span class="string">"---------------------------"</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    judge = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span>(judge):</span><br><span class="line">        YesorNo = input(<span class="string">"是否需要打开关注商品信息：(yes or no)"</span>)</span><br><span class="line">        <span class="keyword">if</span> YesorNo == <span class="string">'yes'</span> <span class="keyword">or</span> YesorNo == <span class="string">'YES'</span>:</span><br><span class="line">            <span class="keyword">with</span> open(<span class="string">'JD_goods.csv'</span>,<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> cv:</span><br><span class="line">                cv_read = cv.read()</span><br><span class="line">                print(cv_read)</span><br><span class="line">                judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> YesorNo == <span class="string">'no'</span> <span class="keyword">or</span> YesorNo == <span class="string">'NO'</span>:</span><br><span class="line">            judge = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"输入有误，请重新输入："</span>)</span><br><span class="line">    goods_name =input(<span class="string">"请输入需要查询的商品种类："</span>)</span><br><span class="line">    data = getHTMLText(goods_name)</span><br><span class="line">    YesorNo2 = input(<span class="string">"是否需要根据商品品牌进行排列：(yes or no)"</span>)</span><br><span class="line">    <span class="keyword">if</span> YesorNo2 == <span class="string">'yes'</span>:</span><br><span class="line">        brand_url = searchGoods(data)</span><br><span class="line">    <span class="keyword">else</span> :</span><br><span class="line">        brand_url = searchGoods(data)</span><br><span class="line">    new_brand_url = orderBy(brand_url)</span><br><span class="line">    focus_good_url = focus_good(new_brand_url)</span><br><span class="line">    str1 = str(focus_good_url)</span><br><span class="line">    new_url = <span class="string">"https:"</span>+str1[<span class="number">2</span>:<span class="number">-2</span>]</span><br><span class="line">    <span class="comment"># print(new_url)</span></span><br><span class="line">    open_Firefox(new_url)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -786,7 +728,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -831,7 +773,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -842,7 +784,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -853,7 +795,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
