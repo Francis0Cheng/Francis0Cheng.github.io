@@ -119,13 +119,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Francis&#39;Blog">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="###  vim 选择文本，删除，复制，粘贴   文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v    从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。  V    从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。  Ctrl + v   从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。  ggVG 选中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vimcmd">
+<meta property="og:url" content="http://yoursite.com/2019/02/17/vimcmd/index.html">
 <meta property="og:site_name" content="Francis&#39;Blog">
+<meta property="og:description" content="###  vim 选择文本，删除，复制，粘贴   文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v    从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。  V    从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。  Ctrl + v   从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。  ggVG 选中">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/vimcmd/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/vimcmd/2.png">
+<meta property="og:updated_time" content="2019-03-17T02:28:53.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Francis&#39;Blog">
+<meta name="twitter:title" content="vimcmd">
+<meta name="twitter:description" content="###  vim 选择文本，删除，复制，粘贴   文本的选择，对于编辑器来说，是很基本的东西，也经常被用到，总结如下： v    从光标当前位置开始，光标所经过的地方会被选中，再按一下v结束。  V    从光标当前行开始，光标经过的行都会被选中，再按一下Ｖ结束。  Ctrl + v   从光标当前位置开始，选中光标起点和终点所构成的矩形区域，再按一下Ｃtrl + v结束。  ggVG 选中">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/17/vimcmd/1.png">
 
 
 
@@ -154,13 +161,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/17/vimcmd/">
 
 
 
 
 
-  <title>Francis'Blog</title>
+  <title>vimcmd | Francis'Blog</title>
   
 
 
@@ -185,9 +192,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -290,399 +295,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/regex/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/02/regex/" itemprop="url">正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-02T20:28:23+08:00">
-                2019-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="常见匹配模式"><a href="#常见匹配模式" class="headerlink" title="常见匹配模式"></a>常见匹配模式</h2><table>
-<thead>
-<tr>
-<th>模式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\w</td>
-<td>匹配字母数字及下划线</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配非字母数字下划线</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任意空白字符，等价于 [\t\n\r\f].</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任意非空字符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配任意数字，等价于 [0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配任意非数字</td>
-</tr>
-<tr>
-<td>\A</td>
-<td>匹配字符串开始</td>
-</tr>
-<tr>
-<td>\Z</td>
-<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串</td>
-</tr>
-<tr>
-<td>\z</td>
-<td>匹配字符串结束</td>
-</tr>
-<tr>
-<td>\G</td>
-<td>匹配最后匹配完成的位置</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>匹配一个换行符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>匹配一个制表符</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配字符串的开头</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配字符串的末尾。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。</td>
-</tr>
-<tr>
-<td>[…]</td>
-<td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
-</tr>
-<tr>
-<td>[^…]</td>
-<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配0个或多个的表达式。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配1个或多个的表达式。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>精确匹配n个前面表达式。</td>
-</tr>
-<tr>
-<td>{n, m}</td>
-<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
-</tr>
-<tr>
-<td>a&#124;b</td>
-<td>匹配a或b</td>
-</tr>
-<tr>
-<td>( )</td>
-<td>匹配括号内的表达式，也表示一个组</td>
-</tr>
-</tbody>
-</table>
-<h2 id="re-match"><a href="#re-match" class="headerlink" title="re.match"></a>re.match</h2><p>  <code>re.match</code> 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, string, flags=0)</span><br></pre></td></tr></table></figure>
-<h3 id="最常规的匹配"><a href="#最常规的匹配" class="headerlink" title="最常规的匹配"></a>最常规的匹配</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">   content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">   print(len(content))</span><br><span class="line">   result = re.match(<span class="string">'^Hello\s\d\d\d\s\d&#123;4&#125;\s\w&#123;10&#125;.*Demo$'</span>, content)</span><br><span class="line">   print(result)</span><br><span class="line">   print(result.group(<span class="number">0</span>))</span><br><span class="line">   print(result.span())</span><br></pre></td></tr></table></figure>
-<p>RESULT:</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;_sre.SRE_Match object; span=(0, 41), match=&apos;Hello 123 4567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; Hello 123 4567 World_This is a Regex Demo</span><br><span class="line">&gt; (0, 41)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/02/regex/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/requests/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/01/requests/" itemprop="url">requests</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T20:58:50+08:00">
-                2019-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="GET请求："><a href="#GET请求：" class="headerlink" title="GET请求："></a><strong>GET请求：</strong></h2><p>带参数的url请求：　　　　　　</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">data =&#123;<span class="string">'name'</span>:<span class="string">'cheng'</span>,<span class="string">'age'</span>:<span class="number">20</span>&#125;        <span class="comment">#参数</span></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>, params=data)</span><br></pre></td></tr></table></figure>
-<p>这样requests会给我们自动build这个网址，查看response.url 这个属性。会得到我们请求的代码</p>
-<p>‘<a href="https://httpbin.org/get?name=cheng&amp;age=20&#39;" target="_blank" rel="noopener">https://httpbin.org/get?name=cheng&amp;age=20&#39;</a></p>
-<h2 id="解析JSON："><a href="#解析JSON：" class="headerlink" title="解析JSON："></a><strong>解析JSON：</strong></h2><p>requests还提供了一个解析json的方法，用get方法请求 <a href="https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。" target="_blank" rel="noopener">https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。</a></p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>)</span><br><span class="line">print(response.json()) <span class="comment">#调用json方法</span></span><br><span class="line">print(json.loads(response.text))</span><br></pre></td></tr></table></figure>
-<p>用json.loads把json数据转化字典方法，同样打印输出，发现和response.json()是一样的，其实response.json()就是通过一个json.loads()方法</p>
-<h2 id="获取二进制数据"><a href="#获取二进制数据" class="headerlink" title="获取二进制数据"></a><strong>获取二进制数据</strong></h2><p>​
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/01/requests/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -712,9 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/17/vimcmd/" itemprop="url">vimcmd</a></h1>
+          <h1 class="post-title" itemprop="name headline">vimcmd</h1>
         
 
         <div class="post-meta">
@@ -764,9 +377,7 @@
       
 
       
-        
-          
-            <p> <strong><img src="1.png" alt="img"></strong></p>
+        <p> <strong><img src="1.png" alt="img"></strong></p>
 <p><strong><img src="2.png" alt="img"></strong></p>
 <p>### </p>
 <p><strong>vim 选择文本，删除，复制，粘贴</strong>  </p>
@@ -835,8 +446,6 @@
 <p>51.为每一个文件打开一个窗口<br>  使用”-o”选项可以让Vim为每一个文件打开一个窗口：<br>“vim -o one.txt two.txt three.txt”。</p>
 <p>52.使用vimdiff查看不同<br>  “vimdiff main.c~ main.c”,另一种进入diff模式的办法可以在Vim运行中操作。编辑文件”main.c”，然后打开另一个分隔窗口显示其不同:<br>  “:edit main.c”<br>  “:vertical diffpatch main.c.diff”。<br>53.页签<br>   命令”:tabe(dit) thatfile”在一个窗口中打开”thatfile”，该窗口占据着整个的Vim显示区域。命令”:tab split/new”结果是新建了一个拥有一个窗口的页签。以用”gt”命令在不同的页签间切换。</p>
 
-          
-        
       
     </div>
     
@@ -853,12 +462,32 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/django-vuejs-api-views/" rel="next" title="django-vuejs-api-views">
+                <i class="fa fa-chevron-left"></i> django-vuejs-api-views
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/01/requests/" rel="prev" title="requests">
+                requests <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -868,14 +497,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -883,6 +509,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+    <div id="gitalk-container"></div>
+
+    
+    
+  </div>
+
 
 
         </div>
@@ -1085,10 +719,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -1123,6 +757,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'd61c38683e5785c4bc98',
+          clientSecret: '3ddda05f9da44c28b40204829c97b9204ce7bba4',
+          repo: 'Francis0Cheng.github.io',
+          owner: 'Francis0Cheng',
+          admin: ['Francis0Cheng'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
