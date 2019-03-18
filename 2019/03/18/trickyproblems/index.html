@@ -123,11 +123,11 @@
 <meta name="keywords" content="Tricky Problems">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tricky Problems">
-<meta property="og:url" content="http://yoursite.com/2019/03/08/trickyproblems/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/trickyproblems/index.html">
 <meta property="og:site_name" content="Francis&#39;Blog">
 <meta property="og:description" content="这里记录了我遇到过的一些棘手的问题。 解决opencv中读取中文路径的图片的问题123def cv_imread(file_path):    cv_img = cv2.imdecode(np.fromfile(file_path,dtype=np.uint8),-1)    return cv_img matlab 把数组中的NaN去除掉123a = [NaN 1  2  3 4];p = fi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-16T11:17:16.923Z">
+<meta property="og:updated_time" content="2019-03-18T11:56:40.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tricky Problems">
 <meta name="twitter:description" content="这里记录了我遇到过的一些棘手的问题。 解决opencv中读取中文路径的图片的问题123def cv_imread(file_path):    cv_img = cv2.imdecode(np.fromfile(file_path,dtype=np.uint8),-1)    return cv_img matlab 把数组中的NaN去除掉123a = [NaN 1  2  3 4];p = fi">
@@ -159,7 +159,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/08/trickyproblems/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/trickyproblems/">
 
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/trickyproblems/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/trickyproblems/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-08T20:26:14+08:00">
-                2019-03-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-18T20:26:14+08:00">
+                2019-03-18
               </time>
             
 
@@ -400,10 +400,12 @@
         <p>这里记录了我遇到过的一些棘手的问题。</p>
 <h2 id="解决opencv中读取中文路径的图片的问题"><a href="#解决opencv中读取中文路径的图片的问题" class="headerlink" title="解决opencv中读取中文路径的图片的问题"></a>解决opencv中读取中文路径的图片的问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cv_imread</span><span class="params">(file_path)</span>:</span></span><br><span class="line">    cv_img = cv2.imdecode(np.fromfile(file_path,dtype=np.uint8),<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> cv_img</span><br></pre></td></tr></table></figure>
 <h2 id="matlab-把数组中的NaN去除掉"><a href="#matlab-把数组中的NaN去除掉" class="headerlink" title="matlab 把数组中的NaN去除掉"></a>matlab 把数组中的NaN去除掉</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [NaN <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span> <span class="number">4</span>];</span><br><span class="line">p = <span class="built_in">find</span>(<span class="built_in">isnan</span>(a))</span><br><span class="line">a(p) = [];</span><br></pre></td></tr></table></figure>
-<h2 id="mysql-创建数据库时指定utf-8编码"><a href="#mysql-创建数据库时指定utf-8编码" class="headerlink" title="mysql 创建数据库时指定utf-8编码"></a>mysql 创建数据库时指定utf-8编码</h2><p>创建数据库编码指定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE dbname DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
-<p>设置数据表编码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &apos;author&apos; (</span><br><span class="line">    &apos;authorid&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;name&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;age&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;country&apos; char(20) NOT NULL</span><br><span class="line">) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;</span><br></pre></td></tr></table></figure>
+<h2 id="mysql-创建数据库时指定utf-8编码"><a href="#mysql-创建数据库时指定utf-8编码" class="headerlink" title="mysql 创建数据库时指定utf-8编码"></a>mysql 创建数据库时指定utf-8编码</h2><h3 id="创建数据库编码指定"><a href="#创建数据库编码指定" class="headerlink" title="创建数据库编码指定"></a>创建数据库编码指定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE dbname DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
+<h3 id="设置数据表编码"><a href="#设置数据表编码" class="headerlink" title="设置数据表编码"></a>设置数据表编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &apos;author&apos; (</span><br><span class="line">    &apos;authorid&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;name&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;age&apos; char(20) NOT NULL,</span><br><span class="line">    &apos;country&apos; char(20) NOT NULL</span><br><span class="line">) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;</span><br></pre></td></tr></table></figure>
+<h2 id="Xshell-传输和接受文件"><a href="#Xshell-传输和接受文件" class="headerlink" title="Xshell 传输和接受文件"></a>Xshell 传输和接受文件</h2><p>首先需要安装 <code>lrzsz</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install  lrzsz</span><br></pre></td></tr></table></figure>
+<h3 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h3><p>sz , s 应该是sent</p>
+<h3 id="接受"><a href="#接受" class="headerlink" title="接受"></a>接受</h3><p>rz , r 应该是 recieve</p>
 
       
     </div>
@@ -434,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/07/jdspider/" rel="next" title="jdspider">
-                <i class="fa fa-chevron-left"></i> jdspider
+              <a href="/2019/03/17/vim/" rel="next" title="vim">
+                <i class="fa fa-chevron-left"></i> vim
               </a>
             
           </div>
@@ -443,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/17/vim/" rel="prev" title="vim">
-                vim <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决opencv中读取中文路径的图片的问题"><span class="nav-number">1.</span> <span class="nav-text">解决opencv中读取中文路径的图片的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab-把数组中的NaN去除掉"><span class="nav-number">2.</span> <span class="nav-text">matlab 把数组中的NaN去除掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-创建数据库时指定utf-8编码"><span class="nav-number">3.</span> <span class="nav-text">mysql 创建数据库时指定utf-8编码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决opencv中读取中文路径的图片的问题"><span class="nav-number">1.</span> <span class="nav-text">解决opencv中读取中文路径的图片的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab-把数组中的NaN去除掉"><span class="nav-number">2.</span> <span class="nav-text">matlab 把数组中的NaN去除掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-创建数据库时指定utf-8编码"><span class="nav-number">3.</span> <span class="nav-text">mysql 创建数据库时指定utf-8编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库编码指定"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库编码指定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置数据表编码"><span class="nav-number">3.2.</span> <span class="nav-text">设置数据表编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xshell-传输和接受文件"><span class="nav-number">4.</span> <span class="nav-text">Xshell 传输和接受文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传输"><span class="nav-number">4.1.</span> <span class="nav-text">传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受"><span class="nav-number">4.2.</span> <span class="nav-text">接受</span></a></li></ol></li></ol></div>
             
 
           </div>
