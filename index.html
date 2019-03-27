@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/linux-file-folder-operation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/linux-operation/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -346,7 +346,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/20/linux-file-folder-operation/" itemprop="url">Linux中文件夹和文件的操作</a></h1>
+                <a class="post-title-link" href="/2019/03/20/linux-operation/" itemprop="url">Linux中文件夹和文件的操作</a></h1>
         
 
         <div class="post-meta">
@@ -420,7 +420,7 @@
       
         
           
-            <h1 id="Linux中文件夹和文件的操作"><a href="#Linux中文件夹和文件的操作" class="headerlink" title="Linux中文件夹和文件的操作"></a>Linux中文件夹和文件的操作</h1><h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><p>使用mv命令</p>
+            <h2 id="Linux中文件夹和文件的操作"><a href="#Linux中文件夹和文件的操作" class="headerlink" title="Linux中文件夹和文件的操作"></a>Linux中文件夹和文件的操作</h2><h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><p>使用mv命令</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/jack/testfile /home/jack/testfile2</span><br></pre></td></tr></table></figure>
 <p>如果你在<code>/home/jack</code>文件夹中就可以直接</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv testfile testfile2</span><br></pre></td></tr></table></figure>
@@ -433,6 +433,10 @@
 <p>只需要加上slash就行了，表示这个文件夹</p>
 <p>移动到一个不存在的文件夹目录下的新文件夹</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir --parents ./some/path/; mv yourfile.txt $_</span><br></pre></td></tr></table></figure>
+<h2 id="杀掉某一个端口的程序"><a href="#杀掉某一个端口的程序" class="headerlink" title="杀掉某一个端口的程序"></a>杀掉某一个端口的程序</h2><p> <code>fuser 8080/tcp</code> will print you PID of process bound on that port.</p>
+<p><code>fuser -k 8080/tcp</code> will kill that process.</p>
+<p>More universal is use of <code>lsof -i4</code> (or 6 for IPv6).</p>
+
           
         
       

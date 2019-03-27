@@ -123,11 +123,11 @@
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux中文件夹和文件的操作">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/linux-file-folder-operation/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/linux-operation/index.html">
 <meta property="og:site_name" content="Francis&#39;Blog">
 <meta property="og:description" content="Linux中文件夹和文件的操作移动文件使用mv命令 1mv /home/jack/testfile /home/jack/testfile2 如果你在/home/jack文件夹中就可以直接 1mv testfile testfile2 如果只想移动文件 1mv /home/jack/testfile /home/jack/Documents/ 如果想批量移动相似的文件类型比如说你的Download">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-21T00:23:38.522Z">
+<meta property="og:updated_time" content="2019-03-27T10:54:23.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux中文件夹和文件的操作">
 <meta name="twitter:description" content="Linux中文件夹和文件的操作移动文件使用mv命令 1mv /home/jack/testfile /home/jack/testfile2 如果你在/home/jack文件夹中就可以直接 1mv testfile testfile2 如果只想移动文件 1mv /home/jack/testfile /home/jack/Documents/ 如果想批量移动相似的文件类型比如说你的Download">
@@ -159,7 +159,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/20/linux-file-folder-operation/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/20/linux-operation/">
 
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/linux-file-folder-operation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/linux-operation/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -419,7 +419,7 @@
       
 
       
-        <h1 id="Linux中文件夹和文件的操作"><a href="#Linux中文件夹和文件的操作" class="headerlink" title="Linux中文件夹和文件的操作"></a>Linux中文件夹和文件的操作</h1><h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><p>使用mv命令</p>
+        <h2 id="Linux中文件夹和文件的操作"><a href="#Linux中文件夹和文件的操作" class="headerlink" title="Linux中文件夹和文件的操作"></a>Linux中文件夹和文件的操作</h2><h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><p>使用mv命令</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/jack/testfile /home/jack/testfile2</span><br></pre></td></tr></table></figure>
 <p>如果你在<code>/home/jack</code>文件夹中就可以直接</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv testfile testfile2</span><br></pre></td></tr></table></figure>
@@ -432,6 +432,10 @@
 <p>只需要加上slash就行了，表示这个文件夹</p>
 <p>移动到一个不存在的文件夹目录下的新文件夹</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir --parents ./some/path/; mv yourfile.txt $_</span><br></pre></td></tr></table></figure>
+<h2 id="杀掉某一个端口的程序"><a href="#杀掉某一个端口的程序" class="headerlink" title="杀掉某一个端口的程序"></a>杀掉某一个端口的程序</h2><p> <code>fuser 8080/tcp</code> will print you PID of process bound on that port.</p>
+<p><code>fuser -k 8080/tcp</code> will kill that process.</p>
+<p>More universal is use of <code>lsof -i4</code> (or 6 for IPv6).</p>
+
       
     </div>
     
@@ -606,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux中文件夹和文件的操作"><span class="nav-number">1.</span> <span class="nav-text">Linux中文件夹和文件的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#移动文件"><span class="nav-number">1.1.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动文件夹"><span class="nav-number">1.2.</span> <span class="nav-text">移动文件夹</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux中文件夹和文件的操作"><span class="nav-number">1.</span> <span class="nav-text">Linux中文件夹和文件的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动文件"><span class="nav-number">2.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动文件夹"><span class="nav-number">3.</span> <span class="nav-text">移动文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杀掉某一个端口的程序"><span class="nav-number">4.</span> <span class="nav-text">杀掉某一个端口的程序</span></a></li></ol></div>
             
 
           </div>

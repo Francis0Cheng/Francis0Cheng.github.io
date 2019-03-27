@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title><![CDATA[Linux中文件夹和文件的操作]]></title>
-    <url>%2F2019%2F03%2F20%2Flinux-file-folder-operation%2F</url>
-    <content type="text"><![CDATA[Linux中文件夹和文件的操作移动文件使用mv命令 1mv /home/jack/testfile /home/jack/testfile2 如果你在/home/jack文件夹中就可以直接 1mv testfile testfile2 如果只想移动文件 1mv /home/jack/testfile /home/jack/Documents/ 如果想批量移动相似的文件类型比如说你的Downloads文件夹中包含了很多mp3文件，你想要将他们都移动到Music文件夹中 1mv ~/Downloads/*.mp3 ~/Music/ 移动文件夹移动文件夹和移动文件是一样的 1mv /home/vivek/data/ /nas/home/vivek/archived/ 只需要加上slash就行了，表示这个文件夹 移动到一个不存在的文件夹目录下的新文件夹 1mkdir --parents ./some/path/; mv yourfile.txt $_]]></content>
+    <url>%2F2019%2F03%2F20%2Flinux-operation%2F</url>
+    <content type="text"><![CDATA[Linux中文件夹和文件的操作移动文件使用mv命令 1mv /home/jack/testfile /home/jack/testfile2 如果你在/home/jack文件夹中就可以直接 1mv testfile testfile2 如果只想移动文件 1mv /home/jack/testfile /home/jack/Documents/ 如果想批量移动相似的文件类型比如说你的Downloads文件夹中包含了很多mp3文件，你想要将他们都移动到Music文件夹中 1mv ~/Downloads/*.mp3 ~/Music/ 移动文件夹移动文件夹和移动文件是一样的 1mv /home/vivek/data/ /nas/home/vivek/archived/ 只需要加上slash就行了，表示这个文件夹 移动到一个不存在的文件夹目录下的新文件夹 1mkdir --parents ./some/path/; mv yourfile.txt $_ 杀掉某一个端口的程序 fuser 8080/tcp will print you PID of process bound on that port. fuser -k 8080/tcp will kill that process. More universal is use of lsof -i4 (or 6 for IPv6).]]></content>
       <categories>
         <category>Linux</category>
       </categories>
