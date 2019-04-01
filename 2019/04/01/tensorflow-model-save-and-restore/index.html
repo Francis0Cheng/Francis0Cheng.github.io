@@ -128,7 +128,7 @@
 <meta property="og:description" content="在本教程中，我将会解释：  TensorFlow模型是什么样的？ 如何保存TensorFlow模型？ 如何恢复预测/转移学习的TensorFlow模型？ 如何使用导入的预先训练的模型进行微调和修改?  这个教程假设你已经对神经网络有了一定的了解。如果不了解的话请查阅相关资料。 1. 什么是TensorFlow模型？训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img-blog.csdn.net/20180210100008534">
-<meta property="og:updated_time" content="2019-04-01T05:49:53.625Z">
+<meta property="og:updated_time" content="2019-04-01T05:52:00.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow模型保存与恢复">
 <meta name="twitter:description" content="在本教程中，我将会解释：  TensorFlow模型是什么样的？ 如何保存TensorFlow模型？ 如何恢复预测/转移学习的TensorFlow模型？ 如何使用导入的预先训练的模型进行微调和修改?  这个教程假设你已经对神经网络有了一定的了解。如果不了解的话请查阅相关资料。 1. 什么是TensorFlow模型？训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模">
@@ -441,6 +441,7 @@
 <p>在0.11之前的Tensorflow模型仅包含三个文件:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">inception_v1.meta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inception_v1.ckpt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">checkpoint</span><br></pre></td></tr></table></figure>
 <p>现在我们已经知道了Tensorflow模型的样子，接下来我们来看看TensorFlow是如何保存模型的。</p>
+<a id="more"></a>
 <h1 id="2-保存TensorFlow模型"><a href="#2-保存TensorFlow模型" class="headerlink" title="2. 保存TensorFlow模型"></a>2. 保存TensorFlow模型</h1><p>比方说，你正在训练一个卷积神经网络来进行图像分类。作为一种标准的练习，你要时刻关注损失和准确率。一旦看到网络已经收敛，我们可以暂停模型的训练。在完成培训之后，我们希望将所有的变量和网络结构保存到一个文件中，以便将来使用。因此，在Tensorflow中，我们希望保存所有参数的图和值，我们将创建一个tf.train.Saver()类的实例。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">saver = tf.train.Saver()</span><br></pre></td></tr></table></figure>
 <p>请记住，Tensorflow变量仅在会话中存在。因此，您必须在一个会话中保存模型，调用您刚刚创建的save方法。</p>
