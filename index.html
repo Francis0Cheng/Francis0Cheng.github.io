@@ -419,25 +419,28 @@
 
       
         
-          <p>在本教程中，我将会解释：</p>
-<ol>
-<li>TensorFlow模型是什么样的？</li>
-<li>如何保存TensorFlow模型？</li>
-<li>如何恢复预测/转移学习的TensorFlow模型？</li>
-<li>如何使用导入的预先训练的模型进行微调和修改?</li>
-</ol>
-<p>这个教程假设你已经对神经网络有了一定的了解。如果不了解的话请查阅相关资料。</p>
-<h1 id="1-什么是TensorFlow模型？"><a href="#1-什么是TensorFlow模型？" class="headerlink" title="1. 什么是TensorFlow模型？"></a>1. 什么是TensorFlow模型？</h1><p>训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模型?Tensorflow模型主要包含我们所培训的网络参数的网络设计或图形和值。因此，Tensorflow模型有两个主要的文件:</p>
-<p>a) Meta graph：<br>     这是一个协议缓冲区，它保存了完整的Tensorflow图形;即所有变量、操作、集合等。该文件以.meta作为扩展名。</p>
+          <h1 id="1-什么是TensorFlow模型？"><a href="#1-什么是TensorFlow模型？" class="headerlink" title="1. 什么是TensorFlow模型？"></a>1. 什么是TensorFlow模型？</h1><p>训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模型? Tensorflow模型主要包含我们所培训的网络参数的网络设计或图形和值。因此，Tensorflow模型有两个主要的文件:</p>
+<p>a) Meta graph：<br>     这是一个协议缓冲区，它保存了完整的Tensorflow图形;即所有<strong>变量、操作、集合</strong>等。该文件以<strong>.meta</strong>作为扩展名。</p>
 <p>b) Checkpoint file：</p>
 <p>​    这是一个二进制文件，它包含了所有的权重、偏差、梯度和其他所有变量的值。这个文件有一个扩展名.ckpt。然而，Tensorflow从0.11版本中改变了这一点。现在，我们有两个文件，而不是单个.ckpt文件:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mymodel.data<span class="number">-00000</span>-of<span class="number">-00001</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mymodel.index</span><br></pre></td></tr></table></figure>
-<p>.data文件是包含我们训练变量的文件，我们待会将会使用它。</p>
+<ul>
+<li>model.ckpt.data-00000-of-00001</li>
+<li>model.ckpt.meta</li>
+</ul>
+<p><code>.data</code>文件是包含我们训练变量的文件，我们待会将会使用它。</p>
 <p>与此同时，Tensorflow也有一个名为checkpoint的文件，它只保存的最新保存的checkpoint文件的记录。</p>
 <p>因此，为了总结，对于大于0.10的版本，Tensorflow模型如下:</p>
-<p><img src="https://img-blog.csdn.net/20180210100008534" alt="img"></p>
+<p><img src="1.png" alt="1"></p>
 <p>在0.11之前的Tensorflow模型仅包含三个文件:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">inception_v1.meta</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inception_v1.ckpt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">checkpoint</span><br></pre></td></tr></table></figure>
+<ul>
+<li>inception_v1.meta    </li>
+<li>inception_v1.ckpt      </li>
+<li>checkpoint  </li>
+</ul>
+<p><strong>之后的Tensorflow模型包含多了一个文件</strong></p>
+<ul>
+<li>model.ckpt.data-00000-of-00001        </li>
+</ul>
 <p>现在我们已经知道了Tensorflow模型的样子，接下来我们来看看TensorFlow是如何保存模型的。</p>
           <!--noindex-->
           <div class="post-button text-center">
