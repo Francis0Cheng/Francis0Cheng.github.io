@@ -563,8 +563,18 @@
       
         
           
-            <h1 id="Matmab数据处理"><a href="#Matmab数据处理" class="headerlink" title="Matmab数据处理"></a>Matmab数据处理</h1><p> 标准化</p>
-<p><code>zscore</code>(data, 0, 1)列 </p>
+            <h1 id="Matmab数据处理"><a href="#Matmab数据处理" class="headerlink" title="Matmab数据处理"></a>Matmab数据处理</h1><h2 id="Matlab生成正态分布的数据"><a href="#Matlab生成正态分布的数据" class="headerlink" title="Matlab生成正态分布的数据"></a>Matlab生成正态分布的数据</h2><p>需要两个指标， 一个是原有数据的平均数（&mu;）和标准差（&sigma;）</p>
+<ul>
+<li>平均数计算函数<code>mean(数据， 维度)</code></li>
+<li>标准差计算函数<code>std(数据， w， 维度)</code></li>
+</ul>
+<p>​          第二个参数<code>w</code>决定了用哪一个标准差函数，如果取0，则代表除以N-1，如果是1代表的是除以N。</p>
+<p>如数据为 <code>data = [1 2 3]</code>， 那么 <code>std(data, 0)</code> 计算的结果就是<code>根号sqrt((1+1)/(3-1))=1</code> , <code>std(data, 1)</code> 计算的结果就是<code>sqrt((1+1)/3)=0.81645了</code></p>
+<p>最后得到正态分布的公式是 <code>标准差* randn(NUM, 1)+平均数</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_data(i, :) = std_data(i)*randn(NUM, 1) +mu_data(i);</span><br></pre></td></tr></table></figure>
+<p>其中NUM是生成多少个数据, 可以用<code>hist()</code>函数画出生成数据的直方图看看是不是正态分布的</p>
+<h1 id="标准化函数"><a href="#标准化函数" class="headerlink" title="标准化函数"></a>标准化函数</h1><p> 标准化</p>
+<p><code>zscore</code>(data, 0, 1)  <code>1代表列</code></p>
 
           
         
