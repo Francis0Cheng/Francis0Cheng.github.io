@@ -123,11 +123,11 @@
 <meta name="keywords" content="Tricks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tricks">
-<meta property="og:url" content="http://yoursite.com/2019/03/18/trickyproblems/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/tricks/index.html">
 <meta property="og:site_name" content="Francis&#39;Blog">
 <meta property="og:description" content="解决opencv中读取中文路径的图片的问题123def cv_imread(file_path):    cv_img = cv2.imdecode(np.fromfile(file_path,dtype=np.uint8),-1)    return cv_img matlab 把数组中的NaN去除掉123a = [NaN 1  2  3 4];p = find(isnan(a))a(p) =">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T05:47:51.942Z">
+<meta property="og:updated_time" content="2019-04-03T07:39:02.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tricks">
 <meta name="twitter:description" content="解决opencv中读取中文路径的图片的问题123def cv_imread(file_path):    cv_img = cv2.imdecode(np.fromfile(file_path,dtype=np.uint8),-1)    return cv_img matlab 把数组中的NaN去除掉123a = [NaN 1  2  3 4];p = find(isnan(a))a(p) =">
@@ -159,7 +159,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/18/trickyproblems/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/tricks/">
 
 
 
@@ -206,7 +206,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Life is Brilliant</p>
+        <p class="site-subtitle">很惭愧，就做了一点微小的工作。</p>
       
   </div>
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/trickyproblems/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/tricks/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Francis Cheng">
@@ -432,6 +432,19 @@
 <li>要注意转置的问题</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">convert_to_one_hot</span><span class="params">(y, C)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.eye(C)[y.reshape(<span class="number">-1</span>)].T</span><br></pre></td></tr></table></figure>
+<h2 id="Matlab生成正态分布的数据"><a href="#Matlab生成正态分布的数据" class="headerlink" title="Matlab生成正态分布的数据"></a>Matlab生成正态分布的数据</h2><p>需要两个指标， 一个是原有数据的平均数（&mu;）和标准差（&sigma;）</p>
+<ul>
+<li><p>平均数计算函数<code>mean(数据， 维度)</code></p>
+</li>
+<li><p>标准差计算函数<code>std(数据， w， 维度)</code></p>
+</li>
+</ul>
+<p>​          第二个参数<code>w</code>决定了用哪一个标准差函数，如果取0，则代表除以N-1，如果是1代表的是除以N。</p>
+<p>如数据为 <code>data = [1 2 3]</code>， 那么 <code>std(data, 0)</code> 计算的结果就是<code>根号sqrt((1+1)/(3-1))=1</code> , <code>std(data, 1)</code> 计算的结果就是<code>sqrt((1+1)/3)=0.81645了</code></p>
+<p>最后得到正态分布的公式是 <code>标准差* randn(NUM, 1)+平均数</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_data(i, :) = std_data(i)*randn(NUM, 1) +mu_data(i);</span><br></pre></td></tr></table></figure>
+<p>其中NUM是生成多少个数据, 可以用<code>hist()</code>函数画出生成数据的直方图看看是不是正态分布的</p>
+<h2 id="Windows下Python中文件路径字符串改成能用的"><a href="#Windows下Python中文件路径字符串改成能用的" class="headerlink" title="Windows下Python中文件路径字符串改成能用的"></a>Windows下Python中文件路径字符串改成能用的</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.replace(<span class="string">'\\'</span>, <span class="string">'\\\\'</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -611,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决opencv中读取中文路径的图片的问题"><span class="nav-number">1.</span> <span class="nav-text">解决opencv中读取中文路径的图片的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab-把数组中的NaN去除掉"><span class="nav-number">2.</span> <span class="nav-text">matlab 把数组中的NaN去除掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-创建数据库时指定utf-8编码"><span class="nav-number">3.</span> <span class="nav-text">mysql 创建数据库时指定utf-8编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库编码指定"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库编码指定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置数据表编码"><span class="nav-number">3.2.</span> <span class="nav-text">设置数据表编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xshell-传输和接受文件"><span class="nav-number">4.</span> <span class="nav-text">Xshell 传输和接受文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传输"><span class="nav-number">4.1.</span> <span class="nav-text">传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受"><span class="nav-number">4.2.</span> <span class="nav-text">接受</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow-one-hot编码转换函数"><span class="nav-number">5.</span> <span class="nav-text">Tensorflow one-hot编码转换函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决opencv中读取中文路径的图片的问题"><span class="nav-number">1.</span> <span class="nav-text">解决opencv中读取中文路径的图片的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab-把数组中的NaN去除掉"><span class="nav-number">2.</span> <span class="nav-text">matlab 把数组中的NaN去除掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-创建数据库时指定utf-8编码"><span class="nav-number">3.</span> <span class="nav-text">mysql 创建数据库时指定utf-8编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库编码指定"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库编码指定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置数据表编码"><span class="nav-number">3.2.</span> <span class="nav-text">设置数据表编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xshell-传输和接受文件"><span class="nav-number">4.</span> <span class="nav-text">Xshell 传输和接受文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传输"><span class="nav-number">4.1.</span> <span class="nav-text">传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受"><span class="nav-number">4.2.</span> <span class="nav-text">接受</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow-one-hot编码转换函数"><span class="nav-number">5.</span> <span class="nav-text">Tensorflow one-hot编码转换函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matlab生成正态分布的数据"><span class="nav-number">6.</span> <span class="nav-text">Matlab生成正态分布的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows下Python中文件路径字符串改成能用的"><span class="nav-number">7.</span> <span class="nav-text">Windows下Python中文件路径字符串改成能用的</span></a></li></ol></div>
             
 
           </div>
