@@ -103,7 +103,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="TensorFlow,">
 
 
 
@@ -119,13 +119,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Francis&#39;Blog">
-<meta property="og:url" content="http://yoursite.com/tags/css/index.html">
+<meta name="description" content="英文原文地址https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/   为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。">
+<meta name="keywords" content="TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow基础的CNN网络">
+<meta property="og:url" content="http://yoursite.com/2019/04/04/tensorflow-basic-cnn/index.html">
 <meta property="og:site_name" content="Francis&#39;Blog">
+<meta property="og:description" content="英文原文地址https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/   为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="d:/MyBlog/source/_posts/tensorflow-basic-cnn/1.webp">
+<meta property="og:image" content="d:/MyBlog/source/_posts/tensorflow-basic-cnn/2.webp">
+<meta property="og:image" content="d:/MyBlog/source/_posts/tensorflow-basic-cnn/3.webp">
+<meta property="og:updated_time" content="2019-04-04T04:43:08.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Francis&#39;Blog">
+<meta name="twitter:title" content="TensorFlow基础的CNN网络">
+<meta name="twitter:description" content="英文原文地址https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/   为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。">
+<meta name="twitter:image" content="d:/MyBlog/source/_posts/tensorflow-basic-cnn/1.webp">
 
 
 
@@ -154,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/css/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/04/tensorflow-basic-cnn/">
 
 
 
 
 
-  <title>Tag: css | Francis'Blog</title>
+  <title>TensorFlow基础的CNN网络 | Francis'Blog</title>
   
 
 
@@ -185,7 +194,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -311,52 +320,176 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>css<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/tensorflow-basic-cnn/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/29/css-selector/" itemprop="url">
-              
-                <span itemprop="name">css选择器</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">TensorFlow基础的CNN网络</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T20:44:50+08:00" content="2019-03-29">
-          03-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T12:31:14+08:00">
+                2019-04-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>英文原文地址<a href="https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/" target="_blank" rel="noopener">https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/</a></p>
+<p>  为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。传统的神经网络非常擅长进行图像分类，如果在CPU上接受过培训，则需要更多的参数并花费大量时间。但是，在这篇文章中，我的目标是向您展示如何使用Tensorflow构建真实世界的卷积神经网络，而不是参与ILSVRC。在我们开始使用Tensorflow教程之前，让我们先介绍一下卷积神经网络的基础知识。</p>
+<h2 id="CNN的基础知识"><a href="#CNN的基础知识" class="headerlink" title="CNN的基础知识"></a>CNN的基础知识</h2><p>  神经网络本质上是解决优化问题的数学模型。它们由神经元构成，是神经网络的基本计算单元。神经元接受输入（比如说<code>x</code>），对它做一些计算（比方说：用变量<code>w</code>乘以它并加上另一个变量<code>b</code>）来产生一个值（比如说; <code>z = wx b</code>）。该值被传递给称为<strong>激活函数（f）</strong>的非线性函数，以产生神经元的最终输出（激活）。激活功能有很多种。其中一种流行的激活函数是Sigmoid：</p>
+<p><img src="D:\MyBlog\source\_posts\tensorflow-basic-cnn\1.webp" alt="1"></p>
+<p>  使用Sigmoid函数作为激活函数的神经元将被称为Sigmoid神经元。神经元根据激活函数被命名，激活函数有很多种，如RELU，TanH等（请记住这一点）。一个神经元可以连接到多个神经元，如下所示：</p>
+<p><img src="D:\MyBlog\source\_posts\tensorflow-basic-cnn\2.webp" alt="1"></p>
+<p>  在此示例中，您可以看到权重是连接的属性，即每个连接具有不同的权重值，而偏差是神经元的属性。这是产生输出y的sigmoid神经元的完整过程：</p>
+<p><img src="D:\MyBlog\source\_posts\tensorflow-basic-cnn\3.webp" alt="3"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/01/tensorflow-model-save-and-restore/" rel="next" title="tensorflow模型保存与恢复">
+                <i class="fa fa-chevron-left"></i> tensorflow模型保存与恢复
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -364,6 +497,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+    <div id="gitalk-container"></div>
+
+    
+    
+  </div>
+
 
 
         </div>
@@ -385,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Francis Cheng">
           <p class="site-author-name" itemprop="name">Francis Cheng</p>
@@ -446,6 +596,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN的基础知识"><span class="nav-number">1.</span> <span class="nav-text">CNN的基础知识</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -566,10 +732,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -604,6 +770,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'd61c38683e5785c4bc98',
+          clientSecret: '3ddda05f9da44c28b40204829c97b9204ce7bba4',
+          repo: 'Francis0Cheng.github.io',
+          owner: 'Francis0Cheng',
+          admin: ['Francis0Cheng'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
