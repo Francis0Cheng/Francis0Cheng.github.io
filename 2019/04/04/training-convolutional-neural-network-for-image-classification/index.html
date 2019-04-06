@@ -137,7 +137,7 @@
 <meta property="og:image" content="d:/MyBlog/source/_posts/training-convolutional-neural-network-for-image-classification/8.webp">
 <meta property="og:image" content="d:/MyBlog/source/_posts/training-convolutional-neural-network-for-image-classification/1.jpg">
 <meta property="og:image" content="d:/MyBlog/source/_posts/training-convolutional-neural-network-for-image-classification/9.webp">
-<meta property="og:updated_time" content="2019-04-06T02:37:20.941Z">
+<meta property="og:updated_time" content="2019-04-06T05:10:31.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow基础的CNN网络">
 <meta name="twitter:description" content="英文原文地址https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/   为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。">
@@ -467,6 +467,21 @@
 <p><img src="D:\MyBlog\source\_posts\training-convolutional-neural-network-for-image-classification\9.webp" alt="8"></p>
 <h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>  如果层中的每个神经元接收来自前一层中所有神经元的输入，则该层称为完全连接层。该层的输出通过矩阵乘法后跟偏置偏移来计算。</p>
 <h4 id="了解训练的过程"><a href="#了解训练的过程" class="headerlink" title="了解训练的过程"></a>了解训练的过程</h4><p>  深度神经网络只不过是智能的数学模型，它在某种程度上模仿了人类的大脑。当我们尝试训练神经网络时，我们需要做两件基本的事情：</p>
+<ul>
+<li><p><strong>神经网络的结构</strong></p>
+<p>在设计神经网络的架构时，您必须决定：如何安排图层？要使用哪些图层？每层使用多少神经元等？设计架构是一个稍微复杂和高级的主题，需要大量的研究。有许多标准体系结构可以很好地解决许多标准问题。例如AlexNet，GoogleNet，InceptionResnet，VGG等。首先，您应该只使用标准网络架构。在获得神经网络的大量经验后，您可以开始设计网络。因此，我们现在不用担心。</p>
+</li>
+<li><p><strong>正确的权重(weight)/参数(parameters)</strong></p>
+<p>一旦确定了网络的架构;第二大变量是权重（w）和偏差（b）或网络的参数。训练的目的是获得所有这些参数的最佳值，从而可靠地解决问题。例如，当我们尝试在狗和猫之间构建分类器时，我们寻找参数，使得如果输入是猫的图像， 输出层输出的结果认为它是猫的概率是1.</p>
+<p>您可以使用称为<strong>反向传播(backward propagation)</strong>的过程找到最佳参数集，即您从一组随机参数开始并不断更改这些权重，以便为每个训练图像获得正确的输出。有许多优化方法可以在数学上快速找到正确的权重来更改权重。 GradientDescent就是这样一种方法（向后传播和优化器方法来改变梯度是一个非常复杂的主题。但是现在我们不需要担心它，因为Tensorflow将会负责它）</p>
+<p>那么，我们先为神经网络设定一些初始的随机值，然后将一张狗的图片输入到神经网络中。 得到的结果是0.1， 也就是说我们的神经网络判断出它是狗的概率为0.1， 是猫的概率为0.9。现在我们用反向传播算法缓慢地改变参数，使得该网络判断其为狗的概率在下一次迭代中增加， 有一个变量用于控制在训练中我们改变网络中的参数的素的， 他被称为<strong>学习率(learning rate)</strong> ， 如果你再考虑一下， 我们希望还定义了一个称之为<strong>损失(loss)</strong>的数字，表示训练是否朝着正确的方向发展， 通常来说， 损失以这样的方式定义， 随着损失的降低， 网络的准确性也会提高， 因此我们密切关注损失， 我们会继续进行很多次向前和反向传播算法迭代， 知道成本停止下降， 定义损失的方法有很多种， 其中一个简单的就是平方根损失。</p>
+<p>假设y<sub>prediction</sub>是包含所有训练图像的输出向量， y<sub>actual</sub>是包含这些标记图像的实际值，因此如果我们最小化这两个变量之间的距离， 它将是衡量训练成果的一个很好的指标。 因此我们将损失定义为:</p>
+<pre><code>![2](D:\MyBlog\source\_posts\training-convolutional-neural-network-for-image-classification\2.png)
+</code></pre><p>  这是一个非常简单的损失示例，但在实际训练0中，我们使用更复杂的成本度量，如交叉熵成本。但Tensorflow中已经集成了许多这些损失函数，因此我们现在无需担心这些损失的细节。</p>
+<p>  训练完成后，这些参数和架构将保存在二进制文件（称为<strong>model</strong>）中。在生产设置中，当我们得到狗/猫的新图像时，我们将该模型加载到相同的网络体系结构中并计算新图像是猫/狗的概率。这称为推理(<strong>inference</strong>)或预测(<strong>prediction</strong>)。</p>
+<p>  为了简化计算，并非所有训练数据都立即被馈送到网络。 相反，假设我们总共有1600张图像，我们将它们分成小批量，比如16或32号，称为批量大小(<strong>batch size</strong>)。 因此，需要100或50轮（迭代）才能将完整数据用于训练。 这被称为一个时期(<strong>epoch</strong>)，即在一个时期中，网络一次看到所有训练图像。 还有一些事情要做来提高准确性，但我们不不需要一次关注一切。</p>
+</li>
+</ul>
 
       
     </div>
