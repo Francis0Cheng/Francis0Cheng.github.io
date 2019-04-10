@@ -331,6 +331,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/requests/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/requests/" itemprop="url">requests</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T20:58:50+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">Python爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="GET请求："><a href="#GET请求：" class="headerlink" title="GET请求："></a><strong>GET请求：</strong></h2><p>带参数的url请求：　　　　　　</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">data =&#123;<span class="string">'name'</span>:<span class="string">'cheng'</span>,<span class="string">'age'</span>:<span class="number">20</span>&#125;        <span class="comment">#参数</span></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>, params=data)</span><br></pre></td></tr></table></figure>
+<p>这样requests会给我们自动build这个网址，查看response.url 这个属性。会得到我们请求的代码</p>
+<p>‘<a href="https://httpbin.org/get?name=cheng&amp;age=20&#39;" target="_blank" rel="noopener">https://httpbin.org/get?name=cheng&amp;age=20&#39;</a></p>
+<h2 id="解析JSON："><a href="#解析JSON：" class="headerlink" title="解析JSON："></a><strong>解析JSON：</strong></h2><p>requests还提供了一个解析json的方法，用get方法请求 <a href="https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。" target="_blank" rel="noopener">https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。</a></p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>)</span><br><span class="line">print(response.json()) <span class="comment">#调用json方法</span></span><br><span class="line">print(json.loads(response.text))</span><br></pre></td></tr></table></figure>
+<p>用json.loads把json数据转化字典方法，同样打印输出，发现和response.json()是一样的，其实response.json()就是通过一个json.loads()方法</p>
+<h2 id="获取二进制数据"><a href="#获取二进制数据" class="headerlink" title="获取二进制数据"></a><strong>获取二进制数据</strong></h2><p>​
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/01/requests/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/vimcmd/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -720,162 +874,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/正则化方法小结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/31/正则化方法小结/" itemprop="url">正则化方法小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T22:35:05+08:00">
-                2018-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  在总结正则化（Regularization）之前，我们先谈一谈正则化是什么，为什么要正则化。</p>
-<p>  个人认为正则化这个字眼有点太过抽象和宽泛，<strong>其实正则化的本质很简单，就是对某一问题加以先验的限制或约束以达到某种特定目的的一种手段或操作。在算法中使用正则化的目的是防止模型出现过拟合</strong>。一提到正则化，很多同学可能马上会想到常用的L1范数和L2范数，在汇总之前，我们先看下LP范数是什么鬼。</p>
-<h3 id="LP范数"><a href="#LP范数" class="headerlink" title="LP范数"></a>LP范数</h3><p>  范数简单可以理解为用来表征向量空间中的距离，而距离的定义很抽象，只要满足<strong>非负、自反、三角不等式</strong>就可以称之为距离。</p>
-<p>  <code>LP</code>范数不是一个范数，而是一组范数，其定义如下：</p>
-<p><img src="1.png" alt="1"></p>
-<p>  <code>p</code>的范围是[1, +∞],<strong><code>p</code>在(0,1)范围内定义的并不是范数，因为违反了三角不等式。</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/31/正则化方法小结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -920,7 +923,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
