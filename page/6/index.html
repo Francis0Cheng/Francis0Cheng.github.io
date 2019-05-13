@@ -331,6 +331,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/scrapy2/" itemprop="url">Scrapy学习（二）命令行</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T21:44:12+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Scrapy/" itemprop="url" rel="index">
+                    <span itemprop="name">Scrapy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Scrapy是通过Scrapy命令行工具进行控制的，包括创建新的项目，爬虫的启动，相关的设置，Scrapy提供了两种内置的命令，分别是全局命令和项目命令，顾名思义，全局命令就是在任意位置都可以执行的命令，而项目命令只有在你新创建了项目之后，在项目目录中才可以执行的命令。在这里，简单的介绍一些常用的命令。</p>
+<h3 id="全局命令"><a href="#全局命令" class="headerlink" title="全局命令"></a>全局命令</h3><ul>
+<li><h4 id="startproject"><a href="#startproject" class="headerlink" title="startproject"></a>startproject</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy startproject &lt;project_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  这个命令是scrapy最为常用的命令之一，它将会在当前目录下创建一个名为</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;project_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  的项目。</p>
+<ul>
+<li><h4 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy settings [options]</span><br></pre></td></tr></table></figure>
+<p>  该命令将会输出Scrapy默认设定，当然如果你在项目中运行这个命令将会输出项目的设定值。</p>
+<ul>
+<li><h4 id="runspider"><a href="#runspider" class="headerlink" title="runspider"></a>runspider</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy runspider &lt;spider_file.py&gt;</span><br></pre></td></tr></table></figure>
+<p>  在未创建项目的情况下，运行一个编写在Python文件中的spider。</p>
+<ul>
+<li><h4 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell [url]</span><br></pre></td></tr></table></figure>
+<p>  以给定的URL(如果给出)或者空(没有给出URL)启动Scrapy shell。</p>
+<p>  例如，</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell http://www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>  将会打开百度URL，</p>
+<p>  并且启动交互式命令行，可以用来做一些测试。</p>
+<ul>
+<li><h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy fetch &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p>  使用Scrapy下载器(downloader)下载给定的URL，并将获取到的内容送到标准输出。简单的来说，就是打印url的html代码。</p>
+<ul>
+<li><h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy view &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p>  在你的默认浏览器中打开给定的URL，并以Scrapy spider获取到的形式展现。 有些时候spider获取到的页面和普通用户看到的并不相同，一些动态加载的内容是看不到的， 因此该命令可以用来检查spider所获取到的页面。</p>
+<ul>
+<li><h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy version [-v]</span><br></pre></td></tr></table></figure>
+<p>  输出Scrapy版本。配合 -v 运行时，该命令同时输出Python, Twisted以及平台的信息。</p>
+<h3 id="项目命令"><a href="#项目命令" class="headerlink" title="项目命令"></a>项目命令</h3><ul>
+<li><h3 id="crawl"><a href="#crawl" class="headerlink" title="crawl"></a>crawl</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl &lt;spider_name&gt;</span><br></pre></td></tr></table></figure>
+<p>  使用你项目中的spider进行爬取，即启动你的项目。这个命令将会经常用到，我们会在后面的内容中经常使用。</p>
+<ul>
+<li><h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crapy check [-l] &lt;spider&gt;</span><br></pre></td></tr></table></figure>
+<p>  运行contract检查，检查你项目中的错误之处。</p>
+<ul>
+<li><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy list</span><br></pre></td></tr></table></figure>
+<p>  列出当前项目中所有可用的spider。每行输出一个spider。</p>
+<ul>
+<li><h3 id="genspider"><a href="#genspider" class="headerlink" title="genspider"></a>genspider</h3><p>语法:</p>
+</li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider [-t template] &lt;name&gt; &lt;domain&gt;</span><br></pre></td></tr></table></figure>
+<p>  在当前项目中创建spider。该方法可以使用提前定义好的模板来生成spider。您也可以自己创建spider的源码文件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -700,155 +914,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/BeautifulSoup/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/02/BeautifulSoup/" itemprop="url">BeautifulSoup详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-02T20:34:35+08:00">
-                2019-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="BeautifulSoup详解"><a href="#BeautifulSoup详解" class="headerlink" title="BeautifulSoup详解"></a>BeautifulSoup详解</h1><p>BeautifulSoup是一个灵活有方便的网页解系库，处理搞笑，支持多种解析器，利用他可以不编写正贼表达式即可方便实现网页信息的提取。</p>
-<h2 id="解析库："><a href="#解析库：" class="headerlink" title="解析库："></a><strong>解析库：</strong></h2><p><img src="1.png" alt="1"></p>
-<p>在此，我们主要用lxml解析器</p>
-<h2 id="标签选择器："><a href="#标签选择器：" class="headerlink" title="标签选择器："></a><strong>标签选择器</strong>：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup <span class="keyword">as</span> bs</span><br><span class="line"></span><br><span class="line">html = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;p class="title" name="dromouse"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.&lt;/p&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;...&lt;/p&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">soup = bs(html, <span class="string">'lxml'</span>)</span><br><span class="line">print(soup.title)</span><br><span class="line">print(type(soup.title))</span><br><span class="line">print(soup.head)</span><br><span class="line">print(type(soup.head))</span><br><span class="line">print(soup.p)</span><br><span class="line">print(type(soup.p))</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/02/BeautifulSoup/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -898,7 +963,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

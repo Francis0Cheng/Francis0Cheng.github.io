@@ -331,6 +331,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/javatest/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/13/javatest/" itemprop="url">javatest</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T17:55:54+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="1.jpg" alt="1"><br><img src="2.jpg" alt="2"><br><img src="3.jpg" alt="3"><br><img src="4.jpg" alt="4"><br><img src="5.jpg" alt="5"><br><img src="6.jpg" alt="6"><br><img src="7.jpg" alt="7"><br><img src="8.jpg" alt="8"><br><img src="9.jpg" alt="9"><br><img src="10.jpg" alt="10"><br><img src="11.jpg" alt="11"><br><img src="12.jpg" alt="12"><br><img src="13.jpg" alt="13"><br><img src="14.jpg" alt="14"><br><img src="15.jpg" alt="15"><br><img src="16.jpg" alt="16"><br><img src="17.jpg" alt="17"><br><img src="18.jpg" alt="18"><br><img src="19.jpg" alt="19"><br><img src="20.jpg" alt="20"><br><img src="21.jpg" alt="21"><br><img src="22.jpg" alt="22"><br><img src="23.jpg" alt="23"><br><img src="24.jpg" alt="24"><br><img src="25.jpg" alt="25"><br><img src="26.jpg" alt="26"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/shadow-puppetry/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -555,11 +675,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</span><br><span class="line">        <span class="string">'DIRS'</span>: [os.path.join(BASE_DIR, <span class="string">'templates'</span>)]</span><br><span class="line">		,</span><br><span class="line">        <span class="string">'APP_DIRS'</span>: <span class="keyword">True</span>,</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'context_processors'</span>: [</span><br><span class="line">                <span class="string">'django.template.context_processors.debug'</span>,</span><br><span class="line">                <span class="string">'django.template.context_processors.request'</span>,</span><br><span class="line">                <span class="string">'django.contrib.auth.context_processors.auth'</span>,</span><br><span class="line">                <span class="string">'django.contrib.messages.context_processors.messages'</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
 <p>将<code>&#39;DIRS&#39;</code>设置为根目录下的template目录就可以在这个目录下创建模板的html文件了</p>
 <h2 id="模板的继承"><a href="#模板的继承" class="headerlink" title="模板的继承"></a>模板的继承</h2><h3 id="创建模板html文件"><a href="#创建模板html文件" class="headerlink" title="创建模板html文件"></a>创建模板html文件</h3><p>这里我们创建<code>base.html</code></p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang="en"&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset="UTF-8"&gt;</span><br><span class="line">    &lt;title&gt;Coding for Entrepreneurs is doing try django&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span></span><br><span class="line">        replace me</span><br><span class="line">    <span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Coding for Entrepreneurs is doing try django<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">        replace me</span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>注意，这里的block模块， 在子模板中再次引入可以替换block间的内容</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span></span><br><span class="line">       replace me  这里将会被代替</span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">       replace me  这里将会被代替</span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
 <h3 id="引入模板"><a href="#引入模板" class="headerlink" title="引入模板"></a>引入模板</h3><p>这里我们在<code>home.html</code>中继续<code>base.html</code></p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">extends</span></span> 'base.html' %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span></span><br><span class="line">    &lt;h1&gt; Hello world &lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;this is a template&lt;/p&gt;</span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">extends</span></span> 'base.html' %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">block</span></span> content %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span> Hello world <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>this is a template<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endblock</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
 <h2 id="模板的include"><a href="#模板的include" class="headerlink" title="模板的include"></a>模板的include</h2><p>创建需要include的模板， 这里我们创建<code>navbar.html</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Brand<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Contact<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>About<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>在<code>base.html</code>中include进去</p>
@@ -602,6 +722,8 @@
 <h3 id="创建html模板文件"><a href="#创建html模板文件" class="headerlink" title="创建html模板文件"></a>创建html模板文件</h3><p>在app目录下的/template/products中创建product_create.html</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &apos;base.html&apos; %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    &lt;form method=&quot;POST&quot;&gt;</span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">        &#123;&#123; form.as_p &#125;&#125;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;Save&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="添加到路由中"><a href="#添加到路由中" class="headerlink" title="添加到路由中"></a>添加到路由中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(&apos;create/&apos;, product_create_view, name=&quot;product_create&quot;),</span><br></pre></td></tr></table></figure>
+<h3 id="创建生的Form"><a href="#创建生的Form" class="headerlink" title="创建生的Form"></a>创建生的Form</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RawProductForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    <span class="comment"># overwrite the basic attar</span></span><br><span class="line">    title = forms.CharField(label=<span class="string">'MY Label'</span>, widget=forms.TextInput(</span><br><span class="line">        attrs=&#123;</span><br><span class="line">            <span class="string">'placeholder'</span>:<span class="string">"Your title"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ))</span><br><span class="line">    description = forms.CharField(</span><br><span class="line">        required = <span class="keyword">False</span>,</span><br><span class="line">        widget=forms.Textarea(</span><br><span class="line">            attrs=&#123;</span><br><span class="line">                </span><br><span class="line">                <span class="string">"class"</span>:<span class="string">"new-lass two"</span>,</span><br><span class="line">                <span class="string">"rows"</span>:<span class="number">20</span>,</span><br><span class="line">                <span class="string">"col"</span>:<span class="number">120</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">    price = forms.DecimalField()</span><br></pre></td></tr></table></figure>
+<p>效果将会是<br><img src="D:\MyBlog\source\_posts\django-notes\6.png" alt="6"></p>
 <h2 id="Django-POST-和-GET"><a href="#Django-POST-和-GET" class="headerlink" title="Django POST 和 GET"></a>Django POST 和 GET</h2><p><a href="https://docs.djangoproject.com/en/2.2/ref/request-response/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.2/ref/request-response/</a></p>
 <p>在view.py中定义的函数，第一个参数是request</p>
 <p>当有post和get请求时， 返回的request中有GET和POST两种属性</p>
@@ -611,159 +733,6 @@
         
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/train-cnn-with-tensorflow/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/04/train-cnn-with-tensorflow/" itemprop="url">TensorFlow基础的CNN网络</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-04T12:31:14+08:00">
-                2019-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>英文原文地址<a href="https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/" target="_blank" rel="noopener">https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/</a></p>
-<p>  为了演示如何构建基于卷积神经网络的图像分类器，我们将构建一个6层神经网络，用于识别和分离狗的图像和猫的图像。我们将构建的这个网络是一个非常小的网络，您也可以在CPU上运行。传统的神经网络非常擅长进行图像分类，如果在CPU上接受过培训，则需要更多的参数并花费大量时间。但是，在这篇文章中，我的目标是向您展示如何使用Tensorflow构建真实世界的卷积神经网络，而不是参与ILSVRC。在我们开始使用Tensorflow教程之前，让我们先介绍一下卷积神经网络的基础知识。</p>
-<h1 id="CNN的基础知识"><a href="#CNN的基础知识" class="headerlink" title="CNN的基础知识"></a>CNN的基础知识</h1><p>  神经网络本质上是解决优化问题的数学模型。它们由神经元构成，是神经网络的基本计算单元。神经元接受输入（比如说<code>x</code>），对它做一些计算（比方说：用变量<code>w</code>乘以它并加上另一个变量<code>b</code>）来产生一个值（比如说; <code>z = wx b</code>）。该值被传递给称为<strong>激活函数（f）</strong>的非线性函数，以产生神经元的最终输出（激活）。激活功能有很多种。其中一种流行的激活函数是Sigmoid：</p>
-<p><img src="1.webp" alt="1"></p>
-<p>  使用Sigmoid函数作为激活函数的神经元将被称为Sigmoid神经元。神经元根据激活函数被命名，激活函数有很多种，如RELU，TanH等（请记住这一点）。一个神经元可以连接到多个神经元，如下所示：</p>
-<p><img src="2.webp" alt="1"></p>
-<p>  在此示例中，您可以看到权重是连接的属性，即每个连接具有不同的权重值，而偏差是神经元的属性。这是产生输出y的sigmoid神经元的完整过程：</p>
-<p><img src="3.webp" alt="3"><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/04/train-cnn-with-tensorflow/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
     
     
     
@@ -843,7 +812,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
