@@ -331,174 +331,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/tensorflow-model-save-and-restore/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/01/tensorflow-model-save-and-restore/" itemprop="url">tensorflow模型保存与恢复</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T13:45:08+08:00">
-                2019-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-什么是TensorFlow模型？"><a href="#1-什么是TensorFlow模型？" class="headerlink" title="1. 什么是TensorFlow模型？"></a>1. 什么是TensorFlow模型？</h1><p>训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模型? Tensorflow模型主要包含我们所培训的网络参数的网络设计或图形和值。因此，Tensorflow模型有两个主要的文件:</p>
-<p>a) Meta graph：<br>     这是一个协议缓冲区，它保存了完整的Tensorflow图形;即所有<strong>变量、操作、集合</strong>等。该文件以<strong>.meta</strong>作为扩展名。</p>
-<p>b) Checkpoint file：</p>
-<p>​    这是一个二进制文件，它包含了所有的权重、偏差、梯度和其他所有变量的值。这个文件有一个扩展名.ckpt。然而，Tensorflow从0.11版本中改变了这一点。现在，我们有两个文件，而不是单个.ckpt文件:</p>
-<ul>
-<li>model.ckpt.data-00000-of-00001</li>
-<li>model.ckpt.meta</li>
-</ul>
-<p><code>.data</code>文件是包含我们训练变量的文件，我们待会将会使用它。</p>
-<p>与此同时，Tensorflow也有一个名为checkpoint的文件，它只保存的最新保存的checkpoint文件的记录。</p>
-<p>因此，为了总结，对于大于0.10的版本，Tensorflow模型如下:</p>
-<p><img src="1.png" alt="1"></p>
-<p>在0.11之前的Tensorflow模型仅包含三个文件:</p>
-<ul>
-<li>inception_v1.meta    </li>
-<li>inception_v1.ckpt      </li>
-<li>checkpoint  </li>
-</ul>
-<p><strong>之后的Tensorflow模型包含多了一个文件</strong></p>
-<ul>
-<li>model.ckpt.data-00000-of-00001        </li>
-</ul>
-<p>现在我们已经知道了Tensorflow模型的样子，接下来我们来看看TensorFlow是如何保存模型的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/01/tensorflow-model-save-and-restore/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/matlab-data-process/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -769,6 +601,152 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/just-for-fun/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/28/just-for-fun/" itemprop="url">Just For Fun (Linux Torvalds自传)英文版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T22:34:32+08:00">
+                2019-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="1.png" alt="1"></p>
+<blockquote>
+<p>《Just for Fun》是托瓦兹唯一的一本自传，全书充斥着托瓦兹独特的幽默感，以及「托瓦兹式」的思考逻辑与对话，让人不禁惊叹，一个不时置身于镁光灯下与金钱洪流中的平凡名人，为何还能如此单纯率真。经由记者大卫??戴蒙(David Diamond)的促成，托瓦兹的童年、生活、想法与经历，一一生动地展现在读者面前，不仅记录了Linux出生的过程与其后所造成的轩然大波，也详实刻画出托瓦兹本人对于他这项「意外的革命」的低调态度，让人在参与托瓦兹成长、成名的历程之际，不得不为他风趣乐观、自我解嘲却不自我贬抑的性格，鼓掌喝采；另一方面，戴蒙也由另一个不同的观点，穿插记载托瓦兹在他这个外人眼中的形象，以及两人互动对话的过程。</p>
+</blockquote>
+<p>坑先占着， 还没看完</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -818,7 +796,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
