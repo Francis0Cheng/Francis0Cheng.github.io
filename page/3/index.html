@@ -331,6 +331,305 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/tensorflow-model-save-and-restore/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/01/tensorflow-model-save-and-restore/" itemprop="url">tensorflow模型保存与恢复</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T13:45:08+08:00">
+                2019-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-什么是TensorFlow模型？"><a href="#1-什么是TensorFlow模型？" class="headerlink" title="1. 什么是TensorFlow模型？"></a>1. 什么是TensorFlow模型？</h1><p>训练了一个神经网络之后，我们希望保存它以便将来使用。那么什么是TensorFlow模型? Tensorflow模型主要包含我们所培训的网络参数的网络设计或图形和值。因此，Tensorflow模型有两个主要的文件:</p>
+<p>a) Meta graph：<br>     这是一个协议缓冲区，它保存了完整的Tensorflow图形;即所有<strong>变量、操作、集合</strong>等。该文件以<strong>.meta</strong>作为扩展名。</p>
+<p>b) Checkpoint file：</p>
+<p>​    这是一个二进制文件，它包含了所有的权重、偏差、梯度和其他所有变量的值。这个文件有一个扩展名.ckpt。然而，Tensorflow从0.11版本中改变了这一点。现在，我们有两个文件，而不是单个.ckpt文件:</p>
+<ul>
+<li>model.ckpt.data-00000-of-00001</li>
+<li>model.ckpt.meta</li>
+</ul>
+<p><code>.data</code>文件是包含我们训练变量的文件，我们待会将会使用它。</p>
+<p>与此同时，Tensorflow也有一个名为checkpoint的文件，它只保存的最新保存的checkpoint文件的记录。</p>
+<p>因此，为了总结，对于大于0.10的版本，Tensorflow模型如下:</p>
+<p><img src="1.png" alt="1"></p>
+<p>在0.11之前的Tensorflow模型仅包含三个文件:</p>
+<ul>
+<li>inception_v1.meta    </li>
+<li>inception_v1.ckpt      </li>
+<li>checkpoint  </li>
+</ul>
+<p><strong>之后的Tensorflow模型包含多了一个文件</strong></p>
+<ul>
+<li>model.ckpt.data-00000-of-00001        </li>
+</ul>
+<p>现在我们已经知道了Tensorflow模型的样子，接下来我们来看看TensorFlow是如何保存模型的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/01/tensorflow-model-save-and-restore/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/matlab-data-process/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/31/matlab-data-process/" itemprop="url">matlab数据处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T14:15:12+08:00">
+                2019-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Matmab数据处理"><a href="#Matmab数据处理" class="headerlink" title="Matmab数据处理"></a>Matmab数据处理</h1><h2 id="Matlab生成正态分布的数据"><a href="#Matlab生成正态分布的数据" class="headerlink" title="Matlab生成正态分布的数据"></a>Matlab生成正态分布的数据</h2><p>需要两个指标， 一个是原有数据的平均数（&mu;）和标准差（&sigma;）</p>
+<ul>
+<li>平均数计算函数<code>mean(数据， 维度)</code></li>
+<li>标准差计算函数<code>std(数据， w， 维度)</code></li>
+</ul>
+<p>​          第二个参数<code>w</code>决定了用哪一个标准差函数，如果取0，则代表除以N-1，如果是1代表的是除以N。</p>
+<p>如数据为 <code>data = [1 2 3]</code>， 那么 <code>std(data, 0)</code> 计算的结果就是<code>根号sqrt((1+1)/(3-1))=1</code> , <code>std(data, 1)</code> 计算的结果就是<code>sqrt((1+1)/3)=0.81645了</code></p>
+<p>最后得到正态分布的公式是 <code>标准差* randn(NUM, 1)+平均数</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_data(i, :) = std_data(i)*randn(NUM, 1) +mu_data(i);</span><br></pre></td></tr></table></figure>
+<p>其中NUM是生成多少个数据, 可以用<code>hist()</code>函数画出生成数据的直方图看看是不是正态分布的</p>
+<h1 id="标准化函数"><a href="#标准化函数" class="headerlink" title="标准化函数"></a>标准化函数</h1><p> 标准化</p>
+<p><code>zscore</code>(data, 0, 1)  <code>1代表列</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/css-selector/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -470,307 +769,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/just-for-fun/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/just-for-fun/" itemprop="url">Just For Fun (Linux Torvalds自传)英文版</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T22:34:32+08:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="1.png" alt="1"></p>
-<blockquote>
-<p>《Just for Fun》是托瓦兹唯一的一本自传，全书充斥着托瓦兹独特的幽默感，以及「托瓦兹式」的思考逻辑与对话，让人不禁惊叹，一个不时置身于镁光灯下与金钱洪流中的平凡名人，为何还能如此单纯率真。经由记者大卫??戴蒙(David Diamond)的促成，托瓦兹的童年、生活、想法与经历，一一生动地展现在读者面前，不仅记录了Linux出生的过程与其后所造成的轩然大波，也详实刻画出托瓦兹本人对于他这项「意外的革命」的低调态度，让人在参与托瓦兹成长、成名的历程之际，不得不为他风趣乐观、自我解嘲却不自我贬抑的性格，鼓掌喝采；另一方面，戴蒙也由另一个不同的观点，穿插记载托瓦兹在他这个外人眼中的形象，以及两人互动对话的过程。</p>
-</blockquote>
-<p>坑先占着， 还没看完</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/ren-gong-zhi-neng-qian-tan/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/28/ren-gong-zhi-neng-qian-tan/" itemprop="url">人工智能浅谈（朱松纯）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T22:30:47+08:00">
-                2019-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>pdf连接：<a href="http://www.stat.ucla.edu/~sczhu/Blog_articles/浅谈人工智能.pdf" target="_blank" rel="noopener">www.stat.ucla.edu/~sczhu/Blog_articles/浅谈人工智能.pdf</a></p>
-<h1 id="人工智能浅谈（朱松纯）后感"><a href="#人工智能浅谈（朱松纯）后感" class="headerlink" title="人工智能浅谈（朱松纯）后感"></a>人工智能浅谈（朱松纯）后感</h1><p>我是由袁老师的视频知道并开始看这本书的：<a href="https://www.bilibili.com/video/av32104086" target="_blank" rel="noopener">https://www.bilibili.com/video/av32104086</a></p>
-<p>摘录一些语句</p>
-<ol>
-<li><blockquote>
-<p>我的看法很简单：大多数写报道和搞炒作宣传的人，基本不懂人工智能。这就<br>像年轻人玩的传话游戏，扭曲的信息在多次传导过程中</p>
-</blockquote>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -815,7 +818,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -826,7 +829,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -837,7 +840,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

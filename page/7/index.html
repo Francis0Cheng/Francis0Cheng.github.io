@@ -331,6 +331,388 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/scrapy1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/scrapy1/" itemprop="url">Scrapy学习（一）框架简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T20:50:53+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Scrapy/" itemprop="url" rel="index">
+                    <span itemprop="name">Scrapy</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><strong><code>Scrapy</code></strong>是一个<a href="https://zh.wikipedia.org/wiki/Python" target="_blank" rel="noopener">Python</a>编写的<a href="https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90" target="_blank" rel="noopener">开源</a><a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB" target="_blank" rel="noopener">网络爬虫</a><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E6%A1%86%E6%9E%B6" target="_blank" rel="noopener">框架</a>。它是一个被设计用于爬取网络数据、提取结构性数据的程序框架。<a href="https://zh.wikipedia.org/wiki/Scrapy#cite_note-3" target="_blank" rel="noopener">[3]</a>该框架主要由<a href="https://zh.wikipedia.org/w/index.php?title=Scrapinghub_%E5%85%AC%E5%8F%B8&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Scrapinghub 公司</a>进行维护。<code>scrapy</code>官网给出的最新的架构图示。</p>
+<p><img src="1.png" alt="1"></p>
+<h2 id="基本组件"><a href="#基本组件" class="headerlink" title="基本组件"></a>基本组件</h2><ul>
+<li><p>引擎（Engine）</p>
+<p>引擎负责控制数据流在系统中所有组件中流动，并在相应动作发生时触发事件。 详细内容查看下面的数据流(Data Flow)部分。</p>
+</li>
+<li><p>调度器（Scheduler）</p>
+<p>调度器从引擎接受request并将他们入队，以便之后引擎请求他们时提供给引擎。</p>
+</li>
+<li><p>下载器(Downloader)</p>
+<p>下载器负责获取页面数据并提供给引擎，而后提供给spider。</p>
+</li>
+<li><p>爬虫（Spiders）</p>
+<p>Spider是Scrapy用户编写用于分析response并提取item(即获取到的item)或额外跟进的URL的类。 每个spider负责处理一个特定(或一些)网站。</p>
+</li>
+<li><p>管道（Item Pipeline）</p>
+<p>Item Pipeline负责处理被spider提取出来的item。典型的处理有清理、验证及持久化(例如存取到数据库中)。</p>
+</li>
+<li><p>下载器中间件（Downloader middlewares）</p>
+<p>下载器中间件是在引擎及下载器之间的特定钩子(specific hook)，处理Downloader传递给引擎的response。 其提供了一个简便的机制，通过插入自定义代码来扩展Scrapy功能。</p>
+</li>
+<li><p>Spider中间件（Spider middlewares）</p>
+<p>Spider中间件是在引擎及Spider之间的特定钩子(specific hook)，处理spider的输入(response)和输出(items及requests)。 其提供了一个简便的机制，通过插入自定义代码来扩展Scrapy功能。</p>
+</li>
+</ul>
+<h2 id="数据流向"><a href="#数据流向" class="headerlink" title="数据流向"></a>数据流向</h2><p>Scrapy的数据流由执行引擎（Engine）控制，其基本过程如下：</p>
+<pre><code>1. 引擎从Spider中获取到初始Requests。
+2. 引擎将该Requests放入调度器，并请求下一个要爬取的Requests。
+3. 调度器返回下一个要爬取的Requests给引擎
+4. 引擎将Requests通过下载器中间件转发给下载器(Downloader)。
+5. 一旦页面下载完毕，下载器生成一个该页面的Response，并将其通过下载中间件(返回(response)方向)发送给引擎。
+6. 引擎从下载器中接收到Response并通过Spider中间件(输入方向)发送给Spider处理。
+7. Spider处理Response并返回爬取到的Item及(跟进的)新的Request给引擎。
+8. 引擎将(Spider返回的)爬取到的Item交给ItemPipeline处理，将(Spider返回的)Request交给调度器，并请求下一个Requests（如果存在的话）。
+9. (从第一步)重复直到调度器中没有更多地Request。
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  Scrapy的各个组件相互配合执行，有的组件负责任务的调度，有的组件负责任务的下载，有的组件负责数据的清洗保存，各组件分工明确。在组件之间存在middleware的中间件，其作用就是功能的拓展，当然还可以根据自身的需求自定义这些拓展功能，比如我们可以在Downloader middlewares里面实现User-Agent的切换，Proxy的切换等等。这些功能我们会在后续的学习中逐渐拓展。这里只需要大致的了解即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/03/selenium/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Francis Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Francis'Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/03/selenium/" itemprop="url">selenium详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-03T11:06:42+08:00">
+                2019-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># 用chrome发出get请求</span></span><br><span class="line">    browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">    <span class="comment"># 找到id为kw的元素</span></span><br><span class="line">    input = browser.find_element_by_id(<span class="string">'kw'</span>)</span><br><span class="line">    <span class="comment"># 输入Python</span></span><br><span class="line">    input.send_keys(<span class="string">'Python'</span>)</span><br><span class="line">    <span class="comment"># 调用ENTER</span></span><br><span class="line">    input.send_keys(Keys.ENTER)</span><br><span class="line">    <span class="comment"># 等待</span></span><br><span class="line">    wait = WebDriverWait(browser, <span class="number">10</span>)</span><br><span class="line">    <span class="comment"># 直到ID为 content_left 元素出现</span></span><br><span class="line">    wait.until(EC.presence_of_element_located((By.ID, <span class="string">'content_left'</span>)))</span><br><span class="line">    <span class="comment"># URL地址</span></span><br><span class="line">    print(browser.current_url)</span><br><span class="line">    <span class="comment"># COOKIES	</span></span><br><span class="line">    print(browser.get_cookies())</span><br><span class="line">    <span class="comment"># 源代码</span></span><br><span class="line">    print(browser.page_source)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="comment"># 关闭此浏览器</span></span><br><span class="line">    browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="声明浏览器对象"><a href="#声明浏览器对象" class="headerlink" title="声明浏览器对象"></a>声明浏览器对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser = webdriver.Firefox()</span><br><span class="line">browser = webdriver.Edge()</span><br><span class="line">browser = webdriver.PhantomJS()</span><br><span class="line">browser = webdriver.Safari()</span><br></pre></td></tr></table></figure>
+<h2 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">print(browser.page_source)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h2><h3 id="单个元素"><a href="#单个元素" class="headerlink" title="单个元素"></a>单个元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input_first = browser.find_element_by_id(<span class="string">'q'</span>)</span><br><span class="line">input_second = browser.find_element_by_css_selector(<span class="string">'#q'</span>)</span><br><span class="line">input_third = browser.find_element_by_xpath(<span class="string">'//*[@id="q"]'</span>)</span><br><span class="line">print(input_first, input_second, input_third)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>find_element_by_name</li>
+<li>find_element_by_xpath</li>
+<li>find_element_by_link_text</li>
+<li>find_element_by_partial_link_text</li>
+<li>find_element_by_tag_name</li>
+<li>find_element_by_class_name</li>
+<li>find_element_by_css_selector</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input_first = browser.find_element(By.ID, <span class="string">'q'</span>)</span><br><span class="line">print(input_first)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过<code>browser.find_element</code>加上<code>from selenium.webdriver.common.by import By</code></li>
+</ul>
+<h2 id="多个元素"><a href="#多个元素" class="headerlink" title="多个元素"></a>多个元素</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">lis = browser.find_elements_by_css_selector(<span class="string">'.service-bd li'</span>)</span><br><span class="line">print(lis)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<p>把element加上复数形式</p>
+<ul>
+<li>find_elements_by_name</li>
+<li>find_elements_by_xpath</li>
+<li>find_elements_by_link_text</li>
+<li>find_elements_by_partial_link_text</li>
+<li>find_elements_by_tag_name</li>
+<li>find_elements_by_class_name</li>
+<li>find_elements_by_css_selector</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">lis = browser.find_elements(By.CSS_SELECTOR, <span class="string">'.service-bd li'</span>)</span><br><span class="line">print(lis)</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="元素交互操作"><a href="#元素交互操作" class="headerlink" title="元素交互操作"></a>元素交互操作</h2><p>对获取的元素调用交互方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">input = browser.find_element_by_id(<span class="string">'q'</span>)</span><br><span class="line">input.send_keys(<span class="string">'iPhone'</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">input.clear()</span><br><span class="line">input.send_keys(<span class="string">'iPad'</span>)</span><br><span class="line">button = browser.find_element_by_class_name(<span class="string">'btn-search'</span>)</span><br><span class="line">button.click()</span><br></pre></td></tr></table></figure>
+<p>更多操作: <a href="http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement" target="_blank" rel="noopener">http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement</a></p>
+<h2 id="交互动作"><a href="#交互动作" class="headerlink" title="交互动作"></a>交互动作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">browser.switch_to.frame(<span class="string">'iframeResult'</span>)</span><br><span class="line">source = browser.find_element_by_css_selector(<span class="string">'#draggable'</span>)</span><br><span class="line">target = browser.find_element_by_css_selector(<span class="string">'#droppable'</span>)</span><br><span class="line">actions = ActionChains(browser)</span><br><span class="line">actions.drag_and_drop(source, target)</span><br><span class="line">actions.perform()</span><br></pre></td></tr></table></figure>
+<p>更多操作: <a href="http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains" target="_blank" rel="noopener">http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.action_chains</a>&gt;</p>
+<h2 id="执行JavaScript"><a href="#执行JavaScript" class="headerlink" title="执行JavaScript"></a>执行JavaScript</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'window.scrollTo(0, document.body.scrollHeight)'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'alert("To Bottom")'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取元素信息"><a href="#获取元素信息" class="headerlink" title="获取元素信息"></a>获取元素信息</h2><h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">logo = browser.find_element_by_id(<span class="string">'zh-top-link-logo'</span>)</span><br><span class="line">print(logo)</span><br><span class="line">print(logo.get_attribute(<span class="string">'class'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="获取文本值"><a href="#获取文本值" class="headerlink" title="获取文本值"></a>获取文本值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input.text)</span><br></pre></td></tr></table></figure>
+<h3 id="获取ID、位置、标签名、大小"><a href="#获取ID、位置、标签名、大小" class="headerlink" title="获取ID、位置、标签名、大小"></a>获取ID、位置、标签名、大小</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'https://www.zhihu.com/explore'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input.id)</span><br><span class="line">print(input.location)</span><br><span class="line">print(input.tag_name)</span><br><span class="line">print(input.size)</span><br></pre></td></tr></table></figure>
+<h2 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h2><p>Frame相当于一个网页，父Frame必须进入子Frame然后才能查找子Frame中的元素，子Frame中也不能获取父Frame中的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> NoSuchElementException</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">url = <span class="string">'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'</span></span><br><span class="line">browser.get(url)</span><br><span class="line">browser.switch_to.frame(<span class="string">'iframeResult'</span>)</span><br><span class="line"><span class="comment"># swith_to.frame()传入frame的id</span></span><br><span class="line">source = browser.find_element_by_css_selector(<span class="string">'#draggable'</span>)</span><br><span class="line">print(source)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    logo = browser.find_element_by_class_name(<span class="string">'logo'</span>)</span><br><span class="line"><span class="keyword">except</span> NoSuchElementException:</span><br><span class="line">    print(<span class="string">'NO LOGO'</span>)</span><br><span class="line">browser.switch_to.parent_frame()</span><br><span class="line"><span class="comment">#swith_to.parent_frame()切换到父Frame</span></span><br><span class="line">logo = browser.find_element_by_class_name(<span class="string">'logo'</span>)</span><br><span class="line">print(logo)</span><br><span class="line">print(logo.text)</span><br></pre></td></tr></table></figure>
+<h2 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h2><h3 id="隐式等待"><a href="#隐式等待" class="headerlink" title="隐式等待"></a>隐式等待</h3><p>当使用了隐式等待执行测试的时候，如果 WebDriver没有在 DOM中找到元素，将继续等待，超出设定时间后则抛出找不到元素的异常, 换句话说，当查找元素或元素并没有立即出现的时候，隐式等待将等待一段时间再查找 DOM，默认的时间是0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.implicitly_wait(<span class="number">10</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">input = browser.find_element_by_class_name(<span class="string">'zu-top-add-question'</span>)</span><br><span class="line">print(input)</span><br></pre></td></tr></table></figure>
+<h3 id="显式等待"><a href="#显式等待" class="headerlink" title="显式等待"></a>显式等待</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com/'</span>)</span><br><span class="line">wait = WebDriverWait(browser, <span class="number">10</span>)</span><br><span class="line">input = wait.until(EC.presence_of_element_located((By.ID, <span class="string">'q'</span>)))</span><br><span class="line">button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'.btn-search'</span>)))</span><br><span class="line">print(input, button)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>title_is         标题是某内容</p>
+</li>
+<li><p>title_contains         标题包含某内容</p>
+</li>
+<li><p>presence_of_element_located         元素加载出，传入定位元组，如(By.ID, ‘p’)</p>
+</li>
+<li><p>visibility_of_element_located         元素可见，传入定位元组</p>
+</li>
+<li><p>visibility_of         可见，传入元素对象</p>
+</li>
+<li><p>presence_of_all_elements_located         所有元素加载出</p>
+</li>
+<li><p>text_to_be_present_in_element         某个元素文本包含某文字</p>
+</li>
+<li><p>text_to_be_present_in_element_value         某个元素值包含某文字</p>
+</li>
+<li><p>frame_to_be_available_and_switch_to_it frame        加载并切换</p>
+</li>
+<li><p>invisibility_of_element_located         元素不可见</p>
+</li>
+<li><p>element_to_be_clickable         元素可点击</p>
+</li>
+<li><p>staleness_of         判断一个元素是否仍在DOM，可判断页面是否已经刷新</p>
+</li>
+<li><p>element_to_be_selected         元素可选择，传元素对象</p>
+</li>
+<li><p>element_located_to_be_selected         元素可选择，传入定位元组</p>
+</li>
+<li><p>element_selection_state_to_be         传入元素对象以及状态，相等返回True，否则返回False</p>
+</li>
+<li><p>element_located_selection_state_to_be         传入定位元组以及状态，相等返回True，否则返回False</p>
+</li>
+<li><p>alert_is_present         是否出现Alert</p>
+</li>
+</ul>
+<h2 id="前进后退"><a href="#前进后退" class="headerlink" title="前进后退"></a>前进后退</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com/'</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com/'</span>)</span><br><span class="line">browser.get(<span class="string">'https://www.python.org/'</span>)</span><br><span class="line">browser.back()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">browser.forward()</span><br><span class="line">browser.close()</span><br></pre></td></tr></table></figure>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>设置登陆状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.zhihu.com/explore'</span>)</span><br><span class="line">print(browser.get_cookies())</span><br><span class="line">browser.add_cookie(&#123;<span class="string">'name'</span>: <span class="string">'name'</span>, <span class="string">'domain'</span>: <span class="string">'www.zhihu.com'</span>, <span class="string">'value'</span>: <span class="string">'germey'</span>&#125;)</span><br><span class="line">print(browser.get_cookies())</span><br><span class="line">browser.delete_all_cookies()</span><br><span class="line">print(browser.get_cookies())</span><br></pre></td></tr></table></figure>
+<h2 id="选项卡管理"><a href="#选项卡管理" class="headerlink" title="选项卡管理"></a>选项卡管理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">browser.execute_script(<span class="string">'window.open()'</span>)</span><br><span class="line">print(browser.window_handles)</span><br><span class="line">browser.switch_to_window(browser.window_handles[<span class="number">1</span>])</span><br><span class="line">browser.get(<span class="string">'https://www.taobao.com'</span>)</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">browser.switch_to_window(browser.window_handles[<span class="number">0</span>])</span><br><span class="line">browser.get(<span class="string">'https://python.org'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="comment">#异常处理</span></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">browser.find_element_by_id(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+<p>加入异常处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> TimeoutException, NoSuchElementException</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    browser.get(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line"><span class="keyword">except</span> TimeoutException:</span><br><span class="line">    print(<span class="string">'Time Out'</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    browser.find_element_by_id(<span class="string">'hello'</span>)</span><br><span class="line"><span class="keyword">except</span> NoSuchElementException:</span><br><span class="line">    print(<span class="string">'No Element'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    browser.close()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/BeautifulSoup/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -467,423 +849,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/regex/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/02/regex/" itemprop="url">正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-02T20:28:23+08:00">
-                2019-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="常见匹配模式"><a href="#常见匹配模式" class="headerlink" title="常见匹配模式"></a>常见匹配模式</h2><table>
-<thead>
-<tr>
-<th>模式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\w</td>
-<td>匹配字母数字及下划线</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配非字母数字下划线</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任意空白字符，等价于 [\t\n\r\f].</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任意非空字符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配任意数字，等价于 [0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配任意非数字</td>
-</tr>
-<tr>
-<td>\A</td>
-<td>匹配字符串开始</td>
-</tr>
-<tr>
-<td>\Z</td>
-<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串</td>
-</tr>
-<tr>
-<td>\z</td>
-<td>匹配字符串结束</td>
-</tr>
-<tr>
-<td>\G</td>
-<td>匹配最后匹配完成的位置</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>匹配一个换行符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>匹配一个制表符</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配字符串的开头</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配字符串的末尾。</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符。</td>
-</tr>
-<tr>
-<td>[…]</td>
-<td>用来表示一组字符,单独列出：[amk] 匹配 ‘a’，’m’或’k’</td>
-</tr>
-<tr>
-<td>[^…]</td>
-<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配0个或多个的表达式。</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配1个或多个的表达式。</td>
-</tr>
-<tr>
-<td>?</td>
-<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>精确匹配n个前面表达式。</td>
-</tr>
-<tr>
-<td>{n, m}</td>
-<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
-</tr>
-<tr>
-<td>a&#124;b</td>
-<td>匹配a或b</td>
-</tr>
-<tr>
-<td>( )</td>
-<td>匹配括号内的表达式，也表示一个组</td>
-</tr>
-</tbody>
-</table>
-<h2 id="re-match"><a href="#re-match" class="headerlink" title="re.match"></a>re.match</h2><p>  <code>re.match</code> 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern, string, flags=0)</span><br></pre></td></tr></table></figure>
-<h3 id="最常规的匹配"><a href="#最常规的匹配" class="headerlink" title="最常规的匹配"></a>最常规的匹配</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">   content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">   print(len(content))</span><br><span class="line">   result = re.match(<span class="string">'^Hello\s\d\d\d\s\d&#123;4&#125;\s\w&#123;10&#125;.*Demo$'</span>, content)</span><br><span class="line">   print(result)</span><br><span class="line">   print(result.group(<span class="number">0</span>))</span><br><span class="line">   print(result.span())</span><br></pre></td></tr></table></figure>
-<p>RESULT:</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt;_sre.SRE_Match object; span=(0, 41), match=&apos;Hello 123 4567 World_This is a Regex Demo&apos;&gt;</span><br><span class="line">&gt; Hello 123 4567 World_This is a Regex Demo</span><br><span class="line">&gt; (0, 41)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/02/regex/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/requests/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Francis Cheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Francis'Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/01/requests/" itemprop="url">requests</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T20:58:50+08:00">
-                2019-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">Python爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="GET请求："><a href="#GET请求：" class="headerlink" title="GET请求："></a><strong>GET请求：</strong></h2><p>带参数的url请求：　　　　　　</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">data =&#123;<span class="string">'name'</span>:<span class="string">'cheng'</span>,<span class="string">'age'</span>:<span class="number">20</span>&#125;        <span class="comment">#参数</span></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>, params=data)</span><br></pre></td></tr></table></figure>
-<p>这样requests会给我们自动build这个网址，查看response.url 这个属性。会得到我们请求的代码</p>
-<p>‘<a href="https://httpbin.org/get?name=cheng&amp;age=20&#39;" target="_blank" rel="noopener">https://httpbin.org/get?name=cheng&amp;age=20&#39;</a></p>
-<h2 id="解析JSON："><a href="#解析JSON：" class="headerlink" title="解析JSON："></a><strong>解析JSON：</strong></h2><p>requests还提供了一个解析json的方法，用get方法请求 <a href="https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。" target="_blank" rel="noopener">https://httpbin.org/get，它的返回结果是一个json的字符串，所以我们可以直接调用response.json方法得到。</a></p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">response = requests.get(<span class="string">'https://httpbin.org/get'</span>)</span><br><span class="line">print(response.json()) <span class="comment">#调用json方法</span></span><br><span class="line">print(json.loads(response.text))</span><br></pre></td></tr></table></figure>
-<p>用json.loads把json数据转化字典方法，同样打印输出，发现和response.json()是一样的，其实response.json()就是通过一个json.loads()方法</p>
-<h2 id="获取二进制数据"><a href="#获取二进制数据" class="headerlink" title="获取二进制数据"></a><strong>获取二进制数据</strong></h2><p>​
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/01/requests/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -928,7 +898,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -939,7 +909,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -950,7 +920,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
